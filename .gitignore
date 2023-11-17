@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Citisoft/Database_log.ldf
+/Citisoft/Database.mdf
