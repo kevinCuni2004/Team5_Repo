@@ -53,6 +53,14 @@ namespace Citisoft
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
+                string query = "INSERT INTO Users (Email, PAssword) VALUES (@Email, @Password)";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Email", email);
+                    command.Parameters.AddWithValue("@Password", password);
+
+
+                }
 
             }
         }
