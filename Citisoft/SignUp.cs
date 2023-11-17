@@ -14,7 +14,7 @@ namespace Citisoft
         private Button SignUpButton;
 
 
-        //private const string ConnectionString = path;
+        private const string ConnectionString = "C:/Users/tn383/Downloads/Database.mdf";
 
         public SignUpForm()
         {
@@ -39,8 +39,8 @@ namespace Citisoft
 
             if (SaveCredentialsToDatabase(email, password))
             {
-                MessageBox.Show("Signup is successful!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close;
+                MessageBox.Show("Signup is successful!","Proceed to login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             else
             {
@@ -59,6 +59,9 @@ namespace Citisoft
                     command.Parameters.AddWithValue("@Email", email);
                     command.Parameters.AddWithValue("@Password", password);
 
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0;
+
 
                 }
 
@@ -76,7 +79,7 @@ namespace Citisoft
             this.emailTextBox.Name = "textBox1";
             this.emailTextBox.Size = new System.Drawing.Size(143, 20);
             this.emailTextBox.TabIndex = 0;
-            this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox);
+            this.emailTextBox.TextChanged += new System.EventHandler(emailTextBox_TextChanged);
             // 
             // SignUpForm
             // 
@@ -87,6 +90,11 @@ namespace Citisoft
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void emailTextBox_TextChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void SignUpForm_Load(object sender, EventArgs e)
