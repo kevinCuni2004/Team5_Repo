@@ -8,6 +8,6 @@ namespace Citisoft
 {
     class Constants
     {
-
+        public static string SELECT_PROFILE = "SELECT * FROM Profile WHERE [e-mail]=@e-mail;";
     }
 }
