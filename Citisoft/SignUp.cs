@@ -12,8 +12,10 @@ namespace Citisoft
         private TextBox emailTextBox;
         private TextBox passwordTextBox;
         private Button SignUpButton;
+        private Button helpButton;
+        private Button backButton;
 
-
+        //change path if it is needed
         private const string ConnectionString = "C:/Users/tn383/Downloads/Database.mdf";
 
         public SignUpForm()
@@ -71,19 +73,62 @@ namespace Citisoft
         private void InitializeComponent()
         {
             this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.SignUpButton = new System.Windows.Forms.Button();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // EmailTextBox
+            // emailTextBox
             // 
-            this.emailTextBox.Location = new System.Drawing.Point(76, 112);
-            this.emailTextBox.Name = "textBox1";
-            this.emailTextBox.Size = new System.Drawing.Size(143, 20);
+            this.emailTextBox.Location = new System.Drawing.Point(199, 116);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(251, 26);
             this.emailTextBox.TabIndex = 0;
-            this.emailTextBox.TextChanged += new System.EventHandler(emailTextBox_TextChanged);
+            this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.Location = new System.Drawing.Point(199, 164);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(251, 26);
+            this.passwordTextBox.TabIndex = 1;
+            // 
+            // SignUpButton
+            // 
+            this.SignUpButton.Location = new System.Drawing.Point(372, 215);
+            this.SignUpButton.Name = "SignUpButton";
+            this.SignUpButton.Size = new System.Drawing.Size(78, 43);
+            this.SignUpButton.TabIndex = 2;
+            this.SignUpButton.Text = "SignUpButton";
+            this.SignUpButton.UseVisualStyleBackColor = true;
+            this.SignUpButton.Click += new System.EventHandler(this.SignUpButton_Click);
+            // 
+            // helpButton
+            // 
+            this.helpButton.Location = new System.Drawing.Point(538, 27);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(106, 48);
+            this.helpButton.TabIndex = 3;
+            this.helpButton.Text = "helpButton";
+            this.helpButton.UseVisualStyleBackColor = true;
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(24, 304);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(127, 47);
+            this.backButton.TabIndex = 4;
+            this.backButton.Text = "backButton";
+            this.backButton.UseVisualStyleBackColor = true;
             // 
             // SignUpForm
             // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(668, 367);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.helpButton);
+            this.Controls.Add(this.SignUpButton);
+            this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.emailTextBox);
             this.Name = "SignUpForm";
             this.Load += new System.EventHandler(this.SignUpForm_Load);
@@ -94,12 +139,14 @@ namespace Citisoft
 
         private void emailTextBox_TextChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void SignUpForm_Load(object sender, EventArgs e)
         {
 
         }
+
+      
     }
 }
