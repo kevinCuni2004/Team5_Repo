@@ -53,6 +53,13 @@ namespace Citisoft
                 MessageBox.Show("Password needs to be between 8 and" +
                     " 25 characters long and contain a number, uppercase leter, and special chracters.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!IsEmailAvailable(email))
+            {
+                MessageBox.Show("Account already exisits", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
 
@@ -67,6 +74,26 @@ namespace Citisoft
             }
         }
 
+        private bool IsEmailAvailable(string email)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                string query = "SELECT COUNT (*) FROM Users WHERE Email = @Email";
+                using(SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Email", email);
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    return count == 0;
+                }
+            }
+        }
+
+        private bool IsPasswordValid(string password)
+        {
+            return Regex.IsMatch(password, @"^(?=.*\d)(?=.*[A-Z])(?=.*[a^zA-Z\d]).{8,25}$");
+
+        }
         private bool SaveCredentialsToDatabase(string email, string password)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString))
