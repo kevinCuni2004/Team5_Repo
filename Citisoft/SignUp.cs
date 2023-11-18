@@ -14,6 +14,7 @@ namespace Citisoft
         private Button SignUpButton;
         private Button helpButton;
         private Button backButton;
+        private TextBox textBox1;
 
         //change path if it is needed
         private const string ConnectionString = "C:/Users/tn383/Downloads/Database.mdf";
@@ -38,6 +39,22 @@ namespace Citisoft
             }
 
             // add other validation 
+
+            if (!email.EndsWith("@citisoft.co.uk"))
+            {
+                MessageBox.Show("Email must end with companies requierments", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+
+            //add code for this validation 
+            if (!IsPasswordValid(password))
+            {
+                MessageBox.Show("Password needs to be between 8 and" +
+                    " 25 characters long and contain a number, uppercase leter, and special chracters.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
             if (SaveCredentialsToDatabase(email, password))
             {
@@ -77,6 +94,7 @@ namespace Citisoft
             this.SignUpButton = new System.Windows.Forms.Button();
             this.helpButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // emailTextBox
@@ -122,9 +140,22 @@ namespace Citisoft
             this.backButton.Text = "backButton";
             this.backButton.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(246, 76);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(153, 34);
+            this.textBox1.TabIndex = 5;
+            this.textBox1.Text = "Please enter";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // SignUpForm
             // 
             this.ClientSize = new System.Drawing.Size(668, 367);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.SignUpButton);
@@ -147,6 +178,9 @@ namespace Citisoft
 
         }
 
-      
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
