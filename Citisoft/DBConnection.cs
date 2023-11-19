@@ -68,9 +68,34 @@ namespace Citisoft
         }
 
         //method to save to database
-        public void saveToDB()
+        public void saveToDB(string sqlQuery)
         {
             //complete once you have data in the database
+
+            // taya's testing 
+            using (connToDB = new SqlConnection(connStr))
+            {
+                connToDB.Open();
+                using (SqlCommand command = new SqlCommand(sqlQuery, connToDB))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+
+        }
+
+        //taya's testing 
+
+        public object ExecuteScalar(string sqlQuery)
+        {
+            using(connToDB = new SqlConnection(connStr))
+            {
+                connToDB.Open();
+                using (SqlCommand command = new SqlCommand(sqlQuery, connToDB))
+                {
+                    return command.ExecuteScalar();
+                }
+            }
         }
 
 
