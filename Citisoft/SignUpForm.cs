@@ -19,10 +19,7 @@ namespace Citisoft
         private Button backButton;
         private TextBox textBox1;
 
-        //change path if it is needed
-        private const string ConnectionString = "C:/Users/tn383/Downloads/Database.mdf";
-
-        public SignUpForm()
+        public SignUpForm(SignUp signUpInstance)
         {
             InitializeComponent();
             signUp = new SignUp();

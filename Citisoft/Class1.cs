@@ -15,8 +15,8 @@ namespace Citisoft
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SignUpForm signUpForm = new SignUpForm();
-            Application.Run(signUpForm);
+            WelcomeForm welcomeForm = new WelcomeForm();
+            Application.Run(new WelcomeForm());
         }
         }
 }
