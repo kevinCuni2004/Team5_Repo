@@ -46,7 +46,7 @@ namespace Citisoft
 
         private bool IsEmailAvailable(string email)
         {
-            string query = "SELECT COUNT (*) FROM Profile WHERE [e-mail] = '{email}'";
+            string query = $"SELECT COUNT (*) FROM Profile WHERE [e-mail] = '{email}'";
             int count = Convert.ToInt32(dbConnection.ExecuteScalar(query));
             return count == 0;
         }

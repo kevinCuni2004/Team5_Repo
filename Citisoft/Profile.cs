@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Citisoft
 {
-    class Profile
+    public class Profile
     {
         private int _id;
         public int Id { get { return _id; } set { _id = value; } }
@@ -37,5 +37,13 @@ namespace Citisoft
 
         private string _details;
         public string Details { get { return _details;} set { _details = value; } }
+
+        public Profile() { }
+
+        public Profile(string email, string password)
+        {
+            this._email = email;
+            this._password = password;
+        }
     }
 }

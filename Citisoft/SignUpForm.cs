@@ -11,7 +11,11 @@ namespace Citisoft
     public partial class SignUpForm : Form
     {
         private SignUp signUp;
-       
+        //added this ~Kevin
+        private UserTab userTab;
+        private UserTabForm userTabForm;
+        private Profile user;
+        //
         private TextBox emailTextBox;
         private TextBox passwordTextBox;
         private Button SignUpButton;
@@ -23,7 +27,6 @@ namespace Citisoft
         {
             InitializeComponent();
             signUp = new SignUp();
-
         }
 
         private void SignUpButton_Click(object sender, EventArgs e)
@@ -31,7 +34,14 @@ namespace Citisoft
             string email = emailTextBox.Text;
             string password = passwordTextBox.Text;
 
+            
+
             string registrationMessage = signUp.RegisterUser(email, password);
+
+            userTab = new UserTab();
+            user = userTab.loadProfile(email);
+            userTabForm = new UserTabForm(user);
+            userTabForm.updateFields();
 
             //validation 
 
@@ -45,6 +55,9 @@ namespace Citisoft
             {
                 MessageBox.Show("SignUp is successful! Proceed to login",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //this I added ~Kevin
+                userTabForm.ShowDialog();
+                //
                 this.Close();
             }
             else

@@ -12,19 +12,32 @@ namespace Citisoft
 {
     public partial class UserTabForm : Form
     {
-        public UserTabForm()
+        private UserTab userTab;
+        private Profile user;
+        public UserTabForm(Profile user)
         {
             InitializeComponent();
+            userTab = new UserTab();
         }
+
+        public void updateFields() {
+            emailLabel.Text = user.Email;
+            fnameLabel.Text = user.FirstName;
+            lnameLabel.Text = user.LastName;
+            ageLabel.Text = Convert.ToString(user.Age);
+            specialityLabel.Text = "Fix later";
+            descriptionLabel.Text = user.Details;
+        }
+
 
         private void Help_Button_Click(object sender, EventArgs e)
         {
-            
+            //HelpDesk
         }
 
         private void Back_Button_Click(object sender, EventArgs e)
         {
-            
+            //go back to Home
         }
 
         private void emailLabel_Click(object sender, EventArgs e)

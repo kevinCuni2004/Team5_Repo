@@ -143,14 +143,14 @@ namespace Citisoft
             // titleLabel
             // 
             this.titleLabel.Font = new System.Drawing.Font("Modern No. 20", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(241, 9);
+            this.titleLabel.Location = new System.Drawing.Point(224, 13);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(342, 65);
             this.titleLabel.TabIndex = 9;
             this.titleLabel.Text = "Citisoft";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // UserTab
+            // UserTabForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -165,7 +165,7 @@ namespace Citisoft
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.Help_Button);
             this.Controls.Add(this.Back_Button);
-            this.Name = "UserTab";
+            this.Name = "UserTabForm";
             this.Text = "UserTab";
             this.ResumeLayout(false);
 

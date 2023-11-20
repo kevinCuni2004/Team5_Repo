@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 //This file was heavily inspired by the example provided in Week5 (WFA2020withDB_v2.zip)
 /*
@@ -80,6 +81,24 @@ namespace Citisoft
                 connToDB.Open();
                 using (SqlCommand command = new SqlCommand(sqlQuery, connToDB))
                 {
+                    command.ExecuteNonQuery();
+                }
+            }
+            connToDB.Close();
+
+        }
+
+        public void searchDB(string sqlQuery, string email)
+        {
+            //complete once you have data in the database
+
+            // taya's testing 
+            using (connToDB = new SqlConnection(connStr))
+            {
+                connToDB.Open();
+                using (SqlCommand command = new SqlCommand(sqlQuery, connToDB))
+                {
+                    command.Parameters.Add(new SqlParameter("email", email));
                     command.ExecuteNonQuery();
                 }
             }
