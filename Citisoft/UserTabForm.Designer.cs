@@ -1,6 +1,8 @@
-﻿namespace Citisoft
+﻿using System;
+
+namespace Citisoft
 {
-    partial class UserTab
+    partial class UserTabForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +39,7 @@
             this.specialityLabel = new System.Windows.Forms.Label();
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.descTitleLabel = new System.Windows.Forms.Label();
+            this.titleLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Back_Button
@@ -137,11 +140,22 @@
             this.descTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.descTitleLabel.Click += new System.EventHandler(this.descTitleLabel_Click);
             // 
+            // titleLabel
+            // 
+            this.titleLabel.Font = new System.Drawing.Font("Modern No. 20", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Location = new System.Drawing.Point(241, 9);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(342, 65);
+            this.titleLabel.TabIndex = 9;
+            this.titleLabel.Text = "Citisoft";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // UserTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.descTitleLabel);
             this.Controls.Add(this.descriptionLabel);
             this.Controls.Add(this.specialityLabel);
@@ -168,5 +182,6 @@
         private System.Windows.Forms.Label specialityLabel;
         private System.Windows.Forms.Label descriptionLabel;
         private System.Windows.Forms.Label descTitleLabel;
+        private System.Windows.Forms.Label titleLabel;
     }
 }
