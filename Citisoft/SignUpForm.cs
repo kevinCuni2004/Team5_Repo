@@ -68,7 +68,7 @@ namespace Citisoft
             // 
             this.emailTextBox.Location = new System.Drawing.Point(199, 116);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(251, 26);
+            this.emailTextBox.Size = new System.Drawing.Size(251, 22);
             this.emailTextBox.TabIndex = 0;
             this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
             // 
@@ -76,7 +76,7 @@ namespace Citisoft
             // 
             this.passwordTextBox.Location = new System.Drawing.Point(199, 164);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(251, 26);
+            this.passwordTextBox.Size = new System.Drawing.Size(251, 22);
             this.passwordTextBox.TabIndex = 1;
             // 
             // SignUpButton
