@@ -38,7 +38,7 @@ namespace Citisoft
                 return "Account already exists";
             }
 
-            string sqlQuery = $"INSERT INTO Users (Email, Password) VALUES ('{email}', '{password}')";
+            string sqlQuery = $"INSERT INTO Profile ([e-mail], [password]) VALUES ('{email}', '{password}')";
             dbConnection.saveToDB(sqlQuery);
             
             return "Success";
@@ -46,7 +46,7 @@ namespace Citisoft
 
         private bool IsEmailAvailable(string email)
         {
-            string query = "SELECT COUNT (*) FROM Users WHERE Email = '{email}'";
+            string query = "SELECT COUNT (*) FROM Profile WHERE [e-mail] = '{email}'";
             int count = Convert.ToInt32(dbConnection.ExecuteScalar(query));
             return count == 0;
         }

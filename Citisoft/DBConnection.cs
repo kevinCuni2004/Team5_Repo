@@ -64,6 +64,8 @@ namespace Citisoft
                 dataAdapter.Fill(dataSet);
             }
 
+            connToDB.Close();
+
             return dataSet;
         }
 
@@ -81,6 +83,7 @@ namespace Citisoft
                     command.ExecuteNonQuery();
                 }
             }
+            connToDB.Close();
 
         }
 
