@@ -66,11 +66,10 @@
     <Compile Include="SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include=".Designer.cs">
-      <DependentUpon>SearchForm.cs</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Profile.cs" />
+    <Compile Include="SearchForm.Designer.cs">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserTab.cs" />
     <Compile Include="WelcomeForm.cs">
       <SubType>Form</SubType>
@@ -90,9 +89,6 @@
     <Compile Include="UserTabForm.Designer.cs">
       <DependentUpon>UserTabForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include=".Designer.resx">
-      <DependentUpon>.Designer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
