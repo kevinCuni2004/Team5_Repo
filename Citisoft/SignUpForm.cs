@@ -26,7 +26,7 @@ namespace Citisoft
         public SignUpForm(SignUp signUpInstance)
         {
             InitializeComponent();
-            signUp = new SignUp();
+            signUp = signUpInstance;
         }
 
         private void SignUpButton_Click(object sender, EventArgs e)
@@ -36,25 +36,19 @@ namespace Citisoft
 
             
 
-            string registrationMessage = signUp.RegisterUser(email, password);
+            (string registrationMessage, Profile userProfile) = signUp.RegisterUser(email, password);
 
-            userTab = new UserTab();
-            user = userTab.loadProfile(email);
-            userTabForm = new UserTabForm(user);
-            userTabForm.updateFields();
 
-            //validation 
-
-            /*if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
-            {
-                MessageBox.Show("Please enter both email and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }*/
 
             if (registrationMessage == "Success")
             {
                 MessageBox.Show("SignUp is successful! Proceed to login",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                userTab = new UserTab();
+                user = userTab.loadProfile(email);
+                userTabForm = new UserTabForm(user);
+                userTabForm.updateFields();
                 //this I added ~Kevin
                 userTabForm.ShowDialog();
                 //

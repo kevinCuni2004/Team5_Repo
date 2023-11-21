@@ -28,7 +28,6 @@ namespace Citisoft
             signUpForm.ShowDialog();
         }
 
-       
 
         private void LogInButton_Click(object sender, EventArgs e)
         {

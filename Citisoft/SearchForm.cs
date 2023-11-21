@@ -11,17 +11,17 @@ using Citisoft;
 
 namespace Citisoft
 {
-    public partial class SearchForm : Form
+   public partial class SearchForm : Form
     {
         private Search search;
         public Button usernameButton;
         public Button helpButton;
         public TextBox searchTextBox;
-        public SearchForm(Search search)
+        /*public SearchForm(Search search)
         {
             InitializeComponent();
             search = new Search();
-        }
+        
 
         private void InitializeComponent()
         {
@@ -29,6 +29,6 @@ namespace Citisoft
             this.usernameButton.Location = new System.Drawing.Point(199, 116);
             this.usernameButton.Size = new System.Drawing.Size(200, 100);
             this.Controls.Add(this.usernameButton);
-        }
+        }*/
     }
 }
