@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Citisoft
-{ 
+{
 
     public class SignUp
     {
@@ -18,31 +19,42 @@ namespace Citisoft
             dbConnection = DBConnection.getInstance();
         }
 
-        public string RegisterUser(string email, string password)
+        public (string message, Profile profile) RegisterUser(string email, string password)
         {
-            if (!email.EndsWith("@citisoft.co.uk"))
+            try
             {
-                Console.WriteLine("Email must end with companies requierments");
-                return "Email must end with company's requirements";
-            }
+                if (!email.EndsWith("@citisoft.co.uk"))
+                {
+                    throw new ArgumentException("Email must end with company's requirements");
+                }
 
-            if (!IsPasswordValid(password))
+                if (!IsPasswordValid(password))
+                {
+                    throw new ArgumentException("Password must meet company's requirements");
+                }
+
+                if (!IsEmailAvailable(email))
+                {
+
+                    throw new ArgumentException("Account already exists");
+                }
+
+                string sqlQuery = $"INSERT INTO Profile ([e-mail], [password]) VALUES ('{email}', '{password}')";
+                dbConnection.saveToDB(sqlQuery);
+
+                return ("Success", new Profile
+                {
+                    Email = email,
+                    Password = password
+                });
+
+            }
+            catch (Exception ex)
             {
-                Console.WriteLine("Password must end with companies requierments");
-                return "Password must meet company's requirements";
+                return (ex.Message, null);
             }
-
-            if (!IsEmailAvailable(email))
-            {
-                Console.WriteLine("Email  end with companies requierments");
-                return "Account already exists";
-            }
-
-            string sqlQuery = $"INSERT INTO Profile ([e-mail], [password]) VALUES ('{email}', '{password}')";
-            dbConnection.saveToDB(sqlQuery);
-            
-            return "Success";
         }
+
 
         private bool IsEmailAvailable(string email)
         {

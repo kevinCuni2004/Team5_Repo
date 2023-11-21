@@ -28,12 +28,11 @@ namespace Citisoft
             signUpForm.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+
+        private void LogInButton_Click(object sender, EventArgs e)
         {
-            SignUpForm signUpForm = new SignUpForm(signUp);
-            signUpForm.ShowDialog();
-            this.Close();  
-            
+
         }
     }
 }
