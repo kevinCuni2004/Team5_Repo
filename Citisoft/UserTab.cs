@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Citisoft
 {
@@ -23,27 +25,61 @@ namespace Citisoft
         }
 
         public Profile loadProfile(string email) {
-            string query = "SELECT * FROM [Profile] WHERE [e-mail]=@email";
-            
+            user = new Profile();
+            //string query = "SELECT * FROM [Profile] WHERE [e-mail]='" + email + "';";
+            string query = "SELECT * FROM [Profile] WHERE [e-mail]=@email;";
             dBConnection = DBConnection.getInstance();
-            DataSet dataSet = dBConnection.getDataSet(query);
-            user.Id = Convert.ToInt32(dataSet.Tables["Profile"].Columns["profile_id"]);
-            if (dataSet.Tables["Profile"].Columns["admin_id"] != null)
+            string connStr = Properties.Settings.Default.DBConnectionString;
+            SqlConnection connToDB = new SqlConnection(connStr);
+            using (SqlCommand command = new SqlCommand(query, connToDB))
             {
-                user.AdminID = Convert.ToInt32(dataSet.Tables["Profile"].Columns["admin_id"]);
-            } else { user.AdminID = 0; }
-            user.Username = Convert.ToString(dataSet.Tables["Profile"].Columns["username"]);
-            user.FirstName = Convert.ToString(dataSet.Tables["Profile"].Columns["first_name"]);
-            user.LastName = Convert.ToString(dataSet.Tables["Profile"].Columns["last_name"]);
-            user.Age = Convert.ToInt32(dataSet.Tables["Profile"].Columns["age"]);
-            user.Email = email;
-            user.Password = Convert.ToString(dataSet.Tables["Profile"].Columns["password"]);
-            user.Access = Convert.ToInt32(dataSet.Tables["Profile"].Columns["access"]);
-            if (dataSet.Tables["Profile"].Columns["details"] != null)
-            {
-                user.Details = Convert.ToString(dataSet.Tables["Profile"].Columns["details"]);
-            } else { user.Details = "No Details"; }
-            
+                connToDB.Open();
+                command.Parameters.AddWithValue("@email", email);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            user.Id = reader.GetInt32(reader.GetOrdinal("profile_id"));
+                            Console.WriteLine($"Profile ID: {user.Id}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No matching records found.");
+                    }
+                }
+            }
+                /*Console.WriteLine(query);
+                DataSet dataSet = dBConnection.getDataSet(query);*/
+
+                /*if (dataSet != null && dataSet.Tables.Count > 0)
+                {
+                    //user.Id = Convert.ToInt32(dataSet.Tables["Profile"].Columns["profile_id"]);
+                    user.Id = Convert.ToInt32(dataSet.Tables["Profile"].Rows[0]["profile_id"]);
+                    if (dataSet.Tables["Profile"].Columns["admin_id"] != null)
+                    {
+                        user.AdminID = Convert.ToInt32(dataSet.Tables["Profile"].Columns["admin_id"]);
+                    }
+                    else { user.AdminID = 0; }
+                    user.Username = Convert.ToString(dataSet.Tables["Profile"].Columns["username"]);
+                    user.FirstName = Convert.ToString(dataSet.Tables["Profile"].Columns["first_name"]);
+                    user.LastName = Convert.ToString(dataSet.Tables["Profile"].Columns["last_name"]);
+                    user.Age = Convert.ToInt32(dataSet.Tables["Profile"].Columns["age"]);
+                    user.Email = email;
+                    user.Password = Convert.ToString(dataSet.Tables["Profile"].Columns["password"]);
+                    user.Access = Convert.ToInt32(dataSet.Tables["Profile"].Columns["access"]);
+                    if (dataSet.Tables["Profile"].Columns["details"] != null)
+                    {
+                        user.Details = Convert.ToString(dataSet.Tables["Profile"].Columns["details"]);
+                    }
+                    else { user.Details = "No Details"; }
+                } else
+                {
+                    Exception ex = new Exception();
+                    throw ex;
+                }*/
             return user;
         }
     }
