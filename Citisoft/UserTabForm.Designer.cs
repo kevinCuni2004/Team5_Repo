@@ -36,7 +36,7 @@ namespace Citisoft
             this.fnameLabel = new System.Windows.Forms.Label();
             this.lnameLabel = new System.Windows.Forms.Label();
             this.ageLabel = new System.Windows.Forms.Label();
-            this.specialityLabel = new System.Windows.Forms.Label();
+            this.changePasswordLabel = new System.Windows.Forms.Label();
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.descTitleLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
@@ -106,16 +106,15 @@ namespace Citisoft
             this.ageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ageLabel.Click += new System.EventHandler(this.ageLabel_Click);
             // 
-            // specialityLabel
+            // changePasswordLabel
             // 
-            this.specialityLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.specialityLabel.Location = new System.Drawing.Point(155, 370);
-            this.specialityLabel.Name = "specialityLabel";
-            this.specialityLabel.Size = new System.Drawing.Size(217, 36);
-            this.specialityLabel.TabIndex = 6;
-            this.specialityLabel.Text = "<Speciality>";
-            this.specialityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.specialityLabel.Click += new System.EventHandler(this.specialityLabel_Click);
+            this.changePasswordLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.changePasswordLabel.Location = new System.Drawing.Point(155, 370);
+            this.changePasswordLabel.Name = "changePasswordLabel";
+            this.changePasswordLabel.Size = new System.Drawing.Size(217, 36);
+            this.changePasswordLabel.TabIndex = 6;
+            this.changePasswordLabel.Text = "Change Password";
+            this.changePasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // descriptionLabel
             // 
@@ -158,7 +157,7 @@ namespace Citisoft
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.descTitleLabel);
             this.Controls.Add(this.descriptionLabel);
-            this.Controls.Add(this.specialityLabel);
+            this.Controls.Add(this.changePasswordLabel);
             this.Controls.Add(this.ageLabel);
             this.Controls.Add(this.lnameLabel);
             this.Controls.Add(this.fnameLabel);
@@ -179,7 +178,7 @@ namespace Citisoft
         private System.Windows.Forms.Label fnameLabel;
         private System.Windows.Forms.Label lnameLabel;
         private System.Windows.Forms.Label ageLabel;
-        private System.Windows.Forms.Label specialityLabel;
+        private System.Windows.Forms.Label changePasswordLabel;
         private System.Windows.Forms.Label descriptionLabel;
         private System.Windows.Forms.Label descTitleLabel;
         private System.Windows.Forms.Label titleLabel;

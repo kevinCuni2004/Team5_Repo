@@ -13,20 +13,20 @@ namespace Citisoft
     public partial class UserTabForm : Form
     {
         private UserTab userTab;
-        private Profile user;
-        public UserTabForm(Profile user)
+        private Profile User;
+        public UserTabForm()
         {
             InitializeComponent();
             userTab = new UserTab();
         }
 
-        public void updateFields() {
-            emailLabel.Text = user.Email;
-            fnameLabel.Text = user.FirstName;
-            lnameLabel.Text = user.LastName;
-            ageLabel.Text = Convert.ToString(user.Age);
-            specialityLabel.Text = "Fix later";
-            descriptionLabel.Text = user.Details;
+        public void updateFields(Profile user) {
+            User = user;
+            emailLabel.Text = User.Email;
+            fnameLabel.Text = User.FirstName;
+            lnameLabel.Text = User.LastName;
+            ageLabel.Text = Convert.ToString(User.Age);
+            descriptionLabel.Text = User.Details;
         }
 
 
@@ -56,11 +56,6 @@ namespace Citisoft
         }
 
         private void ageLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void specialityLabel_Click(object sender, EventArgs e)
         {
 
         }
