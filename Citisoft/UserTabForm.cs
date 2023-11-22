@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,6 +18,7 @@ namespace Citisoft
         public UserTabForm()
         {
             InitializeComponent();
+            changePasswordPanel.Visible = false;
             userTab = new UserTab();
         }
 
@@ -69,5 +71,58 @@ namespace Citisoft
         {
 
         }
+
+        private void changePasswordPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void changePasswordLabel_Click(object sender, EventArgs e)
+        {
+            changePasswordPanel.Visible = true;
+        }
+
+        private void cancelPassChangeButton_Click(object sender, EventArgs e)
+        {
+            changePasswordPanel.Visible = false;
+        }
+
+        private void changePassButton_Click(object sender, EventArgs e)
+        {
+            if (User.Password == oldPassTextBox.Text)
+            {
+                if (Regex.IsMatch(newPassTextBox.Text, @"^(?=.*\d)(?=.*[A-Z])(?=.*[a^zA-Z\d]).{8,25}$"))
+                {
+                    if (newPassTextBox.Text == confirmNewPassTextBox.Text)
+                    {
+                        User.Password = newPassTextBox.Text;
+                        userTab.changePassword(User.Email, User.Password);
+                        MessageBox.Show("Password changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        changePasswordPanel.Visible = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Passwords do not match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        oldPassTextBox.Text = "";
+                        newPassTextBox.Text = "";
+                        confirmNewPassTextBox.Text = "";
+                    }
+                } else
+                {
+                    MessageBox.Show("Password must be 8-25 characters long and contain at least:\n  - 1 Uppercase letter\n  - 1 Lowercase letter\n  - 1 Number\n    - 1 Special Character", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    oldPassTextBox.Text = "";
+                    newPassTextBox.Text = "";
+                    confirmNewPassTextBox.Text = "";
+                }
+            } else
+            {
+                MessageBox.Show("Incorrect Password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                oldPassTextBox.Text = "";
+                newPassTextBox.Text = "";
+                confirmNewPassTextBox.Text = "";
+            }
+        }
+
+
     }
 }

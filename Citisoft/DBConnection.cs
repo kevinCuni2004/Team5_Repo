@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -49,6 +50,7 @@ namespace Citisoft
 
         //will return the dataset based on the query it has as a parameter
         public DataSet getDataSet(string sqlQuery)
+            //Useless
         {
             //creaing an empty dataset
             DataSet dataSet = new DataSet();
@@ -68,6 +70,45 @@ namespace Citisoft
             connToDB.Close();
 
             return dataSet;
+        }
+
+        public SqlDataReader ExcecuteReader(SqlCommand command)
+        {
+            SqlDataReader reader = null;
+            command.Connection = new SqlConnection(connStr);
+
+            try
+            {
+                command.Connection.Open();
+
+                reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+            } catch
+            {
+                command.Connection.Close();
+                throw;
+            }
+            return reader;
+        }
+
+        public void ExecutenNonQuery(SqlCommand command)
+        {
+            command.Connection = new SqlConnection(connStr);
+
+            try
+            {
+                command.Connection.Open();
+
+                command.ExecuteNonQuery();
+            }
+            catch
+            {
+                command.Connection.Close();
+                throw;
+            }
+            finally
+            {
+                if (command.Connection.State != ConnectionState.Closed) command.Connection.Close();
+            }
         }
 
         //method to save to database
