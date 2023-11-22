@@ -47,8 +47,8 @@ namespace Citisoft
 
                 userTab = new UserTab();
                 user = userTab.loadProfile(email);
-                userTabForm = new UserTabForm();
-                userTabForm.updateFields(user);
+                userTabForm = new UserTabForm(user);
+                userTabForm.updateFields();
                 this.Close();
                 //this I added ~Kevin
                 userTabForm.ShowDialog();
@@ -75,7 +75,7 @@ namespace Citisoft
             // 
             this.emailTextBox.Location = new System.Drawing.Point(199, 116);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(251, 22);
+            this.emailTextBox.Size = new System.Drawing.Size(251, 26);
             this.emailTextBox.TabIndex = 0;
             this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
             // 
@@ -83,8 +83,9 @@ namespace Citisoft
             // 
             this.passwordTextBox.Location = new System.Drawing.Point(199, 164);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(251, 22);
+            this.passwordTextBox.Size = new System.Drawing.Size(251, 26);
             this.passwordTextBox.TabIndex = 1;
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             // 
             // SignUpButton
             // 
@@ -153,6 +154,11 @@ namespace Citisoft
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void passwordTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

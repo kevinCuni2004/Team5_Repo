@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Citisoft
 {
-    internal class LogIn
+    public class LogIn
     {
         private DBConnection dBConnection;
 
