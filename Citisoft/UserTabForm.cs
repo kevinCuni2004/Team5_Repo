@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Citisoft
 {
@@ -15,6 +18,7 @@ namespace Citisoft
     {
         private UserTab userTab;
         private Profile User;
+        private DBConnection dBConnection;
         public UserTabForm()
         {
             InitializeComponent();
@@ -44,7 +48,7 @@ namespace Citisoft
 
         private void emailLabel_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void fnameLabel_Click(object sender, EventArgs e)
@@ -96,7 +100,12 @@ namespace Citisoft
                     if (newPassTextBox.Text == confirmNewPassTextBox.Text)
                     {
                         User.Password = newPassTextBox.Text;
-                        userTab.changePassword(User.Email, User.Password);
+                        dBConnection = DBConnection.getInstance();
+                        string query = "UPDATE [Profile] SET [password]=@password WHERE [e-mail]=@email;";
+                        SqlCommand command = new SqlCommand(query);
+                        command.Parameters.AddWithValue("@password", User.Password);
+                        command.Parameters.AddWithValue("@email", User.Email);
+                        dBConnection.ExecutenNonQuery(command);
                         MessageBox.Show("Password changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changePasswordPanel.Visible = false;
                     }

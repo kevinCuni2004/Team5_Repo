@@ -56,7 +56,7 @@ namespace Citisoft
             // Back_Button
             // 
             this.Back_Button.Location = new System.Drawing.Point(36, 24);
-            this.Back_Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Back_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Back_Button.Name = "Back_Button";
             this.Back_Button.Size = new System.Drawing.Size(55, 24);
             this.Back_Button.TabIndex = 0;
@@ -67,7 +67,7 @@ namespace Citisoft
             // Help_Button
             // 
             this.Help_Button.Location = new System.Drawing.Point(434, 24);
-            this.Help_Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Help_Button.Margin = new System.Windows.Forms.Padding(2);
             this.Help_Button.Name = "Help_Button";
             this.Help_Button.Size = new System.Drawing.Size(55, 24);
             this.Help_Button.TabIndex = 1;
@@ -119,7 +119,7 @@ namespace Citisoft
             this.ageLabel.Name = "ageLabel";
             this.ageLabel.Size = new System.Drawing.Size(145, 24);
             this.ageLabel.TabIndex = 5;
-            this.ageLabel.Text = "<age>";
+            this.ageLabel.Text = "<date_of_birth>";
             this.ageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ageLabel.Click += new System.EventHandler(this.ageLabel_Click);
             // 
@@ -183,7 +183,7 @@ namespace Citisoft
             this.changePasswordPanel.Controls.Add(this.oldPassTextBox);
             this.changePasswordPanel.Controls.Add(this.changePasswordTitle);
             this.changePasswordPanel.Location = new System.Drawing.Point(103, 65);
-            this.changePasswordPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.changePasswordPanel.Margin = new System.Windows.Forms.Padding(2);
             this.changePasswordPanel.Name = "changePasswordPanel";
             this.changePasswordPanel.Size = new System.Drawing.Size(348, 199);
             this.changePasswordPanel.TabIndex = 10;
@@ -193,7 +193,7 @@ namespace Citisoft
             // changePassButton
             // 
             this.changePassButton.Location = new System.Drawing.Point(160, 167);
-            this.changePassButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.changePassButton.Margin = new System.Windows.Forms.Padding(2);
             this.changePassButton.Name = "changePassButton";
             this.changePassButton.Size = new System.Drawing.Size(105, 23);
             this.changePassButton.TabIndex = 8;
@@ -204,7 +204,7 @@ namespace Citisoft
             // cancelPassChangeButton
             // 
             this.cancelPassChangeButton.Location = new System.Drawing.Point(94, 167);
-            this.cancelPassChangeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelPassChangeButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelPassChangeButton.Name = "cancelPassChangeButton";
             this.cancelPassChangeButton.Size = new System.Drawing.Size(62, 23);
             this.cancelPassChangeButton.TabIndex = 7;
@@ -251,7 +251,7 @@ namespace Citisoft
             // confirmNewPassTextBox
             // 
             this.confirmNewPassTextBox.Location = new System.Drawing.Point(160, 139);
-            this.confirmNewPassTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.confirmNewPassTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.confirmNewPassTextBox.Name = "confirmNewPassTextBox";
             this.confirmNewPassTextBox.Size = new System.Drawing.Size(161, 20);
             this.confirmNewPassTextBox.TabIndex = 3;
@@ -259,7 +259,7 @@ namespace Citisoft
             // newPassTextBox
             // 
             this.newPassTextBox.Location = new System.Drawing.Point(160, 103);
-            this.newPassTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.newPassTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.newPassTextBox.Name = "newPassTextBox";
             this.newPassTextBox.Size = new System.Drawing.Size(161, 20);
             this.newPassTextBox.TabIndex = 2;
@@ -267,7 +267,7 @@ namespace Citisoft
             // oldPassTextBox
             // 
             this.oldPassTextBox.Location = new System.Drawing.Point(160, 69);
-            this.oldPassTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.oldPassTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.oldPassTextBox.Name = "oldPassTextBox";
             this.oldPassTextBox.Size = new System.Drawing.Size(161, 20);
             this.oldPassTextBox.TabIndex = 1;
@@ -300,7 +300,7 @@ namespace Citisoft
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.Help_Button);
             this.Controls.Add(this.Back_Button);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserTabForm";
             this.Text = "UserTab";
             this.changePasswordPanel.ResumeLayout(false);

@@ -24,8 +24,8 @@ namespace Citisoft
         private string _lastName;
         public string LastName { get { return _lastName; } set { _lastName = value; } }
 
-        private int _age;
-        public int Age { get { return _age; } set { _age = value; } }
+        private DateTime _dateOfBirth;
+        public DateTime DateofBirth { get { return _dateOfBirth; } set { _dateOfBirth = value; } }
 
         private string _email;
         public string Email { get { return _email; } set { _email = value; } }

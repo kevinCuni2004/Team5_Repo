@@ -24,13 +24,14 @@ namespace Citisoft
             
         }
 
-        public Profile loadProfile(string email) {
+        public Profile loadProfile(string email)
+        {
             user = new Profile();
             string query = "SELECT * FROM [Profile] WHERE [e-mail]=@email;";
             user.Email = email;
             dBConnection = DBConnection.getInstance();
             SqlCommand command = new SqlCommand(query);
-                command.Parameters.AddWithValue("@email", email);
+            command.Parameters.AddWithValue("@email", email);
             using (SqlDataReader reader = dBConnection.ExcecuteReader(command))
             {
                 if (reader.HasRows)
@@ -46,7 +47,7 @@ namespace Citisoft
                         user.Username = reader.GetString(reader.GetOrdinal("username"));
                         user.FirstName = reader.GetString(reader.GetOrdinal("first_name"));
                         user.LastName = reader.GetString(reader.GetOrdinal("last_name"));
-                        user.Age = reader.GetInt32(reader.GetOrdinal("age"));
+                        user.DateofBirth = reader.GetDateTime(reader.GetOrdinal("date_of_birth"));
                         user.Email = email;
                         user.Password = reader.GetString(reader.GetOrdinal("password"));
                         user.Access = reader.GetInt32(reader.GetOrdinal("access"));
@@ -63,17 +64,6 @@ namespace Citisoft
                 }
             }
             return user;
-        }
-
-
-        public void changePassword(string email, string password)
-        {
-            dBConnection = DBConnection.getInstance();
-            string query = "UPDATE [Profile] SET [password]=@password WHERE [e-mail]=@email;";
-            SqlCommand command = new SqlCommand(query);
-            command.Parameters.AddWithValue("@password", password);
-            command.Parameters.AddWithValue("@email", email);
-            dBConnection.ExecutenNonQuery(command);
         }
     }
 }
