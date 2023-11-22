@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="LogIn.cs" />
     <Compile Include="Search.cs" />
     <Compile Include="SearchForm.cs">
       <SubType>Form</SubType>
