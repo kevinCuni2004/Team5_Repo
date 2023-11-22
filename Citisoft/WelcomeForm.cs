@@ -14,11 +14,13 @@ namespace Citisoft
     {
 
         private SignUp signUp;
+        private LogIn logIn;
         public WelcomeForm()
         {
 
             InitializeComponent();
             signUp = new SignUp();
+            logIn = new LogIn();
 
         }
 
@@ -31,6 +33,8 @@ namespace Citisoft
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
+            LogInForm logInForm = new LogInForm(logIn);
+            logInForm.ShowDialog();
 
         }
     }
