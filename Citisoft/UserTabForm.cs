@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Citisoft
@@ -23,6 +24,7 @@ namespace Citisoft
         {
             InitializeComponent();
             changePasswordPanel.Visible = false;
+            changeFNamePanel.Visible = false;
             userTab = new UserTab();
         }
 
@@ -31,8 +33,16 @@ namespace Citisoft
             emailLabel.Text = User.Email;
             fnameLabel.Text = User.FirstName;
             lnameLabel.Text = User.LastName;
-            ageLabel.Text = Convert.ToString(User.Age);
+            ageLabel.Text = User.DateofBirth.ToShortDateString();
             descriptionLabel.Text = User.Details;
+            if (User.FirstName != "name")
+            {
+                updateInfoLabel.Visible = false;
+            }
+            else
+            {
+                updateInfoLabel.Visible = true;
+            }
         }
 
 
@@ -48,14 +58,20 @@ namespace Citisoft
 
         private void emailLabel_Click(object sender, EventArgs e)
         {
-            
+            MessageBox.Show("You cannot change your e-mail address!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void fnameLabel_Click(object sender, EventArgs e)
         {
-
+            changeFNamePanel.Visible = true;
         }
 
+        private void cancelFNameChange_Click(object sender, EventArgs e)
+        {
+            changeFNamePanel.Visible = false;
+        }
+
+        
         private void lnameLabel_Click(object sender, EventArgs e)
         {
 
@@ -132,6 +148,45 @@ namespace Citisoft
             }
         }
 
-
+        private void changeFNameButton_Click(object sender, EventArgs e)
+        {
+            if (changeFNameTextBox.Text == confrimFNameTextBox.Text)
+            {
+                if (!String.IsNullOrWhiteSpace(changeFNameTextBox.Text))
+                {
+                    if (!Regex.IsMatch(changeFNameTextBox.Text, "^[A-Z][a-zA-Z]*$"))
+                    {
+                        MessageBox.Show("Name is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        changeFNameTextBox.Text = "";
+                        confrimFNameTextBox.Text = "";
+                    }
+                    else
+                    {
+                        User.FirstName = changeFNameTextBox.Text;
+                        dBConnection = DBConnection.getInstance();
+                        string query = "UPDATE [Profile] SET [first_name]=@firstName WHERE [e-mail]=@email;";
+                        SqlCommand command = new SqlCommand(query);
+                        command.Parameters.AddWithValue("@firstName", User.FirstName);
+                        command.Parameters.AddWithValue("@email", User.Email);
+                        dBConnection.ExecutenNonQuery(command);
+                        MessageBox.Show("First Name changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        changeFNamePanel.Visible = false;
+                        fnameLabel.Text = User.FirstName;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Name is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    changeFNameTextBox.Text = "";
+                    confrimFNameTextBox.Text = "";
+                }
+            }
+            else
+            {
+                MessageBox.Show("Names do not match!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                changeFNameTextBox.Text = "";
+                confrimFNameTextBox.Text = "";
+            }
+        }
     }
 }
