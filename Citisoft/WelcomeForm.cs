@@ -24,18 +24,26 @@ namespace Citisoft
 
         }
 
+        //if user clicks signUp, user changes the form to proceed signUp 
         private void SignUpButton_Click(object sender, EventArgs e)
         {
             SignUpForm signUpForm = new SignUpForm(signUp);
             signUpForm.ShowDialog();
         }
 
-
+        // if user clicks logIn, user changes the form to proceed logIn
         private void LogInButton_Click(object sender, EventArgs e)
         {
             LogInForm logInForm = new LogInForm(logIn);
             logInForm.ShowDialog();
 
+        }
+
+        //there is no HelpForm yet, so i cannot connect it
+
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            //i will add some code after creation of Help
         }
     }
 }

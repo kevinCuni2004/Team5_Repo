@@ -19,6 +19,8 @@ namespace Citisoft
             InitializeComponent();
             logIn = logInInstance;
         }
+
+        //built the same way as SignUpForm class
         private void logInButton_Click(object sender, EventArgs e)
         {
             string email = emailTextBox.Text;

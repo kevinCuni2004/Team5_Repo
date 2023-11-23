@@ -15,20 +15,26 @@ namespace Citisoft
             dBConnection = DBConnection.getInstance();
         }
 
+        // user authentication
         public (string message, Profile userProfile) AuthenticateUser(string email, string password)
         {
             try
             {
+                // checks the existance of the e-mail
+                
                 if (!UserExists(email))
                 {
                     throw new InvalidOperationException("User does not exist");
                 }
 
+                // checking if password and email are matching and written correctly
                 if(!IsValidCredentials(email, password))
                 {
                     throw new InvalidOperationException("Invalid email or password");
                 }
 
+                // successful case
+                //entering profile 
                 Profile user = LoadUserProfile(email);
 
                 return ("Success", user);
@@ -40,21 +46,25 @@ namespace Citisoft
             }
         }
 
+
+        //method to find email in database
         private bool UserExists(string email)
         {
-            string query = $"SELECT COUNT(*) FROMProfile WHERE [e-mail] = '{email}'";
+            string query = $"SELECT COUNT(*) FROM Profile WHERE [e-mail] = '{email}'";
             int count = Convert.ToInt32(dBConnection.ExecuteScalar(query));
             return count > 0;
         }
 
+        //method to check if email and password match
         private bool IsValidCredentials(string email,string password)
         {
-            string query = $"SELECT COUNT(*) FROMProfile WHERE [e-mail] = '{email}' AND [password] = '{password}'";
+            string query = $"SELECT COUNT(*) FROM Profile WHERE [e-mail] = '{email}' AND [password] = '{password}'";
             int count = Convert.ToInt32(dBConnection.ExecuteScalar(query));
             return count > 0;
 
         }
 
+        //i will finish this method later
         private Profile LoadUserProfile (string email)
         {
             return new Profile();
