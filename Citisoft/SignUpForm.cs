@@ -21,6 +21,9 @@ namespace Citisoft
         private Button SignUpButton;
         private Button helpButton;
         private Button backButton;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
         private TextBox textBox1;
 
         public SignUpForm(SignUp signUpInstance)
@@ -69,13 +72,17 @@ namespace Citisoft
             this.helpButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // emailTextBox
             // 
             this.emailTextBox.Location = new System.Drawing.Point(199, 116);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(251, 26);
+            this.emailTextBox.Size = new System.Drawing.Size(251, 22);
             this.emailTextBox.TabIndex = 0;
             this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
             // 
@@ -83,7 +90,7 @@ namespace Citisoft
             // 
             this.passwordTextBox.Location = new System.Drawing.Point(199, 164);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(251, 26);
+            this.passwordTextBox.Size = new System.Drawing.Size(251, 22);
             this.passwordTextBox.TabIndex = 1;
             this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             // 
@@ -127,9 +134,40 @@ namespace Citisoft
             this.textBox1.Text = "Please enter";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(344, 91);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(200, 100);
+            this.tabControl1.TabIndex = 6;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(192, 71);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(192, 71);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // SignUpForm
             // 
             this.ClientSize = new System.Drawing.Size(668, 367);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.helpButton);
@@ -138,6 +176,7 @@ namespace Citisoft
             this.Controls.Add(this.emailTextBox);
             this.Name = "SignUpForm";
             this.Load += new System.EventHandler(this.SignUpForm_Load);
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Citisoft
 {
-    internal class Search
+    internal class Access
     {
     }
 }

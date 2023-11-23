@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Citisoft
 {
-    public partial class SearchForm : Form
+    public partial class SearchVendors : Form
     {
-        public SearchForm()
+        public SearchVendors()
         {
             InitializeComponent();
         }
+
+       
     }
 }
