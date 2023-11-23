@@ -50,8 +50,8 @@ namespace Citisoft
 
                 userTab = new UserTab();
                 user = userTab.loadProfile(email);
-                userTabForm = new UserTabForm(user);
-                userTabForm.updateFields();
+                userTabForm = new UserTabForm();
+                userTabForm.updateFields(user);
                 this.Close();
                 //this I added ~Kevin
                 userTabForm.ShowDialog();
