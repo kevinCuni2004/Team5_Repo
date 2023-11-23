@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Citisoft
 {
-    internal class Access
+    public class Access
     {
+        private DBConnection dBConnection;
+        public Access()
+        {
+            dBConnection = DBConnection.getInstance();
+        }
+       //--С каждым новым профилем должны добавляться ряды--//
     }
 }

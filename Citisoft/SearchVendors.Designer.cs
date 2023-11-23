@@ -38,6 +38,8 @@
             this.termsOfUseLinkLabel = new System.Windows.Forms.LinkLabel();
             this.company_Name_TextBox = new System.Windows.Forms.TextBox();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // usernameButton
@@ -109,7 +111,7 @@
             // 
             this.termsOfUseLinkLabel.AutoSize = true;
             this.termsOfUseLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.termsOfUseLinkLabel.Location = new System.Drawing.Point(225, 415);
+            this.termsOfUseLinkLabel.Location = new System.Drawing.Point(239, 15);
             this.termsOfUseLinkLabel.Name = "termsOfUseLinkLabel";
             this.termsOfUseLinkLabel.Size = new System.Drawing.Size(321, 29);
             this.termsOfUseLinkLabel.TabIndex = 7;
@@ -130,14 +132,23 @@
             this.descriptionTextBox.Size = new System.Drawing.Size(100, 22);
             this.descriptionTextBox.TabIndex = 9;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.termsOfUseLinkLabel);
+            this.panel1.Location = new System.Drawing.Point(-2, 397);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(811, 58);
+            this.panel1.TabIndex = 10;
+            // 
             // SearchVendors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.descriptionTextBox);
             this.Controls.Add(this.company_Name_TextBox);
-            this.Controls.Add(this.termsOfUseLinkLabel);
             this.Controls.Add(this.resultsLabel);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.nextPageButton);
@@ -147,6 +158,8 @@
             this.Controls.Add(this.usernameButton);
             this.Name = "SearchVendors";
             this.Text = "SearchVendors";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,5 +177,6 @@
         private System.Windows.Forms.LinkLabel termsOfUseLinkLabel;
         private System.Windows.Forms.TextBox company_Name_TextBox;
         private System.Windows.Forms.TextBox descriptionTextBox;
+        private System.Windows.Forms.Panel panel1;
     }
 }
