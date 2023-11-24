@@ -74,7 +74,7 @@ namespace Citisoft
             if(int.TryParse(oneToZeroText,out int inputValue) && inputValue >= 0 && inputValue <= 1)
             {
                 //--Преобразовать в стринг--//
-                User.Access = oneToZeroText;
+                //User.Access = oneToZeroText;
                 string query = "UPDATE [Profile] SET [access]=@access WHERE [e-mail]=@email;";
                 dBConnection = DBConnection.getInstance();
                 SqlCommand command = new SqlCommand(query);
@@ -82,7 +82,7 @@ namespace Citisoft
             }
             else
             {
-                statusValidation
+                //statusValidation
             }
             //--Сохранить измененения в базу данных--//
             //--То что написано должно измениться в форме--//

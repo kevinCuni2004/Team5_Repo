@@ -39,7 +39,7 @@ namespace Citisoft
             lnameLabel.Text = User.LastName;
             dobLabel.Text = User.DateofBirth.ToShortDateString();
             descriptionLabel.Text = User.Details;
-            if (User.FirstName != "name")
+            if (User.FirstName != "name" && User.LastName != "surname" && !User.DateofBirth.Equals("2000-01-01"))
             {
                 updateInfoLabel.Visible = false;
             }
@@ -199,7 +199,16 @@ namespace Citisoft
 
         private void dobLabel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("You cannot change your date of birth!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if(User.DateofBirth.Equals("2000-01-01"))
+            {
+                changeDetailsTabControl.Visible = true;
+                changeDetailsTabControl.SelectedTab = changeDOBTab;
+                changeDOBPanel.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("You cannot change your date of birth!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void changeLNameButton_Click(object sender, EventArgs e)
@@ -279,5 +288,24 @@ namespace Citisoft
             }
         }
 
+        private void cancelDOBButton_Click(object sender, EventArgs e)
+        {
+            changeDOBPanel.Visible = false;
+            changeDetailsTabControl.Visible = false;
+        }
+
+        private void changeDOBButton_Click(object sender, EventArgs e)
+        {
+            User.DateofBirth = new DateTime(Convert.ToInt32(DOB_Year), Convert.ToInt32(DOB_Month), Convert.ToInt32(DOB_Day));
+            dBConnection = DBConnection.getInstance();
+            string query = "UPDATE [Profile] SET [date_of_birth]=@dob WHERE [e-mail]=@email;";
+            SqlCommand command = new SqlCommand(query);
+            command.Parameters.AddWithValue("@dob", User.DateofBirth);
+            command.Parameters.AddWithValue("@email", User.Email);
+            dBConnection.ExecutenNonQuery(command);
+            MessageBox.Show("Description changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            changeDOBPanel.Visible = false;
+            changeDetailsTabControl.Visible = false;
+        }
     }
 }

@@ -24,6 +24,7 @@ namespace Citisoft
             dBConnection = DBConnection.getInstance();
             SqlCommand command = new SqlCommand(query);
             command.Parameters.AddWithValue("@email", email);
+            return User;
         }
        //--С каждым новым профилем должны добавляться ряды--//
     }

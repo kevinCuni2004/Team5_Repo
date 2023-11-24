@@ -77,6 +77,15 @@ namespace Citisoft
             this.changeFNameTab = new System.Windows.Forms.TabPage();
             this.changeLNameTab = new System.Windows.Forms.TabPage();
             this.changePasswordTab = new System.Windows.Forms.TabPage();
+            this.changeDOBTab = new System.Windows.Forms.TabPage();
+            this.changeDOBPanel = new System.Windows.Forms.Panel();
+            this.DOB_Year = new System.Windows.Forms.NumericUpDown();
+            this.DOB_Month = new System.Windows.Forms.NumericUpDown();
+            this.DOB_Day = new System.Windows.Forms.NumericUpDown();
+            this.changeDOBButton = new System.Windows.Forms.Button();
+            this.cancelDOBButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.changeDOBLabel = new System.Windows.Forms.Label();
             this.changePasswordPanel.SuspendLayout();
             this.changeFNamePanel.SuspendLayout();
             this.changeLNamePanel.SuspendLayout();
@@ -86,6 +95,11 @@ namespace Citisoft
             this.changeFNameTab.SuspendLayout();
             this.changeLNameTab.SuspendLayout();
             this.changePasswordTab.SuspendLayout();
+            this.changeDOBTab.SuspendLayout();
+            this.changeDOBPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DOB_Year)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DOB_Month)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DOB_Day)).BeginInit();
             this.SuspendLayout();
             // 
             // Back_Button
@@ -414,7 +428,7 @@ namespace Citisoft
             this.changeLNameButton.Location = new System.Drawing.Point(332, 246);
             this.changeLNameButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeLNameButton.Name = "changeLNameButton";
-            this.changeLNameButton.Size = new System.Drawing.Size(158, 35);
+            this.changeLNameButton.Size = new System.Drawing.Size(173, 35);
             this.changeLNameButton.TabIndex = 8;
             this.changeLNameButton.Text = "Change Last Name";
             this.changeLNameButton.UseVisualStyleBackColor = true;
@@ -551,10 +565,11 @@ namespace Citisoft
             this.changeDetailsTabControl.Controls.Add(this.changeFNameTab);
             this.changeDetailsTabControl.Controls.Add(this.changeLNameTab);
             this.changeDetailsTabControl.Controls.Add(this.changePasswordTab);
-            this.changeDetailsTabControl.Location = new System.Drawing.Point(54, 80);
+            this.changeDetailsTabControl.Controls.Add(this.changeDOBTab);
+            this.changeDetailsTabControl.Location = new System.Drawing.Point(54, 83);
             this.changeDetailsTabControl.Name = "changeDetailsTabControl";
             this.changeDetailsTabControl.SelectedIndex = 0;
-            this.changeDetailsTabControl.Size = new System.Drawing.Size(679, 337);
+            this.changeDetailsTabControl.Size = new System.Drawing.Size(679, 348);
             this.changeDetailsTabControl.TabIndex = 12;
             // 
             // changeDescTab
@@ -563,7 +578,7 @@ namespace Citisoft
             this.changeDescTab.Location = new System.Drawing.Point(4, 32);
             this.changeDescTab.Name = "changeDescTab";
             this.changeDescTab.Padding = new System.Windows.Forms.Padding(3);
-            this.changeDescTab.Size = new System.Drawing.Size(671, 301);
+            this.changeDescTab.Size = new System.Drawing.Size(671, 312);
             this.changeDescTab.TabIndex = 0;
             this.changeDescTab.Text = "Change Description";
             this.changeDescTab.UseVisualStyleBackColor = true;
@@ -574,7 +589,7 @@ namespace Citisoft
             this.changeFNameTab.Location = new System.Drawing.Point(4, 32);
             this.changeFNameTab.Name = "changeFNameTab";
             this.changeFNameTab.Padding = new System.Windows.Forms.Padding(3);
-            this.changeFNameTab.Size = new System.Drawing.Size(671, 301);
+            this.changeFNameTab.Size = new System.Drawing.Size(671, 312);
             this.changeFNameTab.TabIndex = 1;
             this.changeFNameTab.Text = "Change First Name";
             this.changeFNameTab.UseVisualStyleBackColor = true;
@@ -585,7 +600,7 @@ namespace Citisoft
             this.changeLNameTab.Location = new System.Drawing.Point(4, 32);
             this.changeLNameTab.Name = "changeLNameTab";
             this.changeLNameTab.Padding = new System.Windows.Forms.Padding(3);
-            this.changeLNameTab.Size = new System.Drawing.Size(671, 301);
+            this.changeLNameTab.Size = new System.Drawing.Size(671, 312);
             this.changeLNameTab.TabIndex = 2;
             this.changeLNameTab.Text = "Change Last Name";
             this.changeLNameTab.UseVisualStyleBackColor = true;
@@ -596,10 +611,150 @@ namespace Citisoft
             this.changePasswordTab.Location = new System.Drawing.Point(4, 32);
             this.changePasswordTab.Name = "changePasswordTab";
             this.changePasswordTab.Padding = new System.Windows.Forms.Padding(3);
-            this.changePasswordTab.Size = new System.Drawing.Size(671, 301);
+            this.changePasswordTab.Size = new System.Drawing.Size(671, 312);
             this.changePasswordTab.TabIndex = 3;
             this.changePasswordTab.Text = "Change Password";
             this.changePasswordTab.UseVisualStyleBackColor = true;
+            // 
+            // changeDOBTab
+            // 
+            this.changeDOBTab.Controls.Add(this.changeDOBPanel);
+            this.changeDOBTab.Location = new System.Drawing.Point(4, 32);
+            this.changeDOBTab.Name = "changeDOBTab";
+            this.changeDOBTab.Padding = new System.Windows.Forms.Padding(3);
+            this.changeDOBTab.Size = new System.Drawing.Size(671, 312);
+            this.changeDOBTab.TabIndex = 4;
+            this.changeDOBTab.Text = "Change Date Of Birth";
+            this.changeDOBTab.UseVisualStyleBackColor = true;
+            // 
+            // changeDOBPanel
+            // 
+            this.changeDOBPanel.Controls.Add(this.DOB_Year);
+            this.changeDOBPanel.Controls.Add(this.DOB_Month);
+            this.changeDOBPanel.Controls.Add(this.DOB_Day);
+            this.changeDOBPanel.Controls.Add(this.changeDOBButton);
+            this.changeDOBPanel.Controls.Add(this.cancelDOBButton);
+            this.changeDOBPanel.Controls.Add(this.label2);
+            this.changeDOBPanel.Controls.Add(this.changeDOBLabel);
+            this.changeDOBPanel.Location = new System.Drawing.Point(3, 3);
+            this.changeDOBPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.changeDOBPanel.Name = "changeDOBPanel";
+            this.changeDOBPanel.Size = new System.Drawing.Size(665, 306);
+            this.changeDOBPanel.TabIndex = 13;
+            this.changeDOBPanel.Visible = false;
+            // 
+            // DOB_Year
+            // 
+            this.DOB_Year.Location = new System.Drawing.Point(419, 122);
+            this.DOB_Year.Maximum = new decimal(new int[] {
+            2023,
+            0,
+            0,
+            0});
+            this.DOB_Year.Minimum = new decimal(new int[] {
+            1900,
+            0,
+            0,
+            0});
+            this.DOB_Year.Name = "DOB_Year";
+            this.DOB_Year.Size = new System.Drawing.Size(75, 26);
+            this.DOB_Year.TabIndex = 11;
+            this.DOB_Year.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DOB_Year.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            // 
+            // DOB_Month
+            // 
+            this.DOB_Month.Location = new System.Drawing.Point(355, 122);
+            this.DOB_Month.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.DOB_Month.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.DOB_Month.Name = "DOB_Month";
+            this.DOB_Month.Size = new System.Drawing.Size(58, 26);
+            this.DOB_Month.TabIndex = 10;
+            this.DOB_Month.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DOB_Month.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // DOB_Day
+            // 
+            this.DOB_Day.Location = new System.Drawing.Point(291, 122);
+            this.DOB_Day.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
+            this.DOB_Day.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.DOB_Day.Name = "DOB_Day";
+            this.DOB_Day.Size = new System.Drawing.Size(58, 26);
+            this.DOB_Day.TabIndex = 9;
+            this.DOB_Day.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DOB_Day.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // changeDOBButton
+            // 
+            this.changeDOBButton.Location = new System.Drawing.Point(291, 214);
+            this.changeDOBButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.changeDOBButton.Name = "changeDOBButton";
+            this.changeDOBButton.Size = new System.Drawing.Size(188, 35);
+            this.changeDOBButton.TabIndex = 8;
+            this.changeDOBButton.Text = "Change Date of Birth";
+            this.changeDOBButton.UseVisualStyleBackColor = true;
+            this.changeDOBButton.Click += new System.EventHandler(this.changeDOBButton_Click);
+            // 
+            // cancelDOBButton
+            // 
+            this.cancelDOBButton.Location = new System.Drawing.Point(192, 214);
+            this.cancelDOBButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cancelDOBButton.Name = "cancelDOBButton";
+            this.cancelDOBButton.Size = new System.Drawing.Size(93, 35);
+            this.cancelDOBButton.TabIndex = 7;
+            this.cancelDOBButton.Text = "Cancel";
+            this.cancelDOBButton.UseVisualStyleBackColor = true;
+            this.cancelDOBButton.Click += new System.EventHandler(this.cancelDOBButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(167, 122);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 25);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Date of Birth";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // changeDOBLabel
+            // 
+            this.changeDOBLabel.AutoSize = true;
+            this.changeDOBLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changeDOBLabel.Location = new System.Drawing.Point(208, 45);
+            this.changeDOBLabel.Name = "changeDOBLabel";
+            this.changeDOBLabel.Size = new System.Drawing.Size(284, 32);
+            this.changeDOBLabel.TabIndex = 0;
+            this.changeDOBLabel.Text = "Change Date Of Birth";
+            this.changeDOBLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UserTabForm
             // 
@@ -634,6 +789,12 @@ namespace Citisoft
             this.changeFNameTab.ResumeLayout(false);
             this.changeLNameTab.ResumeLayout(false);
             this.changePasswordTab.ResumeLayout(false);
+            this.changeDOBTab.ResumeLayout(false);
+            this.changeDOBPanel.ResumeLayout(false);
+            this.changeDOBPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DOB_Year)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DOB_Month)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DOB_Day)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -688,5 +849,14 @@ namespace Citisoft
         private System.Windows.Forms.TabPage changeFNameTab;
         private System.Windows.Forms.TabPage changeLNameTab;
         private System.Windows.Forms.TabPage changePasswordTab;
+        private System.Windows.Forms.TabPage changeDOBTab;
+        private System.Windows.Forms.Panel changeDOBPanel;
+        private System.Windows.Forms.NumericUpDown DOB_Day;
+        private System.Windows.Forms.Button changeDOBButton;
+        private System.Windows.Forms.Button cancelDOBButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label changeDOBLabel;
+        private System.Windows.Forms.NumericUpDown DOB_Year;
+        private System.Windows.Forms.NumericUpDown DOB_Month;
     }
 }
