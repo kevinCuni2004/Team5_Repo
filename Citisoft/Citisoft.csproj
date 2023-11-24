@@ -116,11 +116,6 @@
     <Compile Include="UserTabForm.Designer.cs">
       <DependentUpon>UserTabForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Database__2_DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_Database__2_DataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AccessForm.resx">
       <DependentUpon>AccessForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,17 +159,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="_Database__2_DataSet.xsc">
-      <DependentUpon>_Database__2_DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="_Database__2_DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>_Database__2_DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="_Database__2_DataSet.xss">
-      <DependentUpon>_Database__2_DataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

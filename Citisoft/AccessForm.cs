@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Citisoft
 {
@@ -14,6 +16,9 @@ namespace Citisoft
     public partial class AccessForm : Form
     {
         private FlowLayoutPanel flowLayoutPanel;
+        private DBConnection dBConnection;
+        private Profile User;
+
         public AccessForm()
         {
             InitializeComponent();
@@ -68,11 +73,16 @@ namespace Citisoft
             string oneToZeroText = statusIdTextBox.Text;
             if(int.TryParse(oneToZeroText,out int inputValue) && inputValue >= 0 && inputValue <= 1)
             {
-                
+                //--Преобразовать в стринг--//
+                User.Access = oneToZeroText;
+                string query = "UPDATE [Profile] SET [access]=@access WHERE [e-mail]=@email;";
+                dBConnection = DBConnection.getInstance();
+                SqlCommand command = new SqlCommand(query);
+                command.Parameters.AddWithValue("@access", User.Access);
             }
             else
             {
-
+                statusValidation
             }
             //--Сохранить измененения в базу данных--//
             //--То что написано должно измениться в форме--//
@@ -81,9 +91,7 @@ namespace Citisoft
 
         private void AccessForm_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "_Database__2_DataSet.Profile". При необходимости она может быть перемещена или удалена.
-            this.profileTableAdapter.Fill(this._Database__2_DataSet.Profile);
-
+            
         }
 
         private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)

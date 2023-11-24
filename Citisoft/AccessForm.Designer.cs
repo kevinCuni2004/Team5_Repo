@@ -44,13 +44,10 @@ namespace Citisoft
             this.panel1 = new System.Windows.Forms.Panel();
             this.cancelButton = new System.Windows.Forms.Button();
             this.confirmButton = new System.Windows.Forms.Button();
-            this._Database__2_DataSet = new Citisoft._Database__2_DataSet();
             this.profileBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.profileTableAdapter = new Citisoft._Database__2_DataSetTableAdapters.ProfileTableAdapter();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.statusValidation = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._Database__2_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileBindingSource)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -185,20 +182,14 @@ namespace Citisoft
             this.confirmButton.UseVisualStyleBackColor = true;
             this.confirmButton.Visible = false;
             this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
-            // 
-            // _Database__2_DataSet
-            // 
-            this._Database__2_DataSet.DataSetName = "_Database__2_DataSet";
-            this._Database__2_DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            
             // 
             // profileBindingSource
             // 
             this.profileBindingSource.DataMember = "Profile";
-            this.profileBindingSource.DataSource = this._Database__2_DataSet;
             // 
             // profileTableAdapter
             // 
-            this.profileTableAdapter.ClearBeforeFill = true;
             // 
             // flowLayoutPanel1
             // 
@@ -246,7 +237,6 @@ namespace Citisoft
             this.Text = "AccessForm";
             this.Load += new System.EventHandler(this.AccessForm_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._Database__2_DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profileBindingSource)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
@@ -269,9 +259,7 @@ namespace Citisoft
         private System.Windows.Forms.TextBox profileIdTextBox;
         private System.Windows.Forms.TextBox statusIdTextBox;
         private System.Windows.Forms.TextBox usernameIdTextBox;
-        private _Database__2_DataSet _Database__2_DataSet;
         private BindingSource profileBindingSource;
-        private _Database__2_DataSetTableAdapters.ProfileTableAdapter profileTableAdapter;
         private FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label statusValidation;
     }

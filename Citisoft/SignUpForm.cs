@@ -112,6 +112,7 @@ namespace Citisoft
             this.helpButton.TabIndex = 3;
             this.helpButton.Text = "helpButton";
             this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
             // 
             // backButton
             // 
@@ -198,6 +199,11 @@ namespace Citisoft
         }
 
         private void passwordTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
         {
 
         }
