@@ -72,10 +72,20 @@ namespace Citisoft
             this.cancelDescButton = new System.Windows.Forms.Button();
             this.changeDescLabel = new System.Windows.Forms.Label();
             this.updateInfoLabel = new System.Windows.Forms.Label();
+            this.changeDetailsTabControl = new System.Windows.Forms.TabControl();
+            this.changeDescTab = new System.Windows.Forms.TabPage();
+            this.changeFNameTab = new System.Windows.Forms.TabPage();
+            this.changeLNameTab = new System.Windows.Forms.TabPage();
+            this.changePasswordTab = new System.Windows.Forms.TabPage();
             this.changePasswordPanel.SuspendLayout();
             this.changeFNamePanel.SuspendLayout();
             this.changeLNamePanel.SuspendLayout();
             this.changeDescPanel.SuspendLayout();
+            this.changeDetailsTabControl.SuspendLayout();
+            this.changeDescTab.SuspendLayout();
+            this.changeFNameTab.SuspendLayout();
+            this.changeLNameTab.SuspendLayout();
+            this.changePasswordTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // Back_Button
@@ -199,16 +209,16 @@ namespace Citisoft
             this.changePasswordPanel.Controls.Add(this.newPassTextBox);
             this.changePasswordPanel.Controls.Add(this.oldPassTextBox);
             this.changePasswordPanel.Controls.Add(this.changePasswordTitle);
-            this.changePasswordPanel.Location = new System.Drawing.Point(737, 84);
+            this.changePasswordPanel.Location = new System.Drawing.Point(3, 2);
             this.changePasswordPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changePasswordPanel.Name = "changePasswordPanel";
-            this.changePasswordPanel.Size = new System.Drawing.Size(679, 306);
+            this.changePasswordPanel.Size = new System.Drawing.Size(665, 297);
             this.changePasswordPanel.TabIndex = 10;
             this.changePasswordPanel.Visible = false;
             // 
             // changePassButton
             // 
-            this.changePassButton.Location = new System.Drawing.Point(332, 258);
+            this.changePassButton.Location = new System.Drawing.Point(320, 245);
             this.changePassButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changePassButton.Name = "changePassButton";
             this.changePassButton.Size = new System.Drawing.Size(158, 35);
@@ -219,7 +229,7 @@ namespace Citisoft
             // 
             // cancelPassChangeButton
             // 
-            this.cancelPassChangeButton.Location = new System.Drawing.Point(210, 258);
+            this.cancelPassChangeButton.Location = new System.Drawing.Point(198, 244);
             this.cancelPassChangeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cancelPassChangeButton.Name = "cancelPassChangeButton";
             this.cancelPassChangeButton.Size = new System.Drawing.Size(93, 35);
@@ -232,7 +242,7 @@ namespace Citisoft
             // 
             this.confrimNewPassLabel.AutoSize = true;
             this.confrimNewPassLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confrimNewPassLabel.Location = new System.Drawing.Point(93, 213);
+            this.confrimNewPassLabel.Location = new System.Drawing.Point(76, 188);
             this.confrimNewPassLabel.Name = "confrimNewPassLabel";
             this.confrimNewPassLabel.Size = new System.Drawing.Size(215, 25);
             this.confrimNewPassLabel.TabIndex = 6;
@@ -243,7 +253,7 @@ namespace Citisoft
             // 
             this.newPasswordLabel.AutoSize = true;
             this.newPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newPasswordLabel.Location = new System.Drawing.Point(165, 156);
+            this.newPasswordLabel.Location = new System.Drawing.Point(149, 143);
             this.newPasswordLabel.Name = "newPasswordLabel";
             this.newPasswordLabel.Size = new System.Drawing.Size(142, 25);
             this.newPasswordLabel.TabIndex = 5;
@@ -254,7 +264,7 @@ namespace Citisoft
             // 
             this.oldPasswordLabel.AutoSize = true;
             this.oldPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.oldPasswordLabel.Location = new System.Drawing.Point(173, 110);
+            this.oldPasswordLabel.Location = new System.Drawing.Point(157, 96);
             this.oldPasswordLabel.Name = "oldPasswordLabel";
             this.oldPasswordLabel.Size = new System.Drawing.Size(134, 25);
             this.oldPasswordLabel.TabIndex = 4;
@@ -263,7 +273,7 @@ namespace Citisoft
             // 
             // confirmNewPassTextBox
             // 
-            this.confirmNewPassTextBox.Location = new System.Drawing.Point(333, 214);
+            this.confirmNewPassTextBox.Location = new System.Drawing.Point(320, 187);
             this.confirmNewPassTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.confirmNewPassTextBox.Name = "confirmNewPassTextBox";
             this.confirmNewPassTextBox.Size = new System.Drawing.Size(240, 26);
@@ -271,7 +281,7 @@ namespace Citisoft
             // 
             // newPassTextBox
             // 
-            this.newPassTextBox.Location = new System.Drawing.Point(333, 158);
+            this.newPassTextBox.Location = new System.Drawing.Point(320, 143);
             this.newPassTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.newPassTextBox.Name = "newPassTextBox";
             this.newPassTextBox.Size = new System.Drawing.Size(240, 26);
@@ -279,7 +289,7 @@ namespace Citisoft
             // 
             // oldPassTextBox
             // 
-            this.oldPassTextBox.Location = new System.Drawing.Point(333, 109);
+            this.oldPassTextBox.Location = new System.Drawing.Point(320, 97);
             this.oldPassTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.oldPassTextBox.Name = "oldPassTextBox";
             this.oldPassTextBox.Size = new System.Drawing.Size(240, 26);
@@ -305,10 +315,10 @@ namespace Citisoft
             this.changeFNamePanel.Controls.Add(this.confirmFNameTextBox);
             this.changeFNamePanel.Controls.Add(this.changeFNameTextBox);
             this.changeFNamePanel.Controls.Add(this.changeFNameLabel);
-            this.changeFNamePanel.Location = new System.Drawing.Point(23, 29);
+            this.changeFNamePanel.Location = new System.Drawing.Point(3, 2);
             this.changeFNamePanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeFNamePanel.Name = "changeFNamePanel";
-            this.changeFNamePanel.Size = new System.Drawing.Size(678, 306);
+            this.changeFNamePanel.Size = new System.Drawing.Size(666, 306);
             this.changeFNamePanel.TabIndex = 11;
             this.changeFNamePanel.Visible = false;
             // 
@@ -385,7 +395,6 @@ namespace Citisoft
             // 
             // changeLNamePanel
             // 
-            this.changeLNamePanel.Controls.Add(this.changeFNamePanel);
             this.changeLNamePanel.Controls.Add(this.changeLNameButton);
             this.changeLNamePanel.Controls.Add(this.cancelLNameButton);
             this.changeLNamePanel.Controls.Add(this.confrimLNameLabel);
@@ -393,10 +402,10 @@ namespace Citisoft
             this.changeLNamePanel.Controls.Add(this.confirmLNameTextBox);
             this.changeLNamePanel.Controls.Add(this.changeLNameTextBox);
             this.changeLNamePanel.Controls.Add(this.changeLNameLabel);
-            this.changeLNamePanel.Location = new System.Drawing.Point(23, 24);
+            this.changeLNamePanel.Location = new System.Drawing.Point(3, 1);
             this.changeLNamePanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeLNamePanel.Name = "changeLNamePanel";
-            this.changeLNamePanel.Size = new System.Drawing.Size(679, 306);
+            this.changeLNamePanel.Size = new System.Drawing.Size(665, 306);
             this.changeLNamePanel.TabIndex = 12;
             this.changeLNamePanel.Visible = false;
             // 
@@ -474,14 +483,13 @@ namespace Citisoft
             // changeDescPanel
             // 
             this.changeDescPanel.Controls.Add(this.changeDescTextBox);
-            this.changeDescPanel.Controls.Add(this.changeLNamePanel);
             this.changeDescPanel.Controls.Add(this.changeDescButton);
             this.changeDescPanel.Controls.Add(this.cancelDescButton);
             this.changeDescPanel.Controls.Add(this.changeDescLabel);
-            this.changeDescPanel.Location = new System.Drawing.Point(762, 197);
+            this.changeDescPanel.Location = new System.Drawing.Point(0, 1);
             this.changeDescPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeDescPanel.Name = "changeDescPanel";
-            this.changeDescPanel.Size = new System.Drawing.Size(677, 304);
+            this.changeDescPanel.Size = new System.Drawing.Size(671, 304);
             this.changeDescPanel.TabIndex = 13;
             this.changeDescPanel.Visible = false;
             // 
@@ -490,12 +498,12 @@ namespace Citisoft
             this.changeDescTextBox.Location = new System.Drawing.Point(55, 59);
             this.changeDescTextBox.Multiline = true;
             this.changeDescTextBox.Name = "changeDescTextBox";
-            this.changeDescTextBox.Size = new System.Drawing.Size(566, 182);
+            this.changeDescTextBox.Size = new System.Drawing.Size(563, 182);
             this.changeDescTextBox.TabIndex = 9;
             // 
             // changeDescButton
             // 
-            this.changeDescButton.Location = new System.Drawing.Point(353, 244);
+            this.changeDescButton.Location = new System.Drawing.Point(328, 245);
             this.changeDescButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeDescButton.Name = "changeDescButton";
             this.changeDescButton.Size = new System.Drawing.Size(158, 35);
@@ -506,7 +514,7 @@ namespace Citisoft
             // 
             // cancelDescButton
             // 
-            this.cancelDescButton.Location = new System.Drawing.Point(245, 246);
+            this.cancelDescButton.Location = new System.Drawing.Point(216, 246);
             this.cancelDescButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cancelDescButton.Name = "cancelDescButton";
             this.cancelDescButton.Size = new System.Drawing.Size(93, 35);
@@ -519,7 +527,7 @@ namespace Citisoft
             // 
             this.changeDescLabel.AutoSize = true;
             this.changeDescLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changeDescLabel.Location = new System.Drawing.Point(210, 19);
+            this.changeDescLabel.Location = new System.Drawing.Point(210, 12);
             this.changeDescLabel.Name = "changeDescLabel";
             this.changeDescLabel.Size = new System.Drawing.Size(264, 32);
             this.changeDescLabel.TabIndex = 0;
@@ -536,14 +544,70 @@ namespace Citisoft
             this.updateInfoLabel.TabIndex = 11;
             this.updateInfoLabel.Text = "Please update your information";
             // 
+            // changeDetailsTabControl
+            // 
+            this.changeDetailsTabControl.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.changeDetailsTabControl.Controls.Add(this.changeDescTab);
+            this.changeDetailsTabControl.Controls.Add(this.changeFNameTab);
+            this.changeDetailsTabControl.Controls.Add(this.changeLNameTab);
+            this.changeDetailsTabControl.Controls.Add(this.changePasswordTab);
+            this.changeDetailsTabControl.Location = new System.Drawing.Point(54, 80);
+            this.changeDetailsTabControl.Name = "changeDetailsTabControl";
+            this.changeDetailsTabControl.SelectedIndex = 0;
+            this.changeDetailsTabControl.Size = new System.Drawing.Size(679, 337);
+            this.changeDetailsTabControl.TabIndex = 12;
+            // 
+            // changeDescTab
+            // 
+            this.changeDescTab.Controls.Add(this.changeDescPanel);
+            this.changeDescTab.Location = new System.Drawing.Point(4, 32);
+            this.changeDescTab.Name = "changeDescTab";
+            this.changeDescTab.Padding = new System.Windows.Forms.Padding(3);
+            this.changeDescTab.Size = new System.Drawing.Size(671, 301);
+            this.changeDescTab.TabIndex = 0;
+            this.changeDescTab.Text = "Change Description";
+            this.changeDescTab.UseVisualStyleBackColor = true;
+            // 
+            // changeFNameTab
+            // 
+            this.changeFNameTab.Controls.Add(this.changeFNamePanel);
+            this.changeFNameTab.Location = new System.Drawing.Point(4, 32);
+            this.changeFNameTab.Name = "changeFNameTab";
+            this.changeFNameTab.Padding = new System.Windows.Forms.Padding(3);
+            this.changeFNameTab.Size = new System.Drawing.Size(671, 301);
+            this.changeFNameTab.TabIndex = 1;
+            this.changeFNameTab.Text = "Change First Name";
+            this.changeFNameTab.UseVisualStyleBackColor = true;
+            // 
+            // changeLNameTab
+            // 
+            this.changeLNameTab.Controls.Add(this.changeLNamePanel);
+            this.changeLNameTab.Location = new System.Drawing.Point(4, 32);
+            this.changeLNameTab.Name = "changeLNameTab";
+            this.changeLNameTab.Padding = new System.Windows.Forms.Padding(3);
+            this.changeLNameTab.Size = new System.Drawing.Size(671, 301);
+            this.changeLNameTab.TabIndex = 2;
+            this.changeLNameTab.Text = "Change Last Name";
+            this.changeLNameTab.UseVisualStyleBackColor = true;
+            // 
+            // changePasswordTab
+            // 
+            this.changePasswordTab.Controls.Add(this.changePasswordPanel);
+            this.changePasswordTab.Location = new System.Drawing.Point(4, 32);
+            this.changePasswordTab.Name = "changePasswordTab";
+            this.changePasswordTab.Padding = new System.Windows.Forms.Padding(3);
+            this.changePasswordTab.Size = new System.Drawing.Size(671, 301);
+            this.changePasswordTab.TabIndex = 3;
+            this.changePasswordTab.Text = "Change Password";
+            this.changePasswordTab.UseVisualStyleBackColor = true;
+            // 
             // UserTabForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 606);
-            this.Controls.Add(this.changeDescPanel);
+            this.ClientSize = new System.Drawing.Size(763, 448);
+            this.Controls.Add(this.changeDetailsTabControl);
             this.Controls.Add(this.updateInfoLabel);
-            this.Controls.Add(this.changePasswordPanel);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.descTitleLabel);
             this.Controls.Add(this.descriptionLabel);
@@ -565,6 +629,11 @@ namespace Citisoft
             this.changeLNamePanel.PerformLayout();
             this.changeDescPanel.ResumeLayout(false);
             this.changeDescPanel.PerformLayout();
+            this.changeDetailsTabControl.ResumeLayout(false);
+            this.changeDescTab.ResumeLayout(false);
+            this.changeFNameTab.ResumeLayout(false);
+            this.changeLNameTab.ResumeLayout(false);
+            this.changePasswordTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -614,5 +683,10 @@ namespace Citisoft
         private System.Windows.Forms.Button cancelDescButton;
         private System.Windows.Forms.Label changeDescLabel;
         private System.Windows.Forms.TextBox changeDescTextBox;
+        private System.Windows.Forms.TabControl changeDetailsTabControl;
+        private System.Windows.Forms.TabPage changeDescTab;
+        private System.Windows.Forms.TabPage changeFNameTab;
+        private System.Windows.Forms.TabPage changeLNameTab;
+        private System.Windows.Forms.TabPage changePasswordTab;
     }
 }

@@ -23,10 +23,12 @@ namespace Citisoft
         public UserTabForm()
         {
             InitializeComponent();
-            changePasswordPanel.Visible = false;
-            changeFNamePanel.Visible = false;
-            changeLNamePanel.Visible = false;
-            changeDescPanel.Visible = false;
+            //changePasswordPanel.Visible = false;
+            //changeFNamePanel.Visible = false;
+            //changeLNamePanel.Visible = false;
+            //changeDescPanel.Visible = false;
+            changeDetailsTabControl.Visible = false;
+            changeDetailsTabControl.ItemSize = new Size(0, 1);
             userTab = new UserTab();
         }
 
@@ -66,42 +68,49 @@ namespace Citisoft
         private void fnameLabel_Click(object sender, EventArgs e)
         {
             changeFNamePanel.Visible = true;
-            changeFNamePanel.Location = new Point(54, 100);
+            changeDetailsTabControl.SelectedTab = changeFNameTab;
+            changeDetailsTabControl.Visible = true;
         }
 
         private void cancelFNameChange_Click(object sender, EventArgs e)
         {
             changeFNamePanel.Visible = false;
+            changeDetailsTabControl.Visible = false;
         }
 
         
         private void lnameLabel_Click(object sender, EventArgs e)
         {
             changeLNamePanel.Visible = true;
-            changeLNamePanel.Location = new Point(54, 100);
+            changeDetailsTabControl.SelectedTab = changeLNameTab;
+            changeDetailsTabControl.Visible = true;
         }
 
         private void descTitleLabel_Click(object sender, EventArgs e)
         {
             changeDescPanel.Visible = true;
-            changeDescPanel.Location = new Point(54, 100);
+            changeDetailsTabControl.SelectedTab = changeDescTab;
+            changeDetailsTabControl.Visible = true;
         }
 
         private void descriptionLabel_Click(object sender, EventArgs e)
         {
             changeDescPanel.Visible = true;
-            changeDescPanel.Location = new Point(54, 100);
+            changeDetailsTabControl.SelectedTab = changeDescTab;
+            changeDetailsTabControl.Visible = true;
         }
 
         private void changePasswordLabel_Click(object sender, EventArgs e)
         {
             changePasswordPanel.Visible = true;
-            changePasswordPanel.Location = new Point(54, 100);
+            changeDetailsTabControl.SelectedTab = changePasswordTab;
+            changeDetailsTabControl.Visible = true;
         }
 
         private void cancelPassChangeButton_Click(object sender, EventArgs e)
         {
             changePasswordPanel.Visible = false;
+            changeDetailsTabControl.Visible = false;
         }
 
         private void changePassButton_Click(object sender, EventArgs e)
@@ -121,6 +130,7 @@ namespace Citisoft
                         dBConnection.ExecutenNonQuery(command);
                         MessageBox.Show("Password changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changePasswordPanel.Visible = false;
+                        changeDetailsTabControl.Visible = false;
                     }
                     else
                     {
@@ -168,6 +178,7 @@ namespace Citisoft
                         dBConnection.ExecutenNonQuery(command);
                         MessageBox.Show("First Name changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changeFNamePanel.Visible = false;
+                        changeDetailsTabControl.Visible = false;
                         fnameLabel.Text = User.FirstName;
                     }
                 }
@@ -214,6 +225,7 @@ namespace Citisoft
                         dBConnection.ExecutenNonQuery(command);
                         MessageBox.Show("Last Name changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changeLNamePanel.Visible = false;
+                        changeDetailsTabControl.Visible = false;
                         lnameLabel.Text = User.LastName;
                     }
                 }
@@ -235,11 +247,13 @@ namespace Citisoft
         private void cancelDescButton_Click(object sender, EventArgs e)
         {
             changeDescPanel.Visible = false;
+            changeDetailsTabControl.Visible = false;
         }
 
         private void cancelLNameButton_Click(object sender, EventArgs e)
         {
             changeLNamePanel.Visible = false;
+            changeDetailsTabControl.Visible = false;
         }
 
         private void changeDescButton_Click(object sender, EventArgs e)
@@ -255,6 +269,7 @@ namespace Citisoft
                 dBConnection.ExecutenNonQuery(command);
                 MessageBox.Show("Description changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 changeDescPanel.Visible = false;
+                changeDetailsTabControl.Visible = false;
                 descriptionLabel.Text = User.Details;
             }
             else
