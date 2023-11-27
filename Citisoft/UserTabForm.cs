@@ -127,7 +127,7 @@ namespace Citisoft
                         SqlCommand command = new SqlCommand(query);
                         command.Parameters.AddWithValue("@password", User.Password);
                         command.Parameters.AddWithValue("@email", User.Email);
-                        dBConnection.ExecutenNonQuery(command);
+                        dBConnection.ExecutenNonQuery("Profile", "password", User.Password, User.Email);
                         MessageBox.Show("Password changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changePasswordPanel.Visible = false;
                         changeDetailsTabControl.Visible = false;
@@ -175,7 +175,7 @@ namespace Citisoft
                         SqlCommand command = new SqlCommand(query);
                         command.Parameters.AddWithValue("@firstName", User.FirstName);
                         command.Parameters.AddWithValue("@email", User.Email);
-                        dBConnection.ExecutenNonQuery(command);
+                        dBConnection.ExecutenNonQuery("Profile", "first_name", User.FirstName, User.Email);
                         MessageBox.Show("First Name changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changeFNamePanel.Visible = false;
                         changeDetailsTabControl.Visible = false;
@@ -231,7 +231,7 @@ namespace Citisoft
                         SqlCommand command = new SqlCommand(query);
                         command.Parameters.AddWithValue("@lastName", User.LastName);
                         command.Parameters.AddWithValue("@email", User.Email);
-                        dBConnection.ExecutenNonQuery(command);
+                        dBConnection.ExecutenNonQuery("Profile", "last_name", User.LastName, User.Email);
                         MessageBox.Show("Last Name changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changeLNamePanel.Visible = false;
                         changeDetailsTabControl.Visible = false;
@@ -275,7 +275,7 @@ namespace Citisoft
                 SqlCommand command = new SqlCommand(query);
                 command.Parameters.AddWithValue("@details", User.Details);
                 command.Parameters.AddWithValue("@email", User.Email);
-                dBConnection.ExecutenNonQuery(command);
+                dBConnection.ExecutenNonQuery("Profile", "details", User.Details, User.Email);
                 MessageBox.Show("Description changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 changeDescPanel.Visible = false;
                 changeDetailsTabControl.Visible = false;
@@ -302,7 +302,7 @@ namespace Citisoft
             SqlCommand command = new SqlCommand(query);
             command.Parameters.AddWithValue("@dob", User.DateofBirth);
             command.Parameters.AddWithValue("@email", User.Email);
-            dBConnection.ExecutenNonQuery(command);
+            dBConnection.ExecutenNonQuery("Profile", "date_of_birth", User.DateofBirth.ToShortDateString(), User.Email);
             MessageBox.Show("Description changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             changeDOBPanel.Visible = false;
             changeDetailsTabControl.Visible = false;
