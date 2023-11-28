@@ -169,7 +169,16 @@ namespace Citisoft
                 }
             }
         }
-
-
+        public void openDBConnection()
+        {
+            if (connToDB.State == System.Data.ConnectionState.Open)
+            {
+                connToDB.Open();
+            }
+        }
+        public SqlConnection getDBConnection()
+        {
+            return connToDB;
+        }
     }
 }
