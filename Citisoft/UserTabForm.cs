@@ -23,10 +23,6 @@ namespace Citisoft
         public UserTabForm()
         {
             InitializeComponent();
-            //changePasswordPanel.Visible = false;
-            //changeFNamePanel.Visible = false;
-            //changeLNamePanel.Visible = false;
-            //changeDescPanel.Visible = false;
             changeDetailsTabControl.Visible = false;
             changeDetailsTabControl.ItemSize = new Size(0, 1);
             userTab = new UserTab();
@@ -39,13 +35,13 @@ namespace Citisoft
             lnameLabel.Text = User.LastName;
             dobLabel.Text = User.DateofBirth.ToShortDateString();
             descriptionLabel.Text = User.Details;
-            if (User.FirstName != "name" && User.LastName != "surname" && !User.DateofBirth.Equals("2000-01-01"))
+            if (User.FirstName == "name" || User.LastName == "surname" || User.DateofBirth.Equals("2000-01-01"))
             {
-                updateInfoLabel.Visible = false;
+                updateInfoLabel.Visible = true;
             }
             else
             {
-                updateInfoLabel.Visible = true;
+                updateInfoLabel.Visible = false;
             }
         }
 
@@ -57,7 +53,7 @@ namespace Citisoft
 
         private void Back_Button_Click(object sender, EventArgs e)
         {
-            //go back to Home
+            this.Close();
         }
 
         private void emailLabel_Click(object sender, EventArgs e)
@@ -123,10 +119,6 @@ namespace Citisoft
                     {
                         User.Password = newPassTextBox.Text;
                         dBConnection = DBConnection.getInstance();
-                        string query = "UPDATE [Profile] SET [password]=@password WHERE [e-mail]=@email;";
-                        SqlCommand command = new SqlCommand(query);
-                        command.Parameters.AddWithValue("@password", User.Password);
-                        command.Parameters.AddWithValue("@email", User.Email);
                         dBConnection.ExecutenNonQuery("Profile", "password", User.Password, User.Email);
                         MessageBox.Show("Password changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changePasswordPanel.Visible = false;
@@ -171,15 +163,11 @@ namespace Citisoft
                     {
                         User.FirstName = changeFNameTextBox.Text;
                         dBConnection = DBConnection.getInstance();
-                        string query = "UPDATE [Profile] SET [first_name]=@firstName WHERE [e-mail]=@email;";
-                        SqlCommand command = new SqlCommand(query);
-                        command.Parameters.AddWithValue("@firstName", User.FirstName);
-                        command.Parameters.AddWithValue("@email", User.Email);
                         dBConnection.ExecutenNonQuery("Profile", "first_name", User.FirstName, User.Email);
                         MessageBox.Show("First Name changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changeFNamePanel.Visible = false;
                         changeDetailsTabControl.Visible = false;
-                        fnameLabel.Text = User.FirstName;
+                        updateFields(User);
                     }
                 }
                 else
@@ -199,7 +187,8 @@ namespace Citisoft
 
         private void dobLabel_Click(object sender, EventArgs e)
         {
-            if(User.DateofBirth.Equals("2000-01-01"))
+            DateTime compareDateTime = new DateTime(2000,01,01);
+            if(User.DateofBirth.Equals(compareDateTime))
             {
                 changeDetailsTabControl.Visible = true;
                 changeDetailsTabControl.SelectedTab = changeDOBTab;
@@ -227,15 +216,11 @@ namespace Citisoft
                     {
                         User.LastName = changeLNameTextBox.Text;
                         dBConnection = DBConnection.getInstance();
-                        string query = "UPDATE [Profile] SET [last_name]=@lastName WHERE [e-mail]=@email;";
-                        SqlCommand command = new SqlCommand(query);
-                        command.Parameters.AddWithValue("@lastName", User.LastName);
-                        command.Parameters.AddWithValue("@email", User.Email);
                         dBConnection.ExecutenNonQuery("Profile", "last_name", User.LastName, User.Email);
                         MessageBox.Show("Last Name changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changeLNamePanel.Visible = false;
                         changeDetailsTabControl.Visible = false;
-                        lnameLabel.Text = User.LastName;
+                        updateFields(User);
                     }
                 }
                 else
@@ -271,15 +256,11 @@ namespace Citisoft
             {
                 User.Details = changeDescTextBox.Text;
                 dBConnection = DBConnection.getInstance();
-                string query = "UPDATE [Profile] SET [details]=@details WHERE [e-mail]=@email;";
-                SqlCommand command = new SqlCommand(query);
-                command.Parameters.AddWithValue("@details", User.Details);
-                command.Parameters.AddWithValue("@email", User.Email);
                 dBConnection.ExecutenNonQuery("Profile", "details", User.Details, User.Email);
                 MessageBox.Show("Description changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 changeDescPanel.Visible = false;
                 changeDetailsTabControl.Visible = false;
-                descriptionLabel.Text = User.Details;
+                updateFields(User);
             }
             else
             {
@@ -296,16 +277,13 @@ namespace Citisoft
 
         private void changeDOBButton_Click(object sender, EventArgs e)
         {
-            User.DateofBirth = new DateTime(Convert.ToInt32(DOB_Year), Convert.ToInt32(DOB_Month), Convert.ToInt32(DOB_Day));
+            User.DateofBirth = new DateTime(Convert.ToInt32(DOB_Year.Value), Convert.ToInt32(DOB_Month.Value), Convert.ToInt32(DOB_Day.Value));
             dBConnection = DBConnection.getInstance();
-            string query = "UPDATE [Profile] SET [date_of_birth]=@dob WHERE [e-mail]=@email;";
-            SqlCommand command = new SqlCommand(query);
-            command.Parameters.AddWithValue("@dob", User.DateofBirth);
-            command.Parameters.AddWithValue("@email", User.Email);
             dBConnection.ExecutenNonQuery("Profile", "date_of_birth", User.DateofBirth.ToShortDateString(), User.Email);
-            MessageBox.Show("Description changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Date of Birth set.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             changeDOBPanel.Visible = false;
             changeDetailsTabControl.Visible = false;
+            updateFields(User);
         }
     }
 }

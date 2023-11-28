@@ -92,12 +92,10 @@ namespace Citisoft
 
         public void ExecutenNonQuery(string table, string field, string value, string email)
         {
-            string query = "UPDATE [" + table + "] SET [@field]=@value WHERE [e-mail]=@email;";
+            string query = "UPDATE [" + table + "] SET [" + field + "]=@value WHERE [e-mail]=@email;";
             
             SqlCommand command = new SqlCommand(query);
 
-            command.Parameters.AddWithValue("@table", table);
-            command.Parameters.AddWithValue("@field", field);
             command.Parameters.AddWithValue("@value", value);
             command.Parameters.AddWithValue("@email", email);
 
