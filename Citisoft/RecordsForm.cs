@@ -94,7 +94,9 @@ namespace Citisoft
 
         private void editButton_Click(object sender, EventArgs e)
         {
-
+            editButton.Visible = false;
+            cancelButton.Visible = true;
+            confirmButton.Visible = true;
         }
 
         private void dataRecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -111,6 +113,7 @@ namespace Citisoft
             {
                 productColumnIndex = dataRecords.Columns["Id"].Index;  
                 originalValues[selectedRow.Index] = selectedRow.Cells[productColumnIndex].Value;
+                //descriptionColumnIndex = dataRecords.Columns["Description"].Index;
             }
         }
 
@@ -122,6 +125,9 @@ namespace Citisoft
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
+            editButton.Visible = true;
+            cancelButton.Visible = false;
+            confirmButton.Visible = false;
             foreach (DataGridViewRow row in dataRecords.Rows)
             {
                 RowState rowState = (RowState)(row.Tag ?? RowState.Existed);
@@ -129,15 +135,18 @@ namespace Citisoft
                 switch (rowState)
                 {
                     case RowState.New:
+                        //make a realization for setting new element
                         //InsertRecord(row);
                         break;
 
                     case RowState.Modified:
                     case RowState.Edit:
+                        //make a realization for updating in db
                         //UpdateRecord(row);
                         break;
 
                     case RowState.Deleted:
+                        //make a realization for deleting in rows
                         //DeleteRecord(row);
                         break;
 
@@ -150,6 +159,9 @@ namespace Citisoft
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            editButton.Visible = true;
+            cancelButton.Visible = false;
+            confirmButton.Visible = false;
             if (dataRecords.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dataRecords.SelectedRows[0];

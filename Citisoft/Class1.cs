@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Citisoft
 {
-    class program 
+    class program
     {
         [STAThread]
 
@@ -17,6 +17,8 @@ namespace Citisoft
             Application.SetCompatibleTextRenderingDefault(false);
             WelcomeForm welcomeForm = new WelcomeForm();
             Application.Run(new WelcomeForm());
+            //AccessForm accessForm = new AccessForm();
+            //Application.Run(new AccessForm());
         }
-        }
+    }
 }

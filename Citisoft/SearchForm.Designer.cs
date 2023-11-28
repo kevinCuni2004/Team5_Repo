@@ -51,6 +51,7 @@
             this.usernameButton.TabIndex = 0;
             this.usernameButton.Text = "Username";
             this.usernameButton.UseVisualStyleBackColor = true;
+            this.usernameButton.Click += new System.EventHandler(this.usernameButton_Click);
             // 
             // helpButton
             // 
@@ -60,6 +61,7 @@
             this.helpButton.TabIndex = 1;
             this.helpButton.Text = "Help";
             this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
             // 
             // nameLabel
             // 
@@ -168,6 +170,7 @@
             this.termsOfUseLinkLabel.TabIndex = 12;
             this.termsOfUseLinkLabel.TabStop = true;
             this.termsOfUseLinkLabel.Text = "Terms of Use  Privacy policy";
+            this.termsOfUseLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.termsOfUseLinkLabel_LinkClicked);
             // 
             // SearchForm
             // 

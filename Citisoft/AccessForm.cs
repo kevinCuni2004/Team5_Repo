@@ -12,26 +12,63 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Citisoft
 {
-            
     public partial class AccessForm : Form
     {
-        private FlowLayoutPanel flowLayoutPanel;
         private DBConnection dBConnection;
-        private Profile User;
+        private int profileColumnIndex;
+        private int accessColumnIndex;
+        private string nameColumnIndex;
+        private string surnameColumnIndex;
+        private Dictionary<int, object> originalValues = new Dictionary<int, object>();
 
         public AccessForm()
         {
             InitializeComponent();
-            //InitializeDynamicControls();
         }
+        private void CreateColumns()
+        {
+            dataAccess.Columns.Add("profile_id", "Id");
+            dataAccess.Columns.Add("access", "Status");
+            dataAccess.Columns.Add("name", "Name");
+            dataAccess.Columns.Add("surname", "Surname");
+        }
+        private void ReadSingleRow(DataGridView dgw, IDataRecord access)
+        {
+            dgw.Rows.Add(access.GetInt32(0), access.GetInt32(1), access.GetString(2), access.GetString(3), RowState.ModidiedNew);
+        }
+        private void DisplayAccess(DataGridView dgw)
+        {
+            //--We don't have objects in attributes so it wont work--//
+            DBConnection dbConnection = DBConnection.getInstance();
+            string query = "SELECT * FROM PROFILE";
+            SqlCommand command = new SqlCommand(query, dbConnection.getDBConnection());
+            try
+            {
 
+                dbConnection.openDBConnection();
+
+
+                using (SqlDataReader reader = dbConnection.ExcecuteReader(command))
+                {
+                    while (reader.Read())
+                    {
+                        ReadSingleRow(dgw, reader);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Ошибка при выполнении запроса: {ex.Message}");
+            }
+        }
         private void usernameButton_Click(object sender, EventArgs e)
         {
             //--go to usertab form--//
 
-            //UserTabForm usertabForm = new UserTabForm();
-            //usertabForm.Show();
-            //this.Hide();
+            UserTabForm usertabForm = new UserTabForm();
+            usertabForm.Show();
+            this.Hide();
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -46,57 +83,90 @@ namespace Citisoft
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            //--Edit button disapppears. Cancel/Confirm buttons arrears--//
+            //--Edit button disapppears. Cancel/Confirm buttons appears--//
             editButton.Visible = false;
             cancelButton.Visible = true;
             confirmButton.Visible = true;
-            this.usernameIdTextBox.ReadOnly = false;
-            this.profileIdTextBox.ReadOnly = false;
-            this.statusIdTextBox.ReadOnly = false;
             
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            //--Привести в изначальную форму--//
-            cancelButton.Visible = false;
-            confirmButton.Visible = false;
-            editButton.Visible = true; 
-        }
-
-        private void confirmButton_Click(object sender, EventArgs e)
-        {
-            
             cancelButton.Visible = false;
             confirmButton.Visible = false;
             editButton.Visible = true;
-            string oneToZeroText = statusIdTextBox.Text;
-            if(int.TryParse(oneToZeroText,out int inputValue) && inputValue >= 0 && inputValue <= 1)
+            if (dataAccess.SelectedRows.Count > 0)
             {
-                //--Преобразовать в стринг--//
-                //User.Access = oneToZeroText;
-                string query = "UPDATE [Profile] SET [access]=@access WHERE [e-mail]=@email;";
-                dBConnection = DBConnection.getInstance();
-                SqlCommand command = new SqlCommand(query);
-                command.Parameters.AddWithValue("@access", User.Access);
+                DataGridViewRow selectedRow = dataAccess.SelectedRows[0];
+                CancelEdit(selectedRow);
             }
-            else
+        }
+        private void CancelEdit(DataGridViewRow selectedRow)
+        {
+            if (originalValues.ContainsKey(selectedRow.Index))
             {
-                //statusValidation
+                selectedRow.Cells[profileColumnIndex].Value = originalValues[selectedRow.Index];
+                originalValues.Remove(selectedRow.Index);
             }
-            //--Сохранить измененения в базу данных--//
-            //--То что написано должно измениться в форме--//
-            //--Проверка на правильность ввода(ИНТ-статус и профиль айди, СТР-ник)--//
+        }
+        private void EditAccess(DataGridViewRow selectedRow)
+        {
+            dataAccess.ReadOnly = false;
+            if (!originalValues.ContainsKey(selectedRow.Index))
+            {
+                profileColumnIndex = dataAccess.Columns["Id"].Index;
+                originalValues[selectedRow.Index] = selectedRow.Cells[profileColumnIndex].Value;
+                //descriptionColumnIndex = dataRecords.Columns["Description"].Index;
+            }
+        }
+        private void confirmButton_Click(object sender, EventArgs e)
+        {
+            editButton.Visible = true;
+            cancelButton.Visible = false;
+            confirmButton.Visible = false;
+            foreach (DataGridViewRow row in dataAccess.Rows)
+            {
+                RowState rowState = (RowState)(row.Tag ?? RowState.Existed);
+
+                switch (rowState)
+                {
+                    case RowState.New:
+                        //make a realization for setting new element
+                        //InsertAccess(row);
+                        break;
+
+                    case RowState.Modified:
+                    case RowState.Edit:
+                        //make a realization for updating in db
+                        //UpdateAccess(row);
+                        break;
+
+                    case RowState.Deleted:
+                        //make a realization for deleting in rows
+                        //DeleteAccess(row);
+                        break;
+
+
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void dataAccess_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataAccess.ReadOnly = true;
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataAccess.Rows[e.RowIndex];
+                EditAccess(selectedRow);
+            }
         }
 
         private void AccessForm_Load(object sender, EventArgs e)
         {
-            
-        }
-
-        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
-        {
-            //
+            CreateColumns();
+            DisplayAccess(dataAccess);
         }
     }
 }

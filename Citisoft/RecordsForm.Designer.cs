@@ -31,7 +31,6 @@
             this.usernameButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.nameLabel = new System.Windows.Forms.Label();
             this.dataRecords = new System.Windows.Forms.DataGridView();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -68,13 +67,6 @@
             this.editButton.Text = "edit";
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(770, 87);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(21, 305);
-            this.vScrollBar1.TabIndex = 3;
             // 
             // nameLabel
             // 
@@ -127,7 +119,6 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.dataRecords);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.usernameButton);
@@ -144,7 +135,6 @@
         private System.Windows.Forms.Button usernameButton;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button editButton;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.DataGridView dataRecords;
         private System.Windows.Forms.Button cancelButton;
