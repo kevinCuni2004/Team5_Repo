@@ -152,7 +152,118 @@ namespace Citisoft
                 }
             }
         }
+        private void InserAccess(DataGridViewRow row)
+        {
+            DBConnection dbConnection = DBConnection.getInstance();
+            string query = "INSERT INTO Profile (access, name, surname) VALUES (@access, @name, @surname);";
+            using (SqlCommand command = new SqlCommand(query, dbConnection.getDBConnection()))
+            {
+                try
+                {
+                    dbConnection.openDBConnection();
+                    int accessValue = Convert.ToInt32(row.Cells["access"].Value);
+                    string nameValue = Convert.ToString(row.Cells["name"].Value);
+                    string surnameValue = Convert.ToString(row.Cells["surname"].Value);
+                    command.Parameters.AddWithValue("@access", accessValue);
+                    command.Parameters.AddWithValue("@name", nameValue);
+                    command.Parameters.AddWithValue("@surname", surnameValue);
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Insert successfil");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        private void DeleteAccess(DataGridViewRow row)
+        {
+            DBConnection dbConnection = DBConnection.getInstance();
+            string query = "DELETE FROM Profile WHERE access = @access AND name = @name AND surname = @surname;";
 
+            using (SqlCommand command = new SqlCommand(query, dbConnection.getDBConnection()))
+            {
+                try
+                {
+                    dbConnection.openDBConnection();
+
+                    // Получение оригинальных значений, если они не сохранены
+                    if (!originalValues.ContainsKey(row.Index))
+                    {
+                        originalValues[row.Index] = new
+                        {
+                            Access = Convert.ToInt32(row.Cells["access"].Value),
+                            Name = Convert.ToString(row.Cells["name"].Value),
+                            Surname = Convert.ToString(row.Cells["surname"].Value)
+                        };
+                    }
+
+
+                    command.Parameters.AddWithValue("@access", ((dynamic)originalValues[row.Index]).Access);
+                    command.Parameters.AddWithValue("@name", ((dynamic)originalValues[row.Index]).Name);
+                    command.Parameters.AddWithValue("@surname", ((dynamic)originalValues[row.Index]).Surname);
+
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Delete successful!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Delete failed!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ошибка при выполнении запроса: {ex.Message}");
+                }
+            }
+        }
+        private void UpdateAccess(DataGridViewRow row)
+        {
+            DBConnection dbConnection = DBConnection.getInstance();
+            string query = "UPDATE Profile SET access = @access, name = @name, surname = @surname WHERE profile_id = @profile_id";
+
+            using (SqlCommand command = new SqlCommand(query, dbConnection.getDBConnection()))
+            {
+                try
+                {
+                    dbConnection.openDBConnection();
+                    int accessValue = Convert.ToInt32(row.Cells["access"].Value);
+                    string nameValue = Convert.ToString(row.Cells["name"].Value);
+                    string surnameValue = Convert.ToString(row.Cells["surname"].Value);
+                    command.Parameters.AddWithValue("@access", accessValue);
+                    command.Parameters.AddWithValue("@name", nameValue);
+                    command.Parameters.AddWithValue("@surname", surnameValue);
+
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Update successful!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Update failed!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ошибка при выполнении запроса: {ex.Message}");
+                }
+            }
+        }
+        
         private void dataAccess_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dataAccess.ReadOnly = true;
