@@ -15,10 +15,10 @@ namespace Citisoft
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            WelcomeForm welcomeForm = new WelcomeForm();
-            Application.Run(new WelcomeForm());
-            //AccessForm accessForm = new AccessForm();
-            //Application.Run(new AccessForm());
+            //WelcomeForm welcomeForm = new WelcomeForm();
+            //Application.Run(new WelcomeForm());
+            SearchForm accessForm = new SearchForm();
+            Application.Run(new SearchForm());
         }
     }
 }

@@ -16,9 +16,11 @@ namespace Citisoft
     public partial class SearchForm : Form
     {
         bool found = false;
+        private SearchVendors searchVendor;
         public SearchForm()
         {
             InitializeComponent();
+            searchVendor = new SearchVendors();
         }
 
         private void usernameButton_Click(object sender, EventArgs e)
@@ -46,6 +48,7 @@ namespace Citisoft
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            string enteredText = searchTextBox.Text;
             string searchText = searchTextBox.Text.Trim();
             if (!string.IsNullOrEmpty(searchText));
             {
@@ -76,6 +79,9 @@ namespace Citisoft
                     }
                 }
             }
+            searchVendor.ShowCorrectVendorPanel(enteredText);
+            searchVendor.Show();
+            this.Hide();
         }
     }
 }
