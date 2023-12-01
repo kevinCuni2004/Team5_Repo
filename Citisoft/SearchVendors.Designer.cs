@@ -120,6 +120,7 @@
             this.nextPageButton.TabIndex = 4;
             this.nextPageButton.Text = "next page";
             this.nextPageButton.UseVisualStyleBackColor = true;
+            this.nextPageButton.Click += new System.EventHandler(this.nextPageButton_Click);
             // 
             // nameLabel
             // 

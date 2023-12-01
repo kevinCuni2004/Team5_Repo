@@ -12,7 +12,10 @@ namespace Citisoft
 {
     public partial class SearchVendors : Form
     {
+        private List<Panel> allPanels;
         bool found = false;
+        private int currentPageIndex;
+        private int currentLocation = 29;
         public SearchVendors()
         {
             InitializeComponent();
@@ -37,6 +40,41 @@ namespace Citisoft
             {
                 noResultsLabel.Visible = true;
             }
+        }
+        private void InitializeVendorPanels()
+        {
+            allPanels = new List<Panel>
+            {
+                vendorPanel1,
+                vendorPanel2,
+                vendorPanel3,
+                vendorPanel4,
+
+            };
+            currentPageIndex = 0;
+        }
+        private void ShowCurrentPage()
+        {
+            foreach (var panel in allPanels)
+            {
+                panel.Visible = false;
+            }
+            for(int i = currentPageIndex * 4; i < (currentPageIndex + 1) * 4 && i < allPanels.Count; i++)
+            {
+                allPanels[i].Visible = true;
+                allPanels[i].Location = new Point(currentLocation, 100);
+                currentLocation += allPanels[i].Width + 30;
+            }
+            currentLocation = 29;
+        }
+        private void ShowNextPage()
+        {
+            currentPageIndex++;
+            if(currentPageIndex >= (int)Math.Ceiling((double)allPanels.Count / 4))
+            {
+                currentPageIndex = 0;
+            }
+            ShowCurrentPage();
         }
         public void HidePanels()
         {
@@ -100,6 +138,11 @@ namespace Citisoft
         private void SearchVendors_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void nextPageButton_Click(object sender, EventArgs e)
+        {
+            ShowNextPage();
         }
     }
 }
