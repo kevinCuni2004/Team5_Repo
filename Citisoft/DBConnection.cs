@@ -71,6 +71,7 @@ namespace Citisoft
 
             return dataSet;
         }
+        //does not work ^
 
         public SqlDataReader ExcecuteReader(SqlCommand command)
         {
@@ -96,7 +97,13 @@ namespace Citisoft
             
             SqlCommand command = new SqlCommand(query);
 
-            command.Parameters.AddWithValue("@value", value);
+            if (field == "date_of_birth")
+            {
+                var ParsedDoB = DateTime.Parse(value);
+                command.Parameters.AddWithValue("@value", ParsedDoB);
+            }
+            else { command.Parameters.AddWithValue("@value", value); }
+
             command.Parameters.AddWithValue("@email", email);
 
             command.Connection = new SqlConnection(connStr);

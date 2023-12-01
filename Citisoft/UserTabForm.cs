@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -35,7 +36,8 @@ namespace Citisoft
             lnameLabel.Text = User.LastName;
             dobLabel.Text = User.DateofBirth.ToShortDateString();
             descriptionLabel.Text = User.Details;
-            if (User.FirstName == "name" || User.LastName == "surname" || User.DateofBirth.Equals("2000-01-01"))
+            DateTime compareDOB = new DateTime(2000, 1, 1);
+            if (User.FirstName == "name" || User.LastName == "surname" || User.DateofBirth.Equals(compareDOB))
             {
                 updateInfoLabel.Visible = true;
             }
