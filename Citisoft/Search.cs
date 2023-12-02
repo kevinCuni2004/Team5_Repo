@@ -29,11 +29,11 @@ namespace Citisoft
                 // Define your SQL query for searching in the "Companies" table
                 string sqlQuery = "SELECT * FROM Companies WHERE " +
                     "company_name LIKE @CompanyName AND " +
-                    "company_website LIKE @CompanyWebsite";
+                    "company_website LIKE @CompanyWebsite ";
 
                 Console.WriteLine("SQL Query: " + sqlQuery);
 
-                // Create a SqlCommand object with parameters and use the provided connection
+                // Create a SqlCommand object with parameters and set the connection
                 using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                 {
                     command.Parameters.AddWithValue("@CompanyName", "%" + companyName + "%");
@@ -63,6 +63,7 @@ namespace Citisoft
                 Console.WriteLine("SearchInDatabase method finished...");
             }
         }
+
 
 
     }
