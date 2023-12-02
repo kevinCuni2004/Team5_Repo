@@ -27,11 +27,12 @@ namespace Citisoft
             {
                 using (SqlConnection connection = new SqlConnection(dbConnection.GetConnectionString()))
                 {
-                    string searchQuery = "SELECT * FROM Companies WHERE company_name LIKE @CompanyName";
+                    string searchQuery = "SELECT * FROM [Companies] WHERE [company_name] LIKE @CompanyName";
 
                     using (SqlCommand command = new SqlCommand(searchQuery, connection))
                     {
-                        command.Parameters.AddWithValue("@CompanyName", "%" + companyName + "%");
+                        companyName = "%" + companyName + "%";
+                        command.Parameters.AddWithValue("@CompanyName", companyName);
 
                         connection.Open();
 
