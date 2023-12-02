@@ -17,8 +17,10 @@ namespace Citisoft
             Application.SetCompatibleTextRenderingDefault(false);
             //WelcomeForm welcomeForm = new WelcomeForm();
             //Application.Run(new WelcomeForm());
-            RecordsForm accessForm = new RecordsForm();
-            Application.Run(new RecordsForm());
+            //RecordsForm accessForm = new RecordsForm();
+            //Application.Run(new RecordsForm());
+            SearchForm searchForm = new SearchForm();
+            Application.Run(searchForm);
         }
     }
 }
