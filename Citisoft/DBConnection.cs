@@ -185,5 +185,10 @@ namespace Citisoft
         {
             return connToDB;
         }
+
+        internal string GetConnectionString()
+        {
+            return Properties.Settings.Default.DBConnectionString;
+        }
     }
 }

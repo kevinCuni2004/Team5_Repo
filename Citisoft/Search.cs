@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 
 //taya is currently working on this class, please do not change anything here
@@ -20,51 +21,36 @@ namespace Citisoft
 
         }
 
-        public DataTable SearchInDatabase(string companyName, string companyWebsite, SqlConnection connection)
+        public DataTable SearchCompanies(string companyName)
         {
             try
             {
-                Console.WriteLine("SearchInDatabase method started...");
-
-                // Define your SQL query for searching in the "Companies" table
-                string sqlQuery = "SELECT * FROM Companies WHERE " +
-                    "company_name LIKE @CompanyName AND " +
-                    "company_website LIKE @CompanyWebsite ";
-
-                Console.WriteLine("SQL Query: " + sqlQuery);
-
-                // Create a SqlCommand object with parameters and set the connection
-                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                using (SqlConnection connection = new SqlConnection(dbConnection.GetConnectionString()))
                 {
-                    command.Parameters.AddWithValue("@CompanyName", "%" + companyName + "%");
-                    command.Parameters.AddWithValue("@CompanyWebsite", "%" + companyWebsite + "%");
+                    string searchQuery = "SELECT * FROM Companies WHERE company_name LIKE @CompanyName";
 
-                    Console.WriteLine("Parameters added to SqlCommand...");
-
-                    // Create a data adapter to fill a DataTable
-                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
+                    using (SqlCommand command = new SqlCommand(searchQuery, connection))
                     {
-                        DataTable dataTable = new DataTable();
-                        dataAdapter.Fill(dataTable);
+                        command.Parameters.AddWithValue("@CompanyName", "%" + companyName + "%");
 
-                        Console.WriteLine("DataTable filled with search results...");
+                        connection.Open();
 
-                        return dataTable;
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            DataTable resultsTable = new DataTable();
+                            resultsTable.Load(reader);
+                            return resultsTable;
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error in SearchInDatabase: " + ex.Message);
+                MessageBox.Show("Error in SearchCompanies: " + ex.Message);
                 return null;
             }
-            finally
-            {
-                Console.WriteLine("SearchInDatabase method finished...");
-            }
         }
-
-
-
     }
+
 }
+

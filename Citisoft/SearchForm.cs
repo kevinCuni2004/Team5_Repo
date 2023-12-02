@@ -57,7 +57,7 @@ namespace Citisoft
                 DBConnection dbConnection = DBConnection.getInstance();
                 Search search = new Search();
                 SqlConnection connection = dbConnection.getDBConnection();
-                DataTable results = search.SearchInDatabase(searchText, "someCompanyWebsite", connection);
+                DataTable results = search.SearchCompanies(searchText);
 
 
 
