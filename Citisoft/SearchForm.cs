@@ -50,39 +50,27 @@ namespace Citisoft
         {
             string enteredText = searchTextBox.Text;
             string searchText = searchTextBox.Text.Trim();
-            if (!string.IsNullOrEmpty(searchText));
-            {
-                DBConnection dbConnection = DBConnection.getInstance();
-                string query = "SELECT * FROM Profile WHERE company_name LIKE @searchText;";
 
-                using (SqlCommand command = new SqlCommand(query, dbConnection.getDBConnection()))
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                Search search = new Search();
+                DataTable results = search.SearchInDatabase(searchText);
+
+                // Check if any results were found
+                if (results != null && results.Rows.Count > 0)
                 {
-                    try
-                    {
-                        dbConnection.openDBConnection();
-                        command.Parameters.AddWithValue("@searchText", "%" + searchText + "%");
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                found = true;
-                            }
-                            if (!found)
-                            {
-                                MessageBox.Show("Таких результатов нет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Ошибка при выполнении запроса: {ex.Message}");
-                    }
+                    // Results found, you can use 'results' DataTable as needed
+                    searchVendor.ShowCorrectVendorPanel(enteredText);
+                    searchVendor.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Таких результатов нет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            searchVendor.ShowCorrectVendorPanel(enteredText);
-            searchVendor.Show();
-            this.Hide();
         }
+
     }
 }
         //-Connect to db-->search by strings from db-->by clicking on the box in SearchForm, we need to search using the words from the attribute(If box was clicked, search from for example: lacation attribute) 

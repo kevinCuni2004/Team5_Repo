@@ -20,42 +20,59 @@ namespace Citisoft
 
         }
 
-        public DataTable SearchInDatabase(string keywords)
+        public DataTable SearchInDatabase(string companyName, DateTime dateJoined, DateTime lastReviewed, DateTime lastDemoDate, DateTime establishedDate, string companyWebsite, string numberOfEmployees)
         {
             try
             {
-                string sqlQuery = "SELECT * FROM Companies WHERE";
-                DataTable schemaTable = dbConnection.getDBConnection().GetSchema("Columns", new[] { null, null, "Companies", null });
+                Console.WriteLine("SearchInDatabase method started...");
 
-                List<string> columnNames = new List<string>();
-                foreach (DataRow row in schemaTable.Rows)
-                {
-                    columnNames.Add(row["company_id"].ToString());
-                }
-                for (int i = 0; i < columnNames.Count; i++)
-                {
-                    sqlQuery += $"{columnNames[i]} LIKE @Keywords";
-                    if (i < columnNames.Count - 1)
-                    {
-                        sqlQuery += " OR ";
-                    }
-                }
+                // Define your SQL query for searching in the "Companies" table
+                string sqlQuery = "SELECT * FROM Companies WHERE " +
+                    "company_name LIKE @CompanyName AND " +
+                    "date_joined = @DateJoined AND " +
+                    "last_reviewed = @LastReviewed AND " +
+                    "last_demo_date = @LastDemoDate AND " +
+                    "established_date = @EstablishedDate AND " +
+                    "company_website LIKE @CompanyWebsite AND " +
+                    "number_of_employees LIKE @NumberOfEmployees;";
+
+                Console.WriteLine("SQL Query: " + sqlQuery);
+
+                // Create a SqlCommand object with parameters
                 using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection.getDBConnection()))
                 {
-                    command.Parameters.AddWithValue("@keywords", "%" + keywords + "%");
+                    command.Parameters.AddWithValue("@CompanyName", "%" + companyName + "%");
+                    command.Parameters.AddWithValue("@DateJoined", dateJoined);
+                    command.Parameters.AddWithValue("@LastReviewed", lastReviewed);
+                    command.Parameters.AddWithValue("@LastDemoDate", lastDemoDate);
+                    command.Parameters.AddWithValue("@EstablishedDate", establishedDate);
+                    command.Parameters.AddWithValue("@CompanyWebsite", "%" + companyWebsite + "%");
+                    command.Parameters.AddWithValue("@NumberOfEmployees", "%" + numberOfEmployees + "%");
+
+                    Console.WriteLine("Parameters added to SqlCommand...");
+
+                    // Create a data adapter to fill a DataTable
                     using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
                         dataAdapter.Fill(dataTable);
+
+                        Console.WriteLine("DataTable filled with search results...");
+
                         return dataTable;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error in Search" + ex.Message);
+                Console.WriteLine("Error in SearchInDatabase: " + ex.Message);
                 return null;
             }
+            finally
+            {
+                Console.WriteLine("SearchInDatabase method finished...");
+            }
         }
+
     }
 }
