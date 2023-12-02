@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data.Odbc;
 
 namespace Citisoft
 {
@@ -53,8 +54,11 @@ namespace Citisoft
 
             if (!string.IsNullOrEmpty(searchText))
             {
+                DBConnection dbConnection = DBConnection.getInstance();
                 Search search = new Search();
-                DataTable results = search.SearchInDatabase(searchText, "someCompanyWebsite");
+                SqlConnection connection = dbConnection.getDBConnection();
+                DataTable results = search.SearchInDatabase(searchText, "someCompanyWebsite", connection);
+
 
 
                 // Check if any results were found
@@ -67,7 +71,7 @@ namespace Citisoft
                 }
                 else
                 {
-                    MessageBox.Show("Таких результатов нет.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Sorry, There is no results like this.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

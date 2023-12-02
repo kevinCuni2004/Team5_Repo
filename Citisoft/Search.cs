@@ -20,7 +20,7 @@ namespace Citisoft
 
         }
 
-        public DataTable SearchInDatabase(string companyName, string companyWebsite)
+        public DataTable SearchInDatabase(string companyName, string companyWebsite, SqlConnection connection)
         {
             try
             {
@@ -29,16 +29,15 @@ namespace Citisoft
                 // Define your SQL query for searching in the "Companies" table
                 string sqlQuery = "SELECT * FROM Companies WHERE " +
                     "company_name LIKE @CompanyName AND " +
-                    "company_website LIKE @CompanyWebsite " ;
+                    "company_website LIKE @CompanyWebsite";
 
                 Console.WriteLine("SQL Query: " + sqlQuery);
 
-                // Create a SqlCommand object with parameters
-                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection.getDBConnection()))
+                // Create a SqlCommand object with parameters and use the provided connection
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
                 {
                     command.Parameters.AddWithValue("@CompanyName", "%" + companyName + "%");
                     command.Parameters.AddWithValue("@CompanyWebsite", "%" + companyWebsite + "%");
-                   
 
                     Console.WriteLine("Parameters added to SqlCommand...");
 
@@ -64,6 +63,7 @@ namespace Citisoft
                 Console.WriteLine("SearchInDatabase method finished...");
             }
         }
+
 
     }
 }
