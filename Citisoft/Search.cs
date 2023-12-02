@@ -20,7 +20,7 @@ namespace Citisoft
 
         }
 
-        public DataTable SearchInDatabase(string companyName, DateTime dateJoined, DateTime lastReviewed, DateTime lastDemoDate, DateTime establishedDate, string companyWebsite, string numberOfEmployees)
+        public DataTable SearchInDatabase(string companyName, string companyWebsite)
         {
             try
             {
@@ -29,12 +29,7 @@ namespace Citisoft
                 // Define your SQL query for searching in the "Companies" table
                 string sqlQuery = "SELECT * FROM Companies WHERE " +
                     "company_name LIKE @CompanyName AND " +
-                    "date_joined = @DateJoined AND " +
-                    "last_reviewed = @LastReviewed AND " +
-                    "last_demo_date = @LastDemoDate AND " +
-                    "established_date = @EstablishedDate AND " +
-                    "company_website LIKE @CompanyWebsite AND " +
-                    "number_of_employees LIKE @NumberOfEmployees;";
+                    "company_website LIKE @CompanyWebsite " ;
 
                 Console.WriteLine("SQL Query: " + sqlQuery);
 
@@ -42,12 +37,8 @@ namespace Citisoft
                 using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection.getDBConnection()))
                 {
                     command.Parameters.AddWithValue("@CompanyName", "%" + companyName + "%");
-                    command.Parameters.AddWithValue("@DateJoined", dateJoined);
-                    command.Parameters.AddWithValue("@LastReviewed", lastReviewed);
-                    command.Parameters.AddWithValue("@LastDemoDate", lastDemoDate);
-                    command.Parameters.AddWithValue("@EstablishedDate", establishedDate);
                     command.Parameters.AddWithValue("@CompanyWebsite", "%" + companyWebsite + "%");
-                    command.Parameters.AddWithValue("@NumberOfEmployees", "%" + numberOfEmployees + "%");
+                   
 
                     Console.WriteLine("Parameters added to SqlCommand...");
 

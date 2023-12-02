@@ -54,7 +54,8 @@ namespace Citisoft
             if (!string.IsNullOrEmpty(searchText))
             {
                 Search search = new Search();
-                DataTable results = search.SearchInDatabase(searchText);
+                DataTable results = search.SearchInDatabase(searchText, "someCompanyWebsite");
+
 
                 // Check if any results were found
                 if (results != null && results.Rows.Count > 0)
