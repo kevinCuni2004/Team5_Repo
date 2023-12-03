@@ -27,7 +27,7 @@ namespace Citisoft
             {
                 Console.WriteLine("ComprehensiveSearch method started...");
 
-                // Define your SQL query for a comprehensive search
+                // Define  SQL query for a comprehensive search
                 string sqlQuery = "SELECT * FROM Companies WHERE " +
                     "[company_name] LIKE @SearchText OR " +
                     "[company_website] LIKE @SearchText OR " +

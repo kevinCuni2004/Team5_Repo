@@ -25,8 +25,9 @@ namespace Citisoft
 
         private void FetchVendorDataFromDatabase()
         {
+            string connectionString = ""/* our  connection string here */;
             string query = "SELECT [company_name], [company_website]  FROM Companies";
-            DataTable vendorData = GetDataFromDatabase(query);
+            DataTable vendorData = GetDataFromDatabase(query, connectionString);
 
             if (vendorData != null && vendorData.Rows.Count > 0)
             {
@@ -40,7 +41,7 @@ namespace Citisoft
                     if (linkLabel != null)
                     {
                         linkLabel.Text = row["company_name"].ToString();
-                        
+
                     }
 
                     panelIndex++;
@@ -53,11 +54,11 @@ namespace Citisoft
             }
         }
 
-        private DataTable GetDataFromDatabase(string query)
+        private DataTable GetDataFromDatabase(string query, string connectionString)
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(/* Our connection string */))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 using (SqlCommand command = new SqlCommand(query, connection))
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                 {
@@ -72,6 +73,7 @@ namespace Citisoft
                 return null;
             }
         }
+
 
         public void ShowCorrectVendorPanel(string enteredText)
         {
