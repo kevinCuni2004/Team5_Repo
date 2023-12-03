@@ -81,31 +81,66 @@ namespace Citisoft
 
         public void DisplaySearchResults(DataTable searchResults)
         {
-            // Hide all panels
-            foreach (var panel in allPanels)
-            {
-                panel.Visible = false;
-            }
+            ClearPanels();
 
-            // Display panels for the search results
-            int panelIndex = 0;
             foreach (DataRow row in searchResults.Rows)
             {
-                Panel panel = allPanels[panelIndex];
-                LinkLabel linkLabel = panel.Controls.OfType<LinkLabel>().FirstOrDefault();
+                // Create a panel for each search result
+                Panel panel = CreatePanel(row);
 
-                if (linkLabel != null)
-                {
-                    linkLabel.Text = row["company_name"].ToString();
-                }
+                // Add the panel to the list of panels
+                allPanels.Add(panel);
 
-                panelIndex++;
-
-                if (panelIndex >= allPanels.Count)
-                {
-                    break; // Stop if we have populated all panels
-                }
+                // Add the panel to the form's controls
+                this.Controls.Add(panel);
             }
+
+            ShowCurrentPage();
+        }
+
+        private Panel CreatePanel(DataRow row)
+        {
+            // Create a new panel
+            Panel panel = new Panel();
+
+            // Customize the panel properties as needed
+            panel.Size = new Size(200, 100); 
+            panel.BackColor = Color.LightGray; 
+
+
+            LinkLabel linkLabel = new LinkLabel();
+            linkLabel.Text = row["company_name"].ToString();
+
+      
+            linkLabel.AutoSize = true; 
+            linkLabel.Location = new Point(10, 10); 
+
+ 
+            linkLabel.Click += (sender, e) =>
+            {
+                // Handle LinkLabel click event
+                MessageBox.Show("LinkLabel clicked for " + row["company_name"].ToString());
+            };
+
+
+            panel.Controls.Add(linkLabel);
+
+
+            
+
+            // Return the created panel
+            return panel;
+        }
+
+
+        private void ClearPanels()
+        {
+            // Clear existing panels
+            foreach (var panel in allPanels)
+            {
+                this.Controls.Remove(panel);
+            }
+            allPanels.Clear();
         }
 
         private void InitializeVendorPanels()
