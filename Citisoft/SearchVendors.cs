@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Citisoft
@@ -19,7 +18,61 @@ namespace Citisoft
         public SearchVendors()
         {
             InitializeComponent();
+            InitializeVendorPanels();
+            FetchVendorDataFromDatabase(); // Fetch vendor data when the form is initialized
+            ShowCurrentPage();
         }
+
+        private void FetchVendorDataFromDatabase()
+        {
+            string query = "SELECT CompanyName, CompanyWebsite, OtherColumnInfo FROM Companies";
+            DataTable vendorData = GetDataFromDatabase(query);
+
+            if (vendorData != null && vendorData.Rows.Count > 0)
+            {
+                int panelIndex = 0;
+
+                foreach (DataRow row in vendorData.Rows)
+                {
+                    Panel panel = allPanels[panelIndex];
+                    LinkLabel linkLabel = panel.Controls.OfType<LinkLabel>().FirstOrDefault();
+
+                    if (linkLabel != null)
+                    {
+                        linkLabel.Text = row["CompanyName"].ToString();
+                        
+                    }
+
+                    panelIndex++;
+
+                    if (panelIndex >= allPanels.Count)
+                    {
+                        break; // Stop if we have populated all panels
+                    }
+                }
+            }
+        }
+
+        private DataTable GetDataFromDatabase(string query)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(/* Our connection string */))
+                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    return dataTable;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error fetching data: " + ex.Message);
+                return null;
+            }
+        }
+
         public void ShowCorrectVendorPanel(string enteredText)
         {
             noResultsLabel.Visible = false;
