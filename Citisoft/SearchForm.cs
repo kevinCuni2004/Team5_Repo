@@ -54,12 +54,8 @@ namespace Citisoft
 
             if (!string.IsNullOrEmpty(searchText))
             {
-                DBConnection dbConnection = DBConnection.getInstance();
                 Search search = new Search();
-                SqlConnection connection = dbConnection.getDBConnection();
-                DataTable results = search.SearchCompanies(searchText);
-
-
+                DataTable results = search.ComprehensiveSearch(searchText);
 
                 // Check if any results were found
                 if (results != null && results.Rows.Count > 0)
@@ -71,13 +67,15 @@ namespace Citisoft
                 }
                 else
                 {
-                    MessageBox.Show("Sorry, There is no results like this.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No results found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
     }
+
 }
+
         //-Connect to db-->search by strings from db-->by clicking on the box in SearchForm, we need to search using the words from the attribute(If box was clicked, search from for example: lacation attribute) 
         //-->If there are no match make an error message--//
         //--In general we need to iterate through all attributes and their contents--//

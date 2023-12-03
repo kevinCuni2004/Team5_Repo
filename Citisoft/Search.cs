@@ -21,34 +21,48 @@ namespace Citisoft
 
         }
 
-        public DataTable SearchCompanies(string companyName)
+        public DataTable ComprehensiveSearch(string searchText)
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(dbConnection.GetConnectionString()))
+                Console.WriteLine("ComprehensiveSearch method started...");
+
+                // Define your SQL query for a comprehensive search
+                string sqlQuery = "SELECT * FROM Companies WHERE " +
+                    "[company_name] LIKE @SearchText OR " +
+                    "[company_website] LIKE @SearchText OR " +
+                    "EXISTS (SELECT 1 FROM Products_Table WHERE Companies.company_id = Products.company_id AND " +
+                    "(description LIKE @SearchText OR cloud LIKE @SearchText OR software_name LIKE @SearchText))";
+
+                Console.WriteLine("SQL Query: " + sqlQuery);
+
+                // Create a SqlCommand object with parameters
+                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection.getDBConnection()))
                 {
-                    string searchQuery = "SELECT * FROM [Companies] WHERE [company_name] LIKE @CompanyName";
+                    command.Parameters.AddWithValue("@SearchText", "%" + searchText + "%");
 
-                    using (SqlCommand command = new SqlCommand(searchQuery, connection))
+                    Console.WriteLine("Parameters added to SqlCommand...");
+
+                    // Create a data adapter to fill a DataTable
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(command))
                     {
-                        companyName = "%" + companyName + "%";
-                        command.Parameters.AddWithValue("@CompanyName", companyName);
+                        DataTable dataTable = new DataTable();
+                        dataAdapter.Fill(dataTable);
 
-                        connection.Open();
+                        Console.WriteLine("DataTable filled with search results...");
 
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            DataTable resultsTable = new DataTable();
-                            resultsTable.Load(reader);
-                            return resultsTable;
-                        }
+                        return dataTable;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error in SearchCompanies: " + ex.Message);
+                Console.WriteLine("Error in ComprehensiveSearch: " + ex.Message);
                 return null;
+            }
+            finally
+            {
+                Console.WriteLine("ComprehensiveSearch method finished...");
             }
         }
     }

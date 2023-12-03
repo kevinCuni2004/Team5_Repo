@@ -25,7 +25,7 @@ namespace Citisoft
 
         private void FetchVendorDataFromDatabase()
         {
-            string query = "SELECT company_name, company_website FROM Companies";
+            string query = "SELECT [company_name], [company_website]  FROM Companies";
             DataTable vendorData = GetDataFromDatabase(query);
 
             if (vendorData != null && vendorData.Rows.Count > 0)
@@ -57,7 +57,7 @@ namespace Citisoft
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.DBConnectionString))
+                using (SqlConnection connection = new SqlConnection(/* Our connection string */))
                 using (SqlCommand command = new SqlCommand(query, connection))
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                 {
