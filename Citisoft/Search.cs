@@ -35,9 +35,9 @@ namespace Citisoft
                     "(description LIKE @SearchText OR cloud LIKE @SearchText OR software_name LIKE @SearchText))";
 
                 Console.WriteLine("SQL Query: " + sqlQuery);
-
+                SqlConnection conn = new SqlConnection(Properties.Settings.Default.DBConnectionString);
                 // Create a SqlCommand object with parameters
-                using (SqlCommand command = new SqlCommand(sqlQuery, dbConnection.getDBConnection()))
+                using (SqlCommand command = new SqlCommand(sqlQuery, conn))
                 {
                     command.Parameters.AddWithValue("@SearchText", "%" + searchText + "%");
 
