@@ -25,8 +25,8 @@ namespace Citisoft
 
         private void FetchVendorDataFromDatabase()
         {
-            string connectionString = ""/* our  connection string here */;
-            string query = "SELECT [company_name], [company_website]  FROM Companies";
+            string connectionString = Properties.Settings.Default.DBConnectionString;
+            string query = "SELECT [company_name], [company_website]  FROM [Companies]";
             DataTable vendorData = GetDataFromDatabase(query, connectionString);
 
             if (vendorData != null && vendorData.Rows.Count > 0)

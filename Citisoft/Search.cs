@@ -28,11 +28,11 @@ namespace Citisoft
                 Console.WriteLine("ComprehensiveSearch method started...");
 
                 // Define  SQL query for a comprehensive search
-                string sqlQuery = "SELECT * FROM Companies WHERE " +
+                string sqlQuery = "SELECT * FROM [Companies] WHERE " +
                     "[company_name] LIKE @SearchText OR " +
                     "[company_website] LIKE @SearchText OR " +
-                    "EXISTS (SELECT 1 FROM Products_Table WHERE Companies.company_id = Products.company_id AND " +
-                    "(description LIKE @SearchText OR cloud LIKE @SearchText OR software_name LIKE @SearchText))";
+                    "EXISTS (SELECT 1 FROM [Products] WHERE [Companies].[company_id] = [Products].[company_id] AND " +
+                    "([description] LIKE @SearchText OR [cloud] LIKE @SearchText OR [software_name] LIKE @SearchText))";
 
                 Console.WriteLine("SQL Query: " + sqlQuery);
                 SqlConnection conn = new SqlConnection(Properties.Settings.Default.DBConnectionString);
