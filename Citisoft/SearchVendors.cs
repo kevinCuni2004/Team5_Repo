@@ -26,7 +26,7 @@ namespace Citisoft
         private void FetchVendorDataFromDatabase()
         {
             string connectionString = Properties.Settings.Default.DBConnectionString;
-            string query = "SELECT [company_name], [company_website]  FROM [Companies]";
+            string query = "SELECT [company_name], [company_website]  FROM [Companies] ";
             DataTable vendorData = GetDataFromDatabase(query, connectionString);
 
             if (vendorData != null && vendorData.Rows.Count > 0)
@@ -52,6 +52,10 @@ namespace Citisoft
                     }
                 }
             }
+            else
+            {
+                noResultsLabel.Visible = true;
+            }
         }
 
         private DataTable GetDataFromDatabase(string query, string connectionString)
@@ -75,27 +79,35 @@ namespace Citisoft
         }
 
 
-        public void ShowCorrectVendorPanel(string enteredText)
+        public void DisplaySearchResults(DataTable searchResults)
         {
-            noResultsLabel.Visible = false;
-            var vendorPanels = this.Controls.OfType<Panel>();
-            foreach (var panel in vendorPanels)
+            // Hide all panels
+            foreach (var panel in allPanels)
             {
+                panel.Visible = false;
+            }
+
+            // Display panels for the search results
+            int panelIndex = 0;
+            foreach (DataRow row in searchResults.Rows)
+            {
+                Panel panel = allPanels[panelIndex];
                 LinkLabel linkLabel = panel.Controls.OfType<LinkLabel>().FirstOrDefault();
-                if(linkLabel != null && linkLabel.Text == enteredText)
+
+                if (linkLabel != null)
                 {
-                    panel.Visible = true;
-                    panel.Location = new System.Drawing.Point(29, 100);
-                    found = true;
-                    return;
+                    linkLabel.Text = row["company_name"].ToString();
                 }
 
-            }
-            if (!found)
-            {
-                noResultsLabel.Visible = true;
+                panelIndex++;
+
+                if (panelIndex >= allPanels.Count)
+                {
+                    break; // Stop if we have populated all panels
+                }
             }
         }
+
         private void InitializeVendorPanels()
         {
             allPanels = new List<Panel>

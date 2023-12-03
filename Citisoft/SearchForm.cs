@@ -61,8 +61,9 @@ namespace Citisoft
                 if (results != null && results.Rows.Count > 0)
                 {
                     // Results found, you can use 'results' DataTable as needed
-                    searchVendor.ShowCorrectVendorPanel(enteredText);
-                    searchVendor.Show();
+                    SearchVendors searchVendorsForm = new SearchVendors();
+                    searchVendorsForm.DisplaySearchResults(results);
+                    searchVendorsForm.Show();
                     this.Hide();
                 }
                 else
