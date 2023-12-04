@@ -87,11 +87,17 @@ namespace Citisoft
             editButton.Visible = false;
             cancelButton.Visible = true;
             confirmButton.Visible = true;
-            
+
+            dataAccess.ReadOnly = false;
+            dataAccess.EditMode = DataGridViewEditMode.EditOnEnter;
+
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+
+            dataAccess.ReadOnly = true;
+            dataAccess.EditMode = DataGridViewEditMode.EditProgrammatically;
             cancelButton.Visible = false;
             confirmButton.Visible = false;
             editButton.Visible = true;
@@ -111,7 +117,6 @@ namespace Citisoft
         }
         private void EditAccess(DataGridViewRow selectedRow)
         {
-            dataAccess.ReadOnly = false;
             if (!originalValues.ContainsKey(selectedRow.Index))
             {
                 profileColumnIndex = dataAccess.Columns["Id"].Index;
@@ -124,6 +129,8 @@ namespace Citisoft
             editButton.Visible = true;
             cancelButton.Visible = false;
             confirmButton.Visible = false;
+            dataAccess.ReadOnly = true;
+            dataAccess.EditMode = DataGridViewEditMode.EditProgrammatically;
             foreach (DataGridViewRow row in dataAccess.Rows)
             {
                 RowState rowState = (RowState)(row.Tag ?? RowState.Existed);

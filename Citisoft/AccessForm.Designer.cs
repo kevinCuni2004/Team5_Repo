@@ -32,77 +32,98 @@ namespace Citisoft
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccessForm));
             this.usernameButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
-            this.nameLabel = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
             this.confirmButton = new System.Windows.Forms.Button();
             this.profileBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataAccess = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.profileBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataAccess)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // usernameButton
             // 
-            this.usernameButton.Location = new System.Drawing.Point(12, 12);
+            this.usernameButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.usernameButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
+            this.usernameButton.FlatAppearance.BorderSize = 2;
+            this.usernameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.usernameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.usernameButton.Location = new System.Drawing.Point(38, 15);
             this.usernameButton.Name = "usernameButton";
-            this.usernameButton.Size = new System.Drawing.Size(123, 46);
+            this.usernameButton.Size = new System.Drawing.Size(135, 49);
             this.usernameButton.TabIndex = 0;
             this.usernameButton.Text = "Username";
-            this.usernameButton.UseVisualStyleBackColor = true;
+            this.usernameButton.UseVisualStyleBackColor = false;
             this.usernameButton.Click += new System.EventHandler(this.usernameButton_Click);
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(12, 395);
+            this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.backButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
+            this.backButton.FlatAppearance.BorderSize = 2;
+            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.backButton.Location = new System.Drawing.Point(38, 12);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(123, 43);
+            this.backButton.Size = new System.Drawing.Size(104, 42);
             this.backButton.TabIndex = 1;
             this.backButton.Text = "Back";
-            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.UseVisualStyleBackColor = false;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // editButton
             // 
-            this.editButton.Location = new System.Drawing.Point(586, 40);
+            this.editButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.editButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
+            this.editButton.FlatAppearance.BorderSize = 2;
+            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.editButton.Location = new System.Drawing.Point(662, 90);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(114, 50);
+            this.editButton.Size = new System.Drawing.Size(101, 50);
             this.editButton.TabIndex = 2;
             this.editButton.Text = "Edit";
-            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.UseVisualStyleBackColor = false;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
-            // 
-            // nameLabel
-            // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Font = new System.Drawing.Font("Modern No. 20", 26F, System.Drawing.FontStyle.Bold);
-            this.nameLabel.Location = new System.Drawing.Point(303, 23);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(159, 45);
-            this.nameLabel.TabIndex = 5;
-            this.nameLabel.Text = "Citisoft";
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(487, 40);
+            this.cancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
+            this.cancelButton.FlatAppearance.BorderSize = 2;
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cancelButton.Location = new System.Drawing.Point(555, 91);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(93, 48);
             this.cancelButton.TabIndex = 7;
             this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Visible = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // confirmButton
             // 
-            this.confirmButton.Location = new System.Drawing.Point(602, 40);
+            this.confirmButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.confirmButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
+            this.confirmButton.FlatAppearance.BorderSize = 2;
+            this.confirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.confirmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.confirmButton.Location = new System.Drawing.Point(665, 91);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(98, 48);
             this.confirmButton.TabIndex = 8;
             this.confirmButton.Text = "Confirm";
-            this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.UseVisualStyleBackColor = false;
             this.confirmButton.Visible = false;
             this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
@@ -112,36 +133,71 @@ namespace Citisoft
             // 
             // dataAccess
             // 
+            this.dataAccess.AllowUserToDeleteRows = false;
+            this.dataAccess.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataAccess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataAccess.Location = new System.Drawing.Point(97, 131);
+            this.dataAccess.Location = new System.Drawing.Point(163, 143);
             this.dataAccess.Name = "dataAccess";
             this.dataAccess.ReadOnly = true;
             this.dataAccess.RowHeadersWidth = 51;
             this.dataAccess.RowTemplate.Height = 24;
-            this.dataAccess.Size = new System.Drawing.Size(620, 257);
+            this.dataAccess.Size = new System.Drawing.Size(600, 257);
             this.dataAccess.TabIndex = 12;
             this.dataAccess.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataAccess_CellClick);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(233)))), ((int)(((byte)(255)))));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.backButton);
+            this.panel1.Location = new System.Drawing.Point(-7, 430);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(934, 74);
+            this.panel1.TabIndex = 13;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(343, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(215, 49);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.usernameButton);
+            this.panel2.Location = new System.Drawing.Point(-7, -2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(991, 85);
+            this.panel2.TabIndex = 15;
             // 
             // AccessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(821, 460);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(916, 497);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataAccess);
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.editButton);
-            this.Controls.Add(this.backButton);
-            this.Controls.Add(this.usernameButton);
             this.Name = "AccessForm";
             this.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.Text = "AccessForm";
             this.Load += new System.EventHandler(this.AccessForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.profileBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataAccess)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -150,10 +206,12 @@ namespace Citisoft
         private System.Windows.Forms.Button usernameButton;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button editButton;
-        private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button confirmButton;
         private BindingSource profileBindingSource;
         private DataGridView dataAccess;
+        private Panel panel1;
+        private PictureBox pictureBox1;
+        private Panel panel2;
     }
 }
