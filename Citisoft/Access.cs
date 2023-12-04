@@ -18,12 +18,13 @@ namespace Citisoft
         }
         public Profile loadThreeValues(string email)
         {
-            User = new Profile();
+            Profile User = new Profile();
             string query = "SELECT * FROM [Profile] WHERE [e-mail]=@email;";
             User.Email = email;
             dBConnection = DBConnection.getInstance();
             SqlCommand command = new SqlCommand(query);
             command.Parameters.AddWithValue("@email", email);
+            //User.Add(new Profile { Id = 1, Access = 1, FirstName = "Jhon", LastName = "dskfpsd"});
             return User;
         }
        //--С каждым новым профилем должны добавляться ряды--//

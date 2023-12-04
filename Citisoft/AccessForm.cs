@@ -29,37 +29,41 @@ namespace Citisoft
         {
             dataAccess.Columns.Add("profile_id", "Id");
             dataAccess.Columns.Add("access", "Status");
-            dataAccess.Columns.Add("name", "Name");
-            dataAccess.Columns.Add("surname", "Surname");
+            dataAccess.Columns.Add("name", "FirstName");
+            dataAccess.Columns.Add("surname", "LastName");
         }
         private void ReadSingleRow(DataGridView dgw, IDataRecord access)
         {
             dgw.Rows.Add(access.GetInt32(0), access.GetInt32(1), access.GetString(2), access.GetString(3), RowState.ModidiedNew);
         }
-        private void DisplayAccess(DataGridView dgw)
+        private void DisplayAccess(Profile userProfile)
         {
             //--We don't have objects in attributes so it wont work--//
-            DBConnection dbConnection = DBConnection.getInstance();
-            string query = "SELECT * FROM PROFILE";
-            SqlCommand command = new SqlCommand(query, dbConnection.getDBConnection());
-            try
-            {
+            //DBConnection dbConnection = DBConnection.getInstance();
+            //string query = "SELECT * FROM PROFILE";
+            //SqlCommand command = new SqlCommand(query, dbConnection.getDBConnection());
+            //try
+            //{
 
-                dbConnection.openDBConnection();
+                //dbConnection.openDBConnection();
 
 
-                using (SqlDataReader reader = dbConnection.ExcecuteReader(command))
-                {
-                    while (reader.Read())
-                    {
-                        ReadSingleRow(dgw, reader);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
+                //using (SqlDataReader reader = dbConnection.ExcecuteReader(command))
+                //{
+                    //while (reader.Read())
+                    //{
+                        //ReadSingleRow(dgw, reader);
+                    //}
+                //}
+            //}
+            //catch (Exception ex)
+            //{
 
-                Console.WriteLine($"Ошибка при выполнении запроса: {ex.Message}");
+                //Console.WriteLine($"Ошибка при выполнении запроса: {ex.Message}");
+            //}
+            dataAccess.Rows.Clear();
+            if (userProfile != null) {
+                dataAccess.Rows.Add(userProfile.Id, userProfile.Access, userProfile.FirstName, userProfile.LastName);
             }
         }
         private void usernameButton_Click(object sender, EventArgs e)
@@ -76,9 +80,9 @@ namespace Citisoft
             //--go to admin home page form--//
             //--we don't have now so it won't work--//
 
-            //AdminHomePage adminhomepage = new AdminHomePage();
-            //adminhomepage.Show();
-            //this.Close();
+            AdminHomePageForm adminhomepage = new AdminHomePageForm();
+            adminhomepage.Show();
+            this.Close();
         }
 
         private void editButton_Click(object sender, EventArgs e)
@@ -139,7 +143,7 @@ namespace Citisoft
                 {
                     case RowState.New:
                         //make a realization for setting new element
-                        //InsertAccess(row);
+                        InsertAccessRow(row);
                         break;
 
                     case RowState.Modified:
@@ -159,114 +163,76 @@ namespace Citisoft
                 }
             }
         }
-        private void InserAccess(DataGridViewRow row)
-        {
-            DBConnection dbConnection = DBConnection.getInstance();
-            string query = "INSERT INTO Profile (access, name, surname) VALUES (@access, @name, @surname);";
-            using (SqlCommand command = new SqlCommand(query, dbConnection.getDBConnection()))
-            {
-                try
-                {
-                    dbConnection.openDBConnection();
-                    int accessValue = Convert.ToInt32(row.Cells["access"].Value);
-                    string nameValue = Convert.ToString(row.Cells["name"].Value);
-                    string surnameValue = Convert.ToString(row.Cells["surname"].Value);
-                    command.Parameters.AddWithValue("@access", accessValue);
-                    command.Parameters.AddWithValue("@name", nameValue);
-                    command.Parameters.AddWithValue("@surname", surnameValue);
-                    int rowsAffected = command.ExecuteNonQuery();
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("Insert successfil");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-        private void DeleteAccess(DataGridViewRow row)
-        {
-            DBConnection dbConnection = DBConnection.getInstance();
-            string query = "DELETE FROM Profile WHERE access = @access AND name = @name AND surname = @surname;";
-
-            using (SqlCommand command = new SqlCommand(query, dbConnection.getDBConnection()))
-            {
-                try
-                {
-                    dbConnection.openDBConnection();
-
-                    // Получение оригинальных значений, если они не сохранены
-                    if (!originalValues.ContainsKey(row.Index))
-                    {
-                        originalValues[row.Index] = new
-                        {
-                            Access = Convert.ToInt32(row.Cells["access"].Value),
-                            Name = Convert.ToString(row.Cells["name"].Value),
-                            Surname = Convert.ToString(row.Cells["surname"].Value)
-                        };
-                    }
-
-
-                    command.Parameters.AddWithValue("@access", ((dynamic)originalValues[row.Index]).Access);
-                    command.Parameters.AddWithValue("@name", ((dynamic)originalValues[row.Index]).Name);
-                    command.Parameters.AddWithValue("@surname", ((dynamic)originalValues[row.Index]).Surname);
-
-
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("Delete successful!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Delete failed!");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Ошибка при выполнении запроса: {ex.Message}");
-                }
-            }
-        }
         private void UpdateAccess(DataGridViewRow row)
         {
-            DBConnection dbConnection = DBConnection.getInstance();
-            string query = "UPDATE Profile SET access = @access, name = @name, surname = @surname WHERE profile_id = @profile_id";
+            if (row.Tag == null)
+                return;
 
-            using (SqlCommand command = new SqlCommand(query, dbConnection.getDBConnection()))
+            Profile userProfile = new Profile
             {
-                try
+                Id = Convert.ToInt32(row.Cells["profile_id"].Value),
+                Email = Convert.ToString(row.Cells["email"].Value),
+                Access = Convert.ToInt32(row.Cells["access"].Value),
+                FirstName = Convert.ToString(row.Cells["name"].Value),
+                LastName = Convert.ToString(row.Cells["surname"].Value)
+            };
+
+            // Обновление базы данных
+            // Добавьте свой код здесь для обновления базы данных новыми значениями из userProfile
+
+            // Обновление DataGridView новыми значениями
+            row.Cells["email"].Value = userProfile.Email;
+            row.Cells["access"].Value = userProfile.Access;
+            row.Cells["name"].Value = userProfile.FirstName;
+            row.Cells["surname"].Value = userProfile.LastName;
+        }
+
+        private void DeleteAccess(DataGridViewRow row)
+        {
+            if (row.Tag == null)
+                return;
+
+            // Удаление записи из базы данных
+            // Добавьте свой код здесь для удаления записи с заданным ID
+
+            // Удаление строки из DataGridView
+            dataAccess.Rows.Remove(row);
+        }
+        private void InsertAccessRow(DataGridViewRow row)
+        {
+            Profile userProfile = new Profile
+            {
+                Email = Convert.ToString(row.Cells["email"].Value),
+                Access = Convert.ToInt32(row.Cells["access"].Value),
+                FirstName = Convert.ToString(row.Cells["name"].Value),
+                LastName = Convert.ToString(row.Cells["surname"].Value)
+            };
+            InserAccess(userProfile);
+            row.Cells["email"].Value = userProfile.Email;
+            row.Cells["access"].Value = userProfile.Access;
+            row.Cells["name"].Value = userProfile.FirstName;
+            row.Cells["surname"].Value = userProfile.LastName;
+        }
+        private void InserAccess(Profile userProfile)
+        {
+            
+           if (userProfile != null)
+            {
+                string query = "INSERT INTO [Profile] ([e-mail], Access, FirstName, LastName) VALUES (@email, @access, @name, @surname);";
+                using (SqlCommand command = new SqlCommand(query, dBConnection.getDBConnection()))
                 {
-                    dbConnection.openDBConnection();
-                    int accessValue = Convert.ToInt32(row.Cells["access"].Value);
-                    string nameValue = Convert.ToString(row.Cells["name"].Value);
-                    string surnameValue = Convert.ToString(row.Cells["surname"].Value);
-                    command.Parameters.AddWithValue("@access", accessValue);
-                    command.Parameters.AddWithValue("@name", nameValue);
-                    command.Parameters.AddWithValue("@surname", surnameValue);
-
-
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
+                    try
                     {
-                        MessageBox.Show("Update successful!");
+                        command.Parameters.AddWithValue("@email", userProfile.Email);
+                        command.Parameters.AddWithValue("@access", userProfile.Access);
+                        command.Parameters.AddWithValue("@name", userProfile.FirstName);
+                        command.Parameters.AddWithValue("@surname", userProfile.LastName);
+                        int rowAffected = command.ExecuteNonQuery();
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Update failed!");
+                        MessageBox.Show($"Error during insertion: {ex.Message}");
                     }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Ошибка при выполнении запроса: {ex.Message}");
                 }
             }
         }
@@ -284,7 +250,9 @@ namespace Citisoft
         private void AccessForm_Load(object sender, EventArgs e)
         {
             CreateColumns();
-            DisplayAccess(dataAccess);
+            Access access = new Access();
+            Profile userProfile = access.loadThreeValues("saldfaslf;");
+            DisplayAccess(userProfile);
         }
     }
 }

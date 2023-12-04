@@ -43,6 +43,7 @@ namespace Citisoft
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.profileBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataAccess)).BeginInit();
             this.panel1.SuspendLayout();
@@ -176,12 +177,24 @@ namespace Citisoft
             this.panel2.Size = new System.Drawing.Size(991, 85);
             this.panel2.TabIndex = 15;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(233)))), ((int)(((byte)(255)))));
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(158, 101);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(188, 39);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Access page";
+            // 
             // AccessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(916, 497);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataAccess);
@@ -213,5 +226,6 @@ namespace Citisoft
         private Panel panel1;
         private PictureBox pictureBox1;
         private Panel panel2;
+        private System.Windows.Forms.Label label1;
     }
 }

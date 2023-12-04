@@ -203,11 +203,11 @@
     <Compile Include="AccessForm.Designer.cs">
       <DependentUpon>AccessForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminHomePage.cs">
+    <Compile Include="AdminHomePageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminHomePage.Designer.cs">
-      <DependentUpon>AdminHomePage.cs</DependentUpon>
+    <Compile Include="AdminHomePageForm.Designer.cs">
+      <DependentUpon>AdminHomePageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Adminhome.cs" />
@@ -261,8 +261,8 @@
     <EmbeddedResource Include="AccessForm.resx">
       <DependentUpon>AccessForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminHomePage.resx">
-      <DependentUpon>AdminHomePage.cs</DependentUpon>
+    <EmbeddedResource Include="AdminHomePageForm.resx">
+      <DependentUpon>AdminHomePageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
