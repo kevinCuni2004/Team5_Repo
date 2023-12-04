@@ -32,10 +32,12 @@ namespace Citisoft
         private string softwareNameColumnIndex;
         private string softwareTypeColumnIndex;
         private Dictionary<int, object> originalValues = new Dictionary<int, object>();
+        private Records records;
         public RecordsForm()
         {
             InitializeComponent();
             cancelButton.Click += cancelButton_Click;
+            records = new Records();
             //panel1.Paint += Panel1_Paint;
         }
 
@@ -65,7 +67,7 @@ namespace Citisoft
 
             DBConnection dbConnection = DBConnection.getInstance();
 
-            string query = "SELECT * FROM Products";
+            string query = "SELECT * FROM Products"  + "SELECT* FROM Comapanies" + "SELECT* FROM Software_type";
 
 
             SqlCommand command = new SqlCommand(query, dbConnection.getDBConnection());
@@ -149,18 +151,18 @@ namespace Citisoft
                 {
                     case RowState.New:
                         //make a realization for setting new element
-                        //InsertRecord(row);
+                        InsertRecord(row);
                         break;
 
                     case RowState.Modified:
                     case RowState.Edit:
                         //make a realization for updating in db
-                        //UpdateRecord(row);
+                        UpdateRecord(row);
                         break;
 
                     case RowState.Deleted:
                         //make a realization for deleting in rows
-                        //DeleteRecord(row);
+                        DeleteRecord(row);
                         break;
 
 
@@ -169,15 +171,7 @@ namespace Citisoft
                 }
             }
         }
-        private void InserAccess(DataGridViewRow row)
-            //          dataRecords.Columns.Add("company_name", "Company name");
-            //dataRecords.Columns.Add("date_joined", "Founding date");
-           // dataRecords.Columns.Add("last_reviewed_date", "Last eviewed date");
-           // dataRecords.Columns.Add("last_demo_date", "Last demo date");
-           // dataRecords.Columns.Add("established_date", "Established date");
-            //dataRecords.Columns.Add("company_website", "Company website");
-            //dataRecords.Columns.Add("no_of_employees", "No of employees");
-        
+        private void InsertRecord(DataGridViewRow row)
         {
             DBConnection dbConnection = DBConnection.getInstance();
             string query = "INSERT INTO Profile (product_id, description, cloud, software_name, software_type, date_joined, last_reviewed_date, last_demo_date, established_date, internal_professional_services, company_website, no_of_employees) VALUES (@product_id, @description, @cloud, @software_name, @software_type, @date_joined, @last_reviewed_date, @last_demo_date, @established_date, @internal_professional_services, @company_website, @no_of_employees);";
@@ -215,7 +209,7 @@ namespace Citisoft
                     int rowsAffected = command.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Insert successfil");
+                        MessageBox.Show("Insert successful");
                     }
                     else
                     {
@@ -228,7 +222,7 @@ namespace Citisoft
                 }
             }
         }
-        private void DeleteAccess(DataGridViewRow row)
+        private void DeleteRecord(DataGridViewRow row)
         {
             DBConnection dbConnection = DBConnection.getInstance();
             string query = "DELETE FROM Profile WHERE product_id = @product_id AND description = @description AND cloud = @cloud AND software_name = @software_name AND software_type = @software_type AND date_joined = @date_joined AND last_reviewed_date = @last_reviewed_date AND last_demo_date = @last_demo_date AND established_date = @established_date AND internal_professional_services = @internal_professional_services  AND company_website = @company_website AND no_of_employees = @no_of_employees ;";
@@ -297,7 +291,7 @@ namespace Citisoft
                 }
             }
         }
-        private void UpdateAccess(DataGridViewRow row)
+        private void UpdateRecord(DataGridViewRow row)
         {
             DBConnection dbConnection = DBConnection.getInstance();
             string query = "UPDATE  Profile SET product_id = @product_id AND description = @description AND cloud = @cloud AND software_name = @software_name AND software_type = @software_type AND date_joined = @date_joined AND last_reviewed_date = @last_reviewed_date AND last_demo_date = @last_demo_date AND established_date = @established_date AND internal_professional_services = @internal_professional_services  AND company_website = @company_website AND no_of_employees = @no_of_employees;";
@@ -389,6 +383,11 @@ namespace Citisoft
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void RecordsForm_Load_1(object sender, EventArgs e)
+        {
+            CreateColumns();
         }
     }
 }

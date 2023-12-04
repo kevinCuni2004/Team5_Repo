@@ -217,7 +217,7 @@
             this.linkLabel3.Size = new System.Drawing.Size(151, 54);
             this.linkLabel3.TabIndex = 16;
             this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "Allvue";
+            this.linkLabel3.Text = "Du";
             this.linkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
@@ -336,9 +336,9 @@
             this.vendorPanel5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.vendorPanel5.Controls.Add(this.linkLabel7);
             this.vendorPanel5.Controls.Add(this.label6);
-            this.vendorPanel5.Location = new System.Drawing.Point(1303, 132);
+            this.vendorPanel5.Location = new System.Drawing.Point(1276, 132);
             this.vendorPanel5.Name = "vendorPanel5";
-            this.vendorPanel5.Size = new System.Drawing.Size(154, 196);
+            this.vendorPanel5.Size = new System.Drawing.Size(149, 196);
             this.vendorPanel5.TabIndex = 0;
             this.vendorPanel5.Visible = false;
             // 
@@ -346,9 +346,9 @@
             // 
             this.linkLabel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.linkLabel7.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel7.Location = new System.Drawing.Point(3, 4);
+            this.linkLabel7.Location = new System.Drawing.Point(0, 0);
             this.linkLabel7.Name = "linkLabel7";
-            this.linkLabel7.Size = new System.Drawing.Size(148, 50);
+            this.linkLabel7.Size = new System.Drawing.Size(149, 54);
             this.linkLabel7.TabIndex = 19;
             this.linkLabel7.TabStop = true;
             this.linkLabel7.Text = "Du";
@@ -357,7 +357,7 @@
             // label6
             // 
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label6.Location = new System.Drawing.Point(3, 51);
+            this.label6.Location = new System.Drawing.Point(0, 54);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(148, 142);
             this.label6.TabIndex = 19;
@@ -446,7 +446,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 454);
+            this.ClientSize = new System.Drawing.Size(1471, 454);
             this.Controls.Add(this.noResultsLabel);
             this.Controls.Add(this.vendorPanel8);
             this.Controls.Add(this.vendorPanel5);
