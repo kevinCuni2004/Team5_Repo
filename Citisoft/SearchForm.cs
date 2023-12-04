@@ -55,14 +55,23 @@ namespace Citisoft
             if (!string.IsNullOrEmpty(searchText))
             {
                 Search search = new Search();
-                DataTable results = search.ComprehensiveSearch(searchText);
+                DataTable results = new DataTable();//search.ComprehensiveSearch(searchText);
 
                 // Check if any results were found
-                if (results != null && results.Rows.Count > 0)
+                /*if (results != null && results.Rows.Count > 0)
                 {
                     // Results found, you can use 'results' DataTable as needed
                     SearchVendors searchVendorsForm = new SearchVendors();
                     searchVendorsForm.DisplaySearchResults(results);
+                    searchVendorsForm.Show();
+                    this.Hide();
+                }*/
+                SearchVendors searchVendorsForm = new SearchVendors();
+                SqlDataReader reader = searchVendorsForm.GetVendorData(searchText);
+                if (reader != null)
+                {
+                    searchVendorsForm.searchText = searchText;
+                    searchVendorsForm.ShowCurrentPage();
                     searchVendorsForm.Show();
                     this.Hide();
                 }

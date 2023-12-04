@@ -21,7 +21,7 @@ namespace Citisoft
 
         }
 
-        public DataTable ComprehensiveSearch(string searchText)
+        /*public DataTable ComprehensiveSearch(string searchText)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace Citisoft
             {
                 Console.WriteLine("ComprehensiveSearch method finished...");
             }
-        }
+        }*/
     }
 
 }
