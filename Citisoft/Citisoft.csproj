@@ -204,6 +204,7 @@
       <DependentUpon>AccessForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Adminhome.cs" />
     <Compile Include="LogInForm.cs">
       <SubType>Form</SubType>
     </Compile>
