@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BCrypt.Net;
 
 namespace Citisoft
 {
@@ -58,9 +59,13 @@ namespace Citisoft
         //method to check if email and password match
         private bool IsValidCredentials(string email,string password)
         {
-            string query = $"SELECT COUNT(*) FROM Profile WHERE [e-mail] = '{email}' AND [password] = '{password}'";
-            int count = Convert.ToInt32(dBConnection.ExecuteScalar(query));
-            return count > 0;
+            string query = $"SELECT COUNT(*) FROM Profile WHERE [e-mail] = '{email}'";
+
+            string hashedPassword = dBConnection.ExecuteScalar(query)?.ToString();
+            return hashedPassword != null && BCrypt.Net.BCrypt.Verify(password, hashedPassword);
+            
+            //int count = Convert.ToInt32(dBConnection.ExecuteScalar(query));
+            //return count > 0;
 
         }
 
