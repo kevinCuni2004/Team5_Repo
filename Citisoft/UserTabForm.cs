@@ -287,5 +287,10 @@ namespace Citisoft
             changeDetailsTabControl.Visible = false;
             updateFields(User);
         }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -94,8 +94,9 @@ namespace Citisoft
 
             dataAccess.ReadOnly = false;
             dataAccess.EditMode = DataGridViewEditMode.EditOnEnter;
-
+            dataAccess.CellBeginEdit += dataAccess_CellBeginEdit;
         }
+
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
@@ -105,18 +106,34 @@ namespace Citisoft
             cancelButton.Visible = false;
             confirmButton.Visible = false;
             editButton.Visible = true;
-            if (dataAccess.SelectedRows.Count > 0)
+            foreach(DataGridViewRow row in dataAccess.Rows)
             {
-                DataGridViewRow selectedRow = dataAccess.SelectedRows[0];
-                CancelEdit(selectedRow);
+                RowState rowState = (RowState)(row.Tag ?? RowState.Existed);
+                switch(rowState)
+                {
+                    case RowState.Edit:
+                        CancelEdit(row);
+                        break;
+                }
             }
+            originalValues.Clear();
         }
         private void CancelEdit(DataGridViewRow selectedRow)
         {
             if (originalValues.ContainsKey(selectedRow.Index))
             {
-                selectedRow.Cells[profileColumnIndex].Value = originalValues[selectedRow.Index];
+                foreach(DataGridViewColumn column in dataAccess.Columns)
+                {
+
+                }
                 originalValues.Remove(selectedRow.Index);
+            }
+        }
+        private void dataAccess_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (e.ColumnIndex == dataAccess.Columns["profile_id"].Index)
+            {
+                e.Cancel = true;
             }
         }
         private void EditAccess(DataGridViewRow selectedRow)
@@ -149,7 +166,7 @@ namespace Citisoft
                     case RowState.Modified:
                     case RowState.Edit:
                         //make a realization for updating in db
-                        //UpdateAccess(row);
+                        UpdateAccessRow(row);
                         break;
 
                     case RowState.Deleted:
@@ -163,40 +180,44 @@ namespace Citisoft
                 }
             }
         }
-        private void UpdateAccess(DataGridViewRow row)
+        private void UpdateAccessRow(DataGridViewRow row)
         {
-            if (row.Tag == null)
-                return;
-
             Profile userProfile = new Profile
             {
-                Id = Convert.ToInt32(row.Cells["profile_id"].Value),
                 Email = Convert.ToString(row.Cells["email"].Value),
                 Access = Convert.ToInt32(row.Cells["access"].Value),
                 FirstName = Convert.ToString(row.Cells["name"].Value),
                 LastName = Convert.ToString(row.Cells["surname"].Value)
             };
-
-            // Обновление базы данных
-            // Добавьте свой код здесь для обновления базы данных новыми значениями из userProfile
-
-            // Обновление DataGridView новыми значениями
-            row.Cells["email"].Value = userProfile.Email;
-            row.Cells["access"].Value = userProfile.Access;
-            row.Cells["name"].Value = userProfile.FirstName;
-            row.Cells["surname"].Value = userProfile.LastName;
+            UpdateAccess(userProfile);
+            UpdateAccessRow(row);
         }
-
-        private void DeleteAccess(DataGridViewRow row)
+        private void UpdateAccess(Profile userProfile)
         {
-            if (row.Tag == null)
-                return;
 
-            // Удаление записи из базы данных
-            // Добавьте свой код здесь для удаления записи с заданным ID
+            if (userProfile != null)
+            {
+                string query = "UPDATE [Profile] SET [e-mail] = @e-mail, Access = @access, FirstName = @name, LastName = @surname WHERE Id = @id;)";
+                using (SqlCommand command = new SqlCommand(query, dBConnection.getDBConnection()))
+                {
+                    try
+                    {
+                        command.Parameters.AddWithValue("@email", userProfile.Email);
+                        command.Parameters.AddWithValue("@access", userProfile.Access);
+                        command.Parameters.AddWithValue("@name", userProfile.FirstName);
+                        command.Parameters.AddWithValue("@surname", userProfile.LastName);
+                        int rowAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error during insertion: {ex.Message}");
+                    }
+                }
+            }
+        }
+        private void DeleteAccessRow(DataGridViewRow row)
+        {
 
-            // Удаление строки из DataGridView
-            dataAccess.Rows.Remove(row);
         }
         private void InsertAccessRow(DataGridViewRow row)
         {

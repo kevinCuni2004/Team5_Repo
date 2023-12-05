@@ -32,6 +32,8 @@ namespace Citisoft
                 MessageBox.Show("Log in successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 user = userProfile;
+                SearchForm searchForm = new SearchForm();
+                searchForm.Show();
                 this.Close();
             }
             else
@@ -46,6 +48,11 @@ namespace Citisoft
         private void emailTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
