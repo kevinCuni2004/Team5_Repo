@@ -67,6 +67,33 @@ namespace Citisoft
             }*/
         }
 
+        private Panel panelTemplate()
+        {
+            Panel panel = new Panel();
+            panel.Size = new Size(178, 245);
+            panel.Dock = DockStyle.Fill;
+            panel.Margin = new Padding(3, 4, 3, 4);
+            panel.BackColor = Color.White;
+            panel.TabIndex = 11;
+            LinkLabel titleLinkLabel = new LinkLabel();
+            panel.Controls.Add(titleLinkLabel);
+            titleLinkLabel.Size = new Size(171, 71);
+            titleLinkLabel.Location = new Point(3, 2);
+            titleLinkLabel.TextAlign = ContentAlignment.MiddleCenter;
+            titleLinkLabel.BorderStyle = BorderStyle.FixedSingle;
+            titleLinkLabel.LinkColor = Color.Black;
+            titleLinkLabel.TabIndex = 14;
+            titleLinkLabel.TabStop = true;
+            Label descLabel = new Label();
+            panel.Controls.Add(descLabel);
+            descLabel.BorderStyle = BorderStyle.FixedSingle;
+            descLabel.TextAlign= ContentAlignment.TopCenter;
+            descLabel.TabIndex = 14;
+            descLabel.Location = new Point(3, 72);
+            descLabel.Size = new Size(171, 173);
+            return panel;
+        }
+
         public SqlDataReader GetVendorData(string searchText)
         {
             dBConnection = DBConnection.getInstance();
@@ -104,12 +131,6 @@ namespace Citisoft
 
         public void DisplaySearchResults(/*DataTable searchResults*/ SqlDataReader reader)
         {
-            // Hide all panels
-            foreach (var panel in allPanels)
-            {
-                panel.Visible = false;
-            }
-
             // Display panels for the search results
             int panelIndex = 0;
             /*foreach (DataRow row in searchResults.Rows)
@@ -130,44 +151,48 @@ namespace Citisoft
                 }
             }*/
             //Kevin Implemented this
-            using(reader)
+            using (reader)
             {
                 if (reader == null) Console.WriteLine("It's empty.");
                 while (reader.Read())
                 {
-                    if (company_id == reader.GetInt32(reader.GetOrdinal("company_id"))) {
+                    if (company_id == reader.GetInt32(reader.GetOrdinal("company_id")))
+                    {
                         continue;
                     }
-                    Panel panel = allPanels[panelIndex];
+                    Panel panel = panelTemplate();
+                    allPanels.Add(panel);
                     LinkLabel linkLabel = panel.Controls.OfType<LinkLabel>().FirstOrDefault();
+                    this.Controls.Add(allPanels[panelIndex]);
+                    allPanels[panelIndex].Controls.Add(linkLabel);
+                    Label label = panel.Controls.OfType<Label>().FirstOrDefault();
+                    allPanels[panelIndex].Controls.Add(label);
+                    allPanels[panelIndex].Size = new Size(178, 245);
+                    panel.Location = new Point(33, 100);
                     if (linkLabel != null)
                     {
                         company_id = reader.GetInt32(reader.GetOrdinal("company_id"));
                         linkLabel.Text = reader.GetString(reader.GetOrdinal("company_name"));
+                        label.Text = reader.GetString(reader.GetOrdinal("company_website"));
                     }
 
                     panelIndex++;
-
-                    panel.Show();
-
-                    if (panelIndex >= allPanels.Count)
-                    {
-                        break; // Stop if we have populated all panels
-                    }
                 }
+            }
+            int x = 33;
+            foreach (var panels in allPanels)
+            {
+                panels.Size = new Size(178, 245);
+                panels.Location = new Point(x, 100);
+                panels.Show();
+                x += 33;
+                x += 178;
             }
         }
 
         private void InitializeVendorPanels()
         {
-            allPanels = new List<Panel>
-            {
-                vendorPanel1,
-                vendorPanel2,
-                vendorPanel3,
-                vendorPanel4,
-
-            };
+            allPanels = new List<Panel>{};
             currentPageIndex = 0;
         }
         public void ShowCurrentPage()
@@ -183,7 +208,7 @@ namespace Citisoft
                 currentLocation += allPanels[i].Width + 30;
             }
             currentLocation = 29;
-            DisplaySearchResults(GetVendorData(searchText));
+            //DisplaySearchResults(GetVendorData(searchText));
         }
         private void ShowNextPage()
         {
