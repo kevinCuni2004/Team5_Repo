@@ -18,9 +18,11 @@ namespace Citisoft
     {
         bool found = false;
         private SearchVendors searchVendor;
+        private Search search;
         public SearchForm()
         {
             InitializeComponent();
+            search = new Search();
             searchVendor = new SearchVendors();
         }
 
@@ -54,26 +56,16 @@ namespace Citisoft
 
             if (!string.IsNullOrEmpty(searchText))
             {
-                Search search = new Search();
-                DataTable results = new DataTable();//search.ComprehensiveSearch(searchText);
-
-                // Check if any results were found
-                /*if (results != null && results.Rows.Count > 0)
-                {
-                    // Results found, you can use 'results' DataTable as needed
-                    SearchVendors searchVendorsForm = new SearchVendors();
-                    searchVendorsForm.DisplaySearchResults(results);
-                    searchVendorsForm.Show();
-                    this.Hide();
-                }*/
-                SearchVendors searchVendorsForm = new SearchVendors();
-                SqlDataReader reader = searchVendorsForm.GetVendorData(searchText);
+                
+               // DataTable results = new DataTable();
+                //SearchVendors searchVendorsForm = new SearchVendors();
+                SqlDataReader reader = search.SearchVendors(searchText);
                 if (reader != null)
                 {
-                    searchVendorsForm.searchText = searchText;
+                   // searchVendors.searchText = searchText;
                     //searchVendorsForm.ShowCurrentPage();
-                    searchVendorsForm.DisplaySearchResults(searchVendorsForm.GetVendorData(searchText));
-                    searchVendorsForm.Show();
+                    searchVendor.DisplaySearchResults(reader);
+                    searchVendor.Show();
                     this.Hide();
                 }
                 else

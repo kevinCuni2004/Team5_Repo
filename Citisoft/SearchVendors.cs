@@ -15,7 +15,7 @@ namespace Citisoft
     public partial class SearchVendors : Form
     {
         //Kevin
-        private DBConnection dBConnection;
+        private DBConnection dbConnection;
         public SqlDataReader dataReader;
         //
         private List<Panel> allPanels;
@@ -24,12 +24,14 @@ namespace Citisoft
         private int currentLocation = 29;
         private int company_id = 0;
         public string searchText;
+        private Search search;
         public SearchVendors()
         {
             InitializeComponent();
             InitializeVendorPanels();
             FetchVendorDataFromDatabase(); // Fetch vendor data when the form is initialized
             ShowCurrentPage();
+            search = new Search();
         }
 
         private void FetchVendorDataFromDatabase()
@@ -94,87 +96,46 @@ namespace Citisoft
             return panel;
         }
 
-        public SqlDataReader GetVendorData(string searchText)
-        {
-            dBConnection = DBConnection.getInstance();
-            string sqlQuery = "SELECT * FROM [Companies] WHERE " +
-                    "[company_name] LIKE @SearchText OR " +
-                    "[company_website] LIKE @SearchText OR " +
-                    "EXISTS (SELECT 1 FROM [Products] WHERE [Companies].[company_id] = [Products].[company_id] AND " +
-                    "([description] LIKE @SearchText OR [cloud] LIKE @SearchText OR [software_name] LIKE @SearchText))";
-            SqlCommand command = new SqlCommand(sqlQuery);
-            command.Parameters.AddWithValue("@SearchText", "%" + searchText + "%");
-            SqlDataReader reader = dBConnection.ExcecuteReader(command);
-            return reader;
-        }
-
-        private DataTable GetDataFromDatabase(string query, string connectionString)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
-                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                {
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-                    return dataTable;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error fetching data: " + ex.Message);
-                return null;
-            }
-        }
+       
 
 
-        public void DisplaySearchResults(/*DataTable searchResults*/ SqlDataReader reader)
+        public void DisplaySearchResults(SqlDataReader reader)
         {
             // Display panels for the search results
-            int panelIndex = 0;
-            /*foreach (DataRow row in searchResults.Rows)
-            {
-                Panel panel = allPanels[panelIndex];
-                LinkLabel linkLabel = panel.Controls.OfType<LinkLabel>().FirstOrDefault();
-
-                if (linkLabel != null)
-                {
-                    linkLabel.Text = row["company_name"].ToString();
-                }
-
-                panelIndex++;
-
-                if (panelIndex >= allPanels.Count)
-                {
-                    break; // Stop if we have populated all panels
-                }
-            }*/
+            ClearPanels();
+            
+            
             //Kevin Implemented this
             using (reader)
             {
                 if (reader == null) Console.WriteLine("It's empty.");
+                int panelIndex = 0;
                 while (reader.Read())
                 {
-                    if (company_id == reader.GetInt32(reader.GetOrdinal("company_id")))
+                    /*if (company_id == reader.GetInt32(reader.GetOrdinal("company_id")))
                     {
                         continue;
-                    }
+                    }*/
                     Panel panel = panelTemplate();
                     allPanels.Add(panel);
+
                     LinkLabel linkLabel = panel.Controls.OfType<LinkLabel>().FirstOrDefault();
-                    this.Controls.Add(allPanels[panelIndex]);
-                    allPanels[panelIndex].Controls.Add(linkLabel);
+                    //this.Controls.Add(allPanels[panelIndex]);
+                    //allPanels[panelIndex].Controls.Add(linkLabel);
                     Label label = panel.Controls.OfType<Label>().FirstOrDefault();
-                    allPanels[panelIndex].Controls.Add(label);
-                    allPanels[panelIndex].Size = new Size(178, 245);
-                    panel.Location = new Point(33, 100);
+                    //allPanels[panelIndex].Controls.Add(label);
+                    //allPanels[panelIndex].Size = new Size(178, 245);
+                    //panel.Location = new Point(33, 100);
                     if (linkLabel != null)
                     {
                         company_id = reader.GetInt32(reader.GetOrdinal("company_id"));
                         linkLabel.Text = reader.GetString(reader.GetOrdinal("company_name"));
                         label.Text = reader.GetString(reader.GetOrdinal("company_website"));
                     }
+                    this.Controls.Add(panel);
+
+                    panel.Size = new Size(178, 245);
+                    panel.Location = new Point(33, 100);
 
                     panelIndex++;
                 }
@@ -188,6 +149,14 @@ namespace Citisoft
                 x += 33;
                 x += 178;
             }
+        }
+        private void ClearPanels()
+        {
+            foreach(var panel in allPanels)
+            {
+                panel.Dispose();
+            }
+            allPanels.Clear();
         }
 
         private void InitializeVendorPanels()
