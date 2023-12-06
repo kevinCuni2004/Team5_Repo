@@ -30,9 +30,10 @@ namespace Citisoft
 
         private void helpreQuestButton_Click(object sender, EventArgs e)
         {
-            //HelpRequestForm helprequestform = new HelpRequestForm();
-            //helprequestform.Show();
-            //this.Hide();
+            Form2 form = new Form2();
+
+            form.Show();
+
         }
 
         private void viewRecordsButton_Click(object sender, EventArgs e)

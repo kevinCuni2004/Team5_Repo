@@ -20,7 +20,9 @@ namespace Citisoft
             //RecordsForm accessForm = new RecordsForm();
             //Application.Run(new RecordsForm());
             UserTabForm searchForm = new UserTabForm();
-            Application.Run(searchForm);
+            AdminHomePageForm adminHomePageForm = new AdminHomePageForm();
+            Form2 check = new Form2();
+            Application.Run(adminHomePageForm);
         }
     }
 }

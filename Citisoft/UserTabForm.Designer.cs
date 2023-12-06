@@ -361,7 +361,7 @@ namespace Citisoft
             this.changePasswordTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changePasswordTab.Name = "changePasswordTab";
             this.changePasswordTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.changePasswordTab.Size = new System.Drawing.Size(645, 282);
+            this.changePasswordTab.Size = new System.Drawing.Size(656, 271);
             this.changePasswordTab.TabIndex = 3;
             this.changePasswordTab.Text = "Change Password";
             this.changePasswordTab.UseVisualStyleBackColor = true;
@@ -488,7 +488,7 @@ namespace Citisoft
             this.changeLNameTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeLNameTab.Name = "changeLNameTab";
             this.changeLNameTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.changeLNameTab.Size = new System.Drawing.Size(645, 282);
+            this.changeLNameTab.Size = new System.Drawing.Size(656, 271);
             this.changeLNameTab.TabIndex = 2;
             this.changeLNameTab.Text = "Change Last Name";
             this.changeLNameTab.UseVisualStyleBackColor = true;
@@ -593,7 +593,7 @@ namespace Citisoft
             this.changeFNameTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeFNameTab.Name = "changeFNameTab";
             this.changeFNameTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.changeFNameTab.Size = new System.Drawing.Size(645, 282);
+            this.changeFNameTab.Size = new System.Drawing.Size(656, 271);
             this.changeFNameTab.TabIndex = 1;
             this.changeFNameTab.Text = "Change First Name";
             this.changeFNameTab.UseVisualStyleBackColor = true;
@@ -699,7 +699,7 @@ namespace Citisoft
             this.changeDescTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeDescTab.Name = "changeDescTab";
             this.changeDescTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.changeDescTab.Size = new System.Drawing.Size(645, 282);
+            this.changeDescTab.Size = new System.Drawing.Size(656, 271);
             this.changeDescTab.TabIndex = 0;
             this.changeDescTab.Text = "Change Description";
             this.changeDescTab.UseVisualStyleBackColor = true;
@@ -788,6 +788,7 @@ namespace Citisoft
             this.helpButton.TabIndex = 13;
             this.helpButton.Text = "Help";
             this.helpButton.UseVisualStyleBackColor = false;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
             // 
             // backButton
             // 
