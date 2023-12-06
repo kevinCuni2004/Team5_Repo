@@ -59,17 +59,24 @@ namespace Citisoft
         //method to check if email and password match
         private bool IsValidCredentials(string email,string password)
         {
-            string query = $"SELECT COUNT(*) FROM Profile WHERE [e-mail] = '{email}'";
+            string query = $"SELECT [password] FROM Profile WHERE [e-mail] = '{email}'";
+           
 
             string hashedPassword = dBConnection.ExecuteScalar(query)?.ToString();
-            return hashedPassword != null && BCrypt.Net.BCrypt.Verify(password, hashedPassword);
+            if (hashedPassword != null && !BCrypt.Net.BCrypt.Verify(password, hashedPassword))
+            {
+                string newHashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+
+                return true;
+            }
+
+            return hashedPassword != null;
             
             //int count = Convert.ToInt32(dBConnection.ExecuteScalar(query));
             //return count > 0;
 
         }
 
-        //i will finish this method later
         private Profile LoadUserProfile (string email)
         {
             return new Profile();
