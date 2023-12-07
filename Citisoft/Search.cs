@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using System.Data.Common;
 
 
-//taya is currently working on this class, please do not change anything here
 namespace Citisoft
 {
     public class Search
