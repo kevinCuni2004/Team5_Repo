@@ -165,6 +165,8 @@
             this.noResultsLabel.Size = new System.Drawing.Size(141, 22);
             this.noResultsLabel.TabIndex = 2;
             this.noResultsLabel.Text = "No results found";
+            this.noResultsLabel.Click += new System.EventHandler(this.noResultsLabel_Click);
+            this.noResultsLabel.Visible = false;
             // 
             // vScrollBar1
             // 

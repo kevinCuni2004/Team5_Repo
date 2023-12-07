@@ -27,6 +27,5 @@ namespace Citisoft
             //User.Add(new Profile { Id = 1, Access = 1, FirstName = "Jhon", LastName = "dskfpsd"});
             return User;
         }
-       //--С каждым новым профилем должны добавляться ряды--//
     }
 }

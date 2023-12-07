@@ -12,23 +12,23 @@ namespace Citisoft
 {
     public partial class Form2 : Form
     {
-        private DatabaseHelper _dbHelper;
+        //private DatabaseHelper _dbHelper;
 
         public Form2()
         {
             InitializeComponent();
-            _dbHelper = new DatabaseHelper("path_to_your_Messages.db");
+            //_dbHelper = new DatabaseHelper("path_to_your_Messages.db");
             LoadMessagesFromDatabase();
         }
 
         private void LoadMessagesFromDatabase()
         {
             listViewMessages.Items.Clear();
-            var messages = _dbHelper.GetAllMessages();
-            foreach (var (Message, Timestamp) in messages)
-            {
-                AddMessageToListView(Message, Timestamp);
-            }
+            //var messages = _dbHelper.GetAllMessages();
+            //foreach (var (Message, Timestamp) in messages)
+            //{
+                //AddMessageToListView(Message, Timestamp);
+            //}
         }
 
         private void AddMessageToListView(string message, string timestamp)
@@ -49,7 +49,7 @@ namespace Citisoft
             {
                 string message = item.SubItems[0].Text;
                 string timestamp = item.SubItems[1].Text;
-                _dbHelper.DeleteMessage(message, timestamp);
+                //_dbHelper.DeleteMessage(message, timestamp);
                 listViewMessages.Items.Remove(item);
             }
         }
@@ -65,6 +65,9 @@ namespace Citisoft
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

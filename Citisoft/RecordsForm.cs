@@ -48,8 +48,6 @@ namespace Citisoft
             dataRecords.Columns.Add("product_id", "Id");
             dataRecords.Columns.Add("description", "Description");
             dataRecords.Columns.Add("cloud", "Cloud");
-            dataRecords.Columns.Add("software_name", "Software name");
-            dataRecords.Columns.Add("sowtware_type", "Sowtware type");
             dataRecords.Columns.Add("company_name", "Company name");
             dataRecords.Columns.Add("date_joined", "Founding date");
             dataRecords.Columns.Add("last_reviewed_date", "Last eviewed date");
@@ -90,7 +88,7 @@ namespace Citisoft
             catch (Exception ex)
             {
 
-                Console.WriteLine($"Ошибка при выполнении запроса: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
 
@@ -103,9 +101,9 @@ namespace Citisoft
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            //AdminHomePage adminhomepage = new AdminHomePage();
-            //adminhomepage.Show();
-            //this.Close();
+            AdminHomePageForm adminhomepage = new AdminHomePageForm();
+            adminhomepage.Show();
+            this.Close();
         }
 
         private void editButton_Click(object sender, EventArgs e)

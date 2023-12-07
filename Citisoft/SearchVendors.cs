@@ -260,5 +260,10 @@ namespace Citisoft
             }
 
         }
+
+        private void noResultsLabel_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

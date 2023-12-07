@@ -23,94 +23,101 @@ namespace Citisoft
 
         private void InitializeComponent()
         {
-            listViewMessages = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            buttonDelete = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            button1 = new Button();
-            SuspendLayout();
+            this.listViewMessages = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
             // listViewMessages
             // 
-            listViewMessages.CheckBoxes = true;
-            listViewMessages.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
-            listViewMessages.FullRowSelect = true;
-            listViewMessages.GridLines = true;
-            listViewMessages.Location = new Point(12, 140);
-            listViewMessages.Name = "listViewMessages";
-            listViewMessages.Size = new Size(1086, 379);
-            listViewMessages.TabIndex = 0;
-            listViewMessages.UseCompatibleStateImageBehavior = false;
-            listViewMessages.View = View.Details;
-            listViewMessages.SelectedIndexChanged += ListViewMessages_SelectedIndexChanged;
+            this.listViewMessages.CheckBoxes = true;
+            this.listViewMessages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listViewMessages.FullRowSelect = true;
+            this.listViewMessages.GridLines = true;
+            this.listViewMessages.HideSelection = false;
+            this.listViewMessages.Location = new System.Drawing.Point(12, 112);
+            this.listViewMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listViewMessages.Name = "listViewMessages";
+            this.listViewMessages.Size = new System.Drawing.Size(1086, 304);
+            this.listViewMessages.TabIndex = 0;
+            this.listViewMessages.UseCompatibleStateImageBehavior = false;
+            this.listViewMessages.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
-            columnHeader1.Text = "Message";
-            columnHeader1.Width = 500;
+            this.columnHeader1.Text = "Message";
+            this.columnHeader1.Width = 500;
             // 
             // columnHeader2
             // 
-            columnHeader2.Text = "Timestamp";
-            columnHeader2.Width = 276;
+            this.columnHeader2.Text = "Timestamp";
+            this.columnHeader2.Width = 276;
             // 
             // buttonDelete
             // 
-            buttonDelete.Font = new Font("Segoe UI Emoji", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDelete.Location = new Point(12, 525);
-            buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(1086, 44);
-            buttonDelete.TabIndex = 1;
-            buttonDelete.Text = "Delete Selected Messages";
-            buttonDelete.UseVisualStyleBackColor = true;
-            buttonDelete.Click += ButtonDelete_Click;
+            this.buttonDelete.Font = new System.Drawing.Font("Segoe UI Emoji", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDelete.Location = new System.Drawing.Point(12, 420);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(1086, 35);
+            this.buttonDelete.TabIndex = 1;
+            this.buttonDelete.Text = "Delete Selected Messages";
+            this.buttonDelete.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Emoji", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(373, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(303, 53);
-            label1.TabIndex = 2;
-            label1.Text = "Help Requests ";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Emoji", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(373, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(303, 53);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Help Requests ";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(12, 101);
-            label2.Name = "label2";
-            label2.Size = new Size(434, 27);
-            label2.TabIndex = 3;
-            label2.Text = "Only admin can read and delete the request";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 81);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(434, 27);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Only admin can read and delete the request";
             // 
             // button1
             // 
-            button1.Font = new Font("Segoe UI Emoji", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(37, 23);
-            button1.Name = "button1";
-            button1.Size = new Size(128, 46);
-            button1.TabIndex = 4;
-            button1.Text = "Back";
-            button1.UseVisualStyleBackColor = true;
+            this.button1.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(37, 18);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(128, 37);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Back";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form2
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1110, 601);
-            Controls.Add(button1);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(buttonDelete);
-            Controls.Add(listViewMessages);
-            Name = "Form2";
-            Text = "Messages";
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1110, 481);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.listViewMessages);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "Form2";
+            this.Text = "Messages";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         private Label label1;

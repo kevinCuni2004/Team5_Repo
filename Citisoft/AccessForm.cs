@@ -125,7 +125,13 @@ namespace Citisoft
             {
                 foreach(DataGridViewColumn cell in selectedRow.Cells)
                 {
-
+                    if (originalValues.TryGetValue(selectedRow.Index, out object originalValue))
+                    {
+                        if(originalValue == typeof(int) && originalValue is int intValue)
+                        {
+                            //cell.ValueType = intValue;
+                        }
+                    }
                 }
                 originalValues.Remove(selectedRow.Index);
             }
