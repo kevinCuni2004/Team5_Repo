@@ -74,7 +74,8 @@ namespace Citisoft
                 if (reader != null)
                 {
                     searchVendorsForm.searchText = searchText;
-                    searchVendorsForm.ShowCurrentPage();
+                    //searchVendorsForm.ShowCurrentPage();
+                    searchVendorsForm.DisplaySearchResults(searchVendorsForm.GetVendorData(searchText));
                     searchVendorsForm.Show();
                     this.Hide();
                 }

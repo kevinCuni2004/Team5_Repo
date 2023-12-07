@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BCrypt.Net;
 
 namespace Citisoft
 {
@@ -38,14 +39,15 @@ namespace Citisoft
 
                     throw new ArgumentException("Account already exists");
                 }
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
-                string sqlQuery = $"INSERT INTO Profile ([e-mail], [password]) VALUES ('{email}', '{password}')";
+                string sqlQuery = $"INSERT INTO Profile ([e-mail], [password]) VALUES ('{email}', '{hashedPassword}')";
                 dbConnection.saveToDB(sqlQuery);
 
                 return ("Success", new Profile
                 {
                     Email = email,
-                    Password = password
+                    Password = hashedPassword
                 });
 
             }
