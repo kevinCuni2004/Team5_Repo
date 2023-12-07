@@ -39,6 +39,7 @@ namespace Citisoft
             cancelButton.Click += cancelButton_Click;
             records = new Records();
             //panel1.Paint += Panel1_Paint;
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
 

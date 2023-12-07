@@ -12,11 +12,12 @@ using System.Windows.Forms;
 
 namespace Citisoft
 {
-    public partial class TermsOfUsecs : Form
+    public partial class TermsOfUseForm : Form
     {
-        public TermsOfUsecs()
+        public TermsOfUseForm()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void PDFButton_Click(object sender, EventArgs e)

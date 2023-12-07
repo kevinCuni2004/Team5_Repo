@@ -38,6 +38,7 @@ namespace Citisoft
             FetchVendorDataFromDatabase(); // Fetch vendor data when the form is initialized
             ShowCurrentPage();
             search = new Search();
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void FetchVendorDataFromDatabase()
@@ -231,7 +232,8 @@ namespace Citisoft
 
         private void termsOfUseLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            TermsOfUseForm terms = new TermsOfUseForm();
+            terms.Show();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

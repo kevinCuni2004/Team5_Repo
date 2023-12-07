@@ -29,11 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminHomePageForm));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.usernameButton = new System.Windows.Forms.Button();
             this.helpRequestButton = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.backButton = new System.Windows.Forms.Button();
             this.viewRecordsButton = new System.Windows.Forms.Button();
             this.viewAccessButton = new System.Windows.Forms.Button();
@@ -41,40 +38,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(233)))), ((int)(((byte)(255)))));
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.usernameButton);
-            this.panel1.Controls.Add(this.helpRequestButton);
-            this.panel1.Location = new System.Drawing.Point(-7, -2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(991, 85);
-            this.panel1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(331, 14);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(196, 68);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // usernameButton
             // 
+            this.usernameButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.usernameButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.usernameButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
             this.usernameButton.FlatAppearance.BorderSize = 2;
             this.usernameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.usernameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.usernameButton.Location = new System.Drawing.Point(31, 17);
+            this.usernameButton.Location = new System.Drawing.Point(24, 12);
             this.usernameButton.Name = "usernameButton";
             this.usernameButton.Size = new System.Drawing.Size(132, 48);
             this.usernameButton.TabIndex = 0;
@@ -84,12 +60,13 @@
             // 
             // helpRequestButton
             // 
+            this.helpRequestButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.helpRequestButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.helpRequestButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
             this.helpRequestButton.FlatAppearance.BorderSize = 2;
             this.helpRequestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.helpRequestButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.helpRequestButton.Location = new System.Drawing.Point(700, 14);
+            this.helpRequestButton.Location = new System.Drawing.Point(709, 12);
             this.helpRequestButton.Name = "helpRequestButton";
             this.helpRequestButton.Size = new System.Drawing.Size(195, 51);
             this.helpRequestButton.TabIndex = 5;
@@ -97,23 +74,15 @@
             this.helpRequestButton.UseVisualStyleBackColor = false;
             this.helpRequestButton.Click += new System.EventHandler(this.helpreQuestButton_Click);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(233)))), ((int)(((byte)(255)))));
-            this.panel2.Controls.Add(this.backButton);
-            this.panel2.Location = new System.Drawing.Point(-7, 430);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(934, 74);
-            this.panel2.TabIndex = 1;
-            // 
             // backButton
             // 
+            this.backButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.backButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
             this.backButton.FlatAppearance.BorderSize = 2;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backButton.Location = new System.Drawing.Point(38, 12);
+            this.backButton.Location = new System.Drawing.Point(24, 443);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(104, 42);
             this.backButton.TabIndex = 1;
@@ -123,6 +92,7 @@
             // 
             // viewRecordsButton
             // 
+            this.viewRecordsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.viewRecordsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.viewRecordsButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
             this.viewRecordsButton.FlatAppearance.BorderSize = 2;
@@ -138,6 +108,7 @@
             // 
             // viewAccessButton
             // 
+            this.viewAccessButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.viewAccessButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.viewAccessButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
             this.viewAccessButton.FlatAppearance.BorderSize = 2;
@@ -153,6 +124,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(606, 177);
@@ -163,6 +135,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(339, 177);
@@ -173,6 +146,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(132, 177);
@@ -183,6 +157,7 @@
             // 
             // searchButton
             // 
+            this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.searchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.searchButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
             this.searchButton.FlatAppearance.BorderSize = 2;
@@ -196,34 +171,42 @@
             this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(344, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(230, 57);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // AdminHomePageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(916, 497);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.helpRequestButton);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.usernameButton);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.viewRecordsButton);
             this.Controls.Add(this.viewAccessButton);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Name = "AdminHomePageForm";
             this.Text = "AdminHomePage";
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button usernameButton;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button viewRecordsButton;

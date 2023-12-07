@@ -33,6 +33,7 @@ namespace Citisoft
         {
             InitializeComponent();
             signUp = signUpInstance;
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void SignUpButton_Click(object sender, EventArgs e)
@@ -89,7 +90,8 @@ namespace Citisoft
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Location = new System.Drawing.Point(234, 180);
+            this.emailTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.emailTextBox.Location = new System.Drawing.Point(270, 189);
             this.emailTextBox.Multiline = true;
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(374, 53);
@@ -98,7 +100,8 @@ namespace Citisoft
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(234, 289);
+            this.passwordTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.passwordTextBox.Location = new System.Drawing.Point(270, 298);
             this.passwordTextBox.Multiline = true;
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(374, 49);
@@ -107,12 +110,13 @@ namespace Citisoft
             // 
             // SignUpButton
             // 
+            this.SignUpButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.SignUpButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.SignUpButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
             this.SignUpButton.FlatAppearance.BorderSize = 2;
             this.SignUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SignUpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SignUpButton.Location = new System.Drawing.Point(344, 381);
+            this.SignUpButton.Location = new System.Drawing.Point(380, 390);
             this.SignUpButton.Name = "SignUpButton";
             this.SignUpButton.Size = new System.Drawing.Size(194, 65);
             this.SignUpButton.TabIndex = 2;
@@ -122,12 +126,13 @@ namespace Citisoft
             // 
             // helpButton
             // 
+            this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.helpButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
             this.helpButton.FlatAppearance.BorderSize = 2;
             this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.helpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.helpButton.Location = new System.Drawing.Point(798, 12);
+            this.helpButton.Location = new System.Drawing.Point(870, 12);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(106, 48);
             this.helpButton.TabIndex = 3;
@@ -137,12 +142,13 @@ namespace Citisoft
             // 
             // backButton
             // 
+            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.backButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
             this.backButton.FlatAppearance.BorderSize = 2;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backButton.Location = new System.Drawing.Point(26, 432);
+            this.backButton.Location = new System.Drawing.Point(26, 450);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(107, 53);
             this.backButton.TabIndex = 4;
@@ -164,8 +170,9 @@ namespace Citisoft
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(335, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(371, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(224, 58);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -174,8 +181,9 @@ namespace Citisoft
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(614, 180);
+            this.pictureBox2.Location = new System.Drawing.Point(650, 189);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(61, 53);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -184,8 +192,9 @@ namespace Citisoft
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(614, 289);
+            this.pictureBox3.Location = new System.Drawing.Point(650, 298);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(61, 49);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -194,10 +203,11 @@ namespace Citisoft
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(392, 73);
+            this.label1.Location = new System.Drawing.Point(428, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 32);
             this.label1.TabIndex = 9;
@@ -205,10 +215,11 @@ namespace Citisoft
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label2.Location = new System.Drawing.Point(229, 148);
+            this.label2.Location = new System.Drawing.Point(265, 157);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(263, 29);
             this.label2.TabIndex = 10;
@@ -216,10 +227,11 @@ namespace Citisoft
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label3.Location = new System.Drawing.Point(229, 257);
+            this.label3.Location = new System.Drawing.Point(265, 266);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(309, 29);
             this.label3.TabIndex = 11;
@@ -228,7 +240,7 @@ namespace Citisoft
             // SignUpForm
             // 
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(916, 497);
+            this.ClientSize = new System.Drawing.Size(988, 515);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

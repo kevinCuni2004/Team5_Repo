@@ -24,6 +24,7 @@ namespace Citisoft
         public AccessForm()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
         }
         private void CreateColumns()
         {

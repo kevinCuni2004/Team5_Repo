@@ -15,6 +15,7 @@ namespace Citisoft
         public AdminHomePageForm()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
         }
         private void usernameButton_Click(object sender, EventArgs e)
         {

@@ -107,9 +107,10 @@ namespace Citisoft
             // 
             // emailLabel
             // 
+            this.emailLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.emailLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.emailLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.emailLabel.Location = new System.Drawing.Point(65, 113);
+            this.emailLabel.Location = new System.Drawing.Point(180, 124);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(351, 29);
             this.emailLabel.TabIndex = 2;
@@ -119,9 +120,10 @@ namespace Citisoft
             // 
             // fnameLabel
             // 
+            this.fnameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.fnameLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fnameLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.fnameLabel.Location = new System.Drawing.Point(65, 166);
+            this.fnameLabel.Location = new System.Drawing.Point(180, 186);
             this.fnameLabel.Name = "fnameLabel";
             this.fnameLabel.Size = new System.Drawing.Size(160, 29);
             this.fnameLabel.TabIndex = 3;
@@ -131,9 +133,10 @@ namespace Citisoft
             // 
             // lnameLabel
             // 
+            this.lnameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lnameLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lnameLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lnameLabel.Location = new System.Drawing.Point(65, 235);
+            this.lnameLabel.Location = new System.Drawing.Point(180, 249);
             this.lnameLabel.Name = "lnameLabel";
             this.lnameLabel.Size = new System.Drawing.Size(160, 29);
             this.lnameLabel.TabIndex = 4;
@@ -143,9 +146,10 @@ namespace Citisoft
             // 
             // dobLabel
             // 
+            this.dobLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dobLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dobLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dobLabel.Location = new System.Drawing.Point(65, 295);
+            this.dobLabel.Location = new System.Drawing.Point(180, 319);
             this.dobLabel.Name = "dobLabel";
             this.dobLabel.Size = new System.Drawing.Size(160, 29);
             this.dobLabel.TabIndex = 5;
@@ -155,9 +159,10 @@ namespace Citisoft
             // 
             // changePasswordLabel
             // 
+            this.changePasswordLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.changePasswordLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.changePasswordLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.changePasswordLabel.Location = new System.Drawing.Point(65, 358);
+            this.changePasswordLabel.Location = new System.Drawing.Point(180, 388);
             this.changePasswordLabel.Name = "changePasswordLabel";
             this.changePasswordLabel.Size = new System.Drawing.Size(160, 29);
             this.changePasswordLabel.TabIndex = 6;
@@ -167,9 +172,10 @@ namespace Citisoft
             // 
             // descriptionLabel
             // 
+            this.descriptionLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.descriptionLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.descriptionLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.descriptionLabel.Location = new System.Drawing.Point(296, 156);
+            this.descriptionLabel.Location = new System.Drawing.Point(353, 186);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(422, 231);
             this.descriptionLabel.TabIndex = 7;
@@ -179,11 +185,12 @@ namespace Citisoft
             // 
             // descTitleLabel
             // 
+            this.descTitleLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.descTitleLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(233)))), ((int)(((byte)(255)))));
             this.descTitleLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.descTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descTitleLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.descTitleLabel.Location = new System.Drawing.Point(511, 113);
+            this.descTitleLabel.Location = new System.Drawing.Point(568, 143);
             this.descTitleLabel.Name = "descTitleLabel";
             this.descTitleLabel.Size = new System.Drawing.Size(207, 43);
             this.descTitleLabel.TabIndex = 8;
@@ -193,8 +200,9 @@ namespace Citisoft
             // 
             // updateInfoLabel
             // 
+            this.updateInfoLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.updateInfoLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.updateInfoLabel.Location = new System.Drawing.Point(292, 84);
+            this.updateInfoLabel.Location = new System.Drawing.Point(409, 86);
             this.updateInfoLabel.Margin = new System.Windows.Forms.Padding(0);
             this.updateInfoLabel.Name = "updateInfoLabel";
             this.updateInfoLabel.Size = new System.Drawing.Size(213, 18);
@@ -216,6 +224,7 @@ namespace Citisoft
             // 
             // changeDOBPanel
             // 
+            this.changeDOBPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.changeDOBPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.changeDOBPanel.Controls.Add(this.DOB_Year);
             this.changeDOBPanel.Controls.Add(this.DOB_Month);
@@ -233,6 +242,7 @@ namespace Citisoft
             // 
             // DOB_Year
             // 
+            this.DOB_Year.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DOB_Year.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.DOB_Year.Location = new System.Drawing.Point(389, 97);
             this.DOB_Year.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -283,6 +293,7 @@ namespace Citisoft
             // 
             // DOB_Day
             // 
+            this.DOB_Day.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.DOB_Day.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.DOB_Day.Location = new System.Drawing.Point(275, 97);
             this.DOB_Day.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -308,6 +319,7 @@ namespace Citisoft
             // 
             // changeDOBButton
             // 
+            this.changeDOBButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.changeDOBButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.changeDOBButton.Location = new System.Drawing.Point(305, 171);
             this.changeDOBButton.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
@@ -320,6 +332,7 @@ namespace Citisoft
             // 
             // cancelDOBButton
             // 
+            this.cancelDOBButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cancelDOBButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.cancelDOBButton.Location = new System.Drawing.Point(213, 171);
             this.cancelDOBButton.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
@@ -332,6 +345,7 @@ namespace Citisoft
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
@@ -344,6 +358,7 @@ namespace Citisoft
             // 
             // changeDOBLabel
             // 
+            this.changeDOBLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.changeDOBLabel.AutoSize = true;
             this.changeDOBLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changeDOBLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
@@ -765,13 +780,14 @@ namespace Citisoft
             // 
             // changeDetailsTabControl
             // 
+            this.changeDetailsTabControl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.changeDetailsTabControl.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.changeDetailsTabControl.Controls.Add(this.changeDescTab);
             this.changeDetailsTabControl.Controls.Add(this.changeFNameTab);
             this.changeDetailsTabControl.Controls.Add(this.changeLNameTab);
             this.changeDetailsTabControl.Controls.Add(this.changePasswordTab);
             this.changeDetailsTabControl.Controls.Add(this.changeDOBTab);
-            this.changeDetailsTabControl.Location = new System.Drawing.Point(54, 84);
+            this.changeDetailsTabControl.Location = new System.Drawing.Point(180, 114);
             this.changeDetailsTabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeDetailsTabControl.Name = "changeDetailsTabControl";
             this.changeDetailsTabControl.SelectedIndex = 0;
@@ -780,9 +796,10 @@ namespace Citisoft
             // 
             // helpButton
             // 
+            this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.helpButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.helpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.helpButton.Location = new System.Drawing.Point(645, 23);
+            this.helpButton.Location = new System.Drawing.Point(868, 23);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(98, 44);
             this.helpButton.TabIndex = 13;
@@ -794,9 +811,9 @@ namespace Citisoft
             // 
             this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backButton.Location = new System.Drawing.Point(28, 23);
+            this.backButton.Location = new System.Drawing.Point(26, 23);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(86, 44);
+            this.backButton.Size = new System.Drawing.Size(92, 54);
             this.backButton.TabIndex = 14;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = false;
@@ -804,8 +821,9 @@ namespace Citisoft
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(275, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(391, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(214, 47);
             this.pictureBox1.TabIndex = 15;
@@ -813,10 +831,12 @@ namespace Citisoft
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(233)))), ((int)(((byte)(255)))));
-            this.panel1.Location = new System.Drawing.Point(-1, 419);
+            this.panel1.Location = new System.Drawing.Point(-1, 477);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(838, 100);
+            this.panel1.Size = new System.Drawing.Size(1061, 100);
             this.panel1.TabIndex = 16;
             // 
             // UserTabForm
@@ -824,7 +844,7 @@ namespace Citisoft
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(770, 460);
+            this.ClientSize = new System.Drawing.Size(993, 518);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.backButton);

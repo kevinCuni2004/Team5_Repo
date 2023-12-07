@@ -50,6 +50,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Apitron.PDF.Controls, Version=1.0.173.0, Culture=neutral, PublicKeyToken=6e759dbb0039406e, processorArchitecture=MSIL">
+      <HintPath>packages\Apitron.PDF.Controls.1.0.173\lib\net472\Apitron.PDF.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Apitron.PDF.Rasterizer, Version=3.0.173.0, Culture=neutral, PublicKeyToken=6e759dbb0039406e, processorArchitecture=MSIL">
+      <HintPath>packages\Apitron.PDF.Controls.1.0.173\lib\net472\Apitron.PDF.Rasterizer.dll</HintPath>
+    </Reference>
     <Reference Include="Azure.Core, Version=1.25.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
       <HintPath>packages\Azure.Core.1.25.0\lib\net461\Azure.Core.dll</HintPath>
     </Reference>
@@ -254,11 +260,11 @@
     <Compile Include="SearchVendors.Designer.cs">
       <DependentUpon>SearchVendors.cs</DependentUpon>
     </Compile>
-    <Compile Include="TermsOfUsecs.cs">
+    <Compile Include="TermsOfUseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TermsOfUsecs.Designer.cs">
-      <DependentUpon>TermsOfUsecs.cs</DependentUpon>
+    <Compile Include="TermsOfUseForm.Designer.cs">
+      <DependentUpon>TermsOfUseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CompanyUserControl.cs">
       <SubType>UserControl</SubType>
@@ -324,8 +330,8 @@
     <EmbeddedResource Include="SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TermsOfUsecs.resx">
-      <DependentUpon>TermsOfUsecs.cs</DependentUpon>
+    <EmbeddedResource Include="TermsOfUseForm.resx">
+      <DependentUpon>TermsOfUseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserTabForm.resx">
       <DependentUpon>UserTabForm.cs</DependentUpon>

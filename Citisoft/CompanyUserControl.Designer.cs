@@ -36,8 +36,9 @@
             // 
             this.titleLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.titleLabel.Location = new System.Drawing.Point(0, 0);
+            this.titleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(150, 43);
+            this.titleLabel.Size = new System.Drawing.Size(199, 52);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "label1";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -45,9 +46,10 @@
             // websiteLabel
             // 
             this.websiteLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.websiteLabel.Location = new System.Drawing.Point(0, 43);
+            this.websiteLabel.Location = new System.Drawing.Point(0, 53);
+            this.websiteLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.websiteLabel.Name = "websiteLabel";
-            this.websiteLabel.Size = new System.Drawing.Size(150, 107);
+            this.websiteLabel.Size = new System.Drawing.Size(199, 131);
             this.websiteLabel.TabIndex = 1;
             this.websiteLabel.Text = "label1";
             this.websiteLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -55,11 +57,15 @@
             // 
             // CompanyUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.websiteLabel);
             this.Controls.Add(this.titleLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CompanyUserControl";
+            this.Size = new System.Drawing.Size(198, 183);
             this.ResumeLayout(false);
 
         }

@@ -1,6 +1,6 @@
 ﻿namespace Citisoft
 {
-    partial class TermsOfUsecs
+    partial class TermsOfUseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TermsOfUsecs));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TermsOfUseForm));
             this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
             this.PDFButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
@@ -39,8 +39,9 @@
             // 
             // axAcroPDF1
             // 
+            this.axAcroPDF1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.axAcroPDF1.Enabled = true;
-            this.axAcroPDF1.Location = new System.Drawing.Point(231, 114);
+            this.axAcroPDF1.Location = new System.Drawing.Point(211, 122);
             this.axAcroPDF1.Name = "axAcroPDF1";
             this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
             this.axAcroPDF1.Size = new System.Drawing.Size(436, 287);
@@ -48,13 +49,14 @@
             // 
             // PDFButton
             // 
+            this.PDFButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PDFButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.PDFButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
             this.PDFButton.FlatAppearance.BorderSize = 2;
             this.PDFButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PDFButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.PDFButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PDFButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.PDFButton.Location = new System.Drawing.Point(378, 407);
+            this.PDFButton.Location = new System.Drawing.Point(365, 438);
             this.PDFButton.Name = "PDFButton";
             this.PDFButton.Size = new System.Drawing.Size(129, 55);
             this.PDFButton.TabIndex = 1;
@@ -64,10 +66,10 @@
             // 
             // backButton
             // 
+            this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.backButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
             this.backButton.FlatAppearance.BorderSize = 2;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.backButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.backButton.Location = new System.Drawing.Point(12, 28);
@@ -80,25 +82,26 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(354, 28);
+            this.pictureBox1.Location = new System.Drawing.Point(334, 28);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(177, 56);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // TermsOfUsecs
+            // TermsOfUseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(916, 497);
+            this.ClientSize = new System.Drawing.Size(876, 513);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.PDFButton);
             this.Controls.Add(this.axAcroPDF1);
-            this.Name = "TermsOfUsecs";
+            this.Name = "TermsOfUseForm";
             this.Text = "TermsOfUsecs";
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

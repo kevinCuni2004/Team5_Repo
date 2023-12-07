@@ -21,6 +21,7 @@ namespace Citisoft
             InitializeComponent();
             signUp = new SignUp();
             logIn = new LogIn();
+            StartPosition = FormStartPosition.CenterScreen;
 
         }
 

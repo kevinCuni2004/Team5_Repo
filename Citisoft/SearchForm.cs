@@ -24,6 +24,7 @@ namespace Citisoft
             InitializeComponent();
             search = new Search();
             searchVendor = new SearchVendors();
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void usernameButton_Click(object sender, EventArgs e)
@@ -46,8 +47,7 @@ namespace Citisoft
 
         private void termsOfUseLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
-            TermsOfUsecs termsOfUse = new TermsOfUsecs();
+            TermsOfUseForm termsOfUse = new TermsOfUseForm();
             termsOfUse.Show();
         }
 

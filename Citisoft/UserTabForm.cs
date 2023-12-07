@@ -27,6 +27,7 @@ namespace Citisoft
             changeDetailsTabControl.Visible = false;
             changeDetailsTabControl.ItemSize = new Size(0, 1);
             userTab = new UserTab();
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         public void updateFields(Profile user) {

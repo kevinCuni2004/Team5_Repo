@@ -18,6 +18,7 @@ namespace Citisoft
         {
             InitializeComponent();
             logIn = logInInstance;
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         //built the same way as SignUpForm class
