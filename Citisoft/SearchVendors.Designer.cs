@@ -95,7 +95,7 @@
             this.resultsLabel.Location = new System.Drawing.Point(244, 46);
             this.resultsLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.resultsLabel.Name = "resultsLabel";
-            this.resultsLabel.Size = new System.Drawing.Size(85, 26);
+            this.resultsLabel.Size = new System.Drawing.Size(115, 36);
             this.resultsLabel.TabIndex = 6;
             this.resultsLabel.Text = "Results";
             // 
@@ -106,7 +106,7 @@
             this.termsOfUseLinkLabel.Location = new System.Drawing.Point(179, 12);
             this.termsOfUseLinkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.termsOfUseLinkLabel.Name = "termsOfUseLinkLabel";
-            this.termsOfUseLinkLabel.Size = new System.Drawing.Size(250, 24);
+            this.termsOfUseLinkLabel.Size = new System.Drawing.Size(321, 29);
             this.termsOfUseLinkLabel.TabIndex = 7;
             this.termsOfUseLinkLabel.TabStop = true;
             this.termsOfUseLinkLabel.Text = "Terms Of Use  Privacy policy";
@@ -166,7 +166,7 @@
             this.noResultsLabel.Location = new System.Drawing.Point(226, 82);
             this.noResultsLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.noResultsLabel.Name = "noResultsLabel";
-            this.noResultsLabel.Size = new System.Drawing.Size(117, 18);
+            this.noResultsLabel.Size = new System.Drawing.Size(141, 22);
             this.noResultsLabel.TabIndex = 2;
             this.noResultsLabel.Text = "No results found";
             // 

@@ -242,6 +242,12 @@
     <Compile Include="SearchVendors.Designer.cs">
       <DependentUpon>SearchVendors.cs</DependentUpon>
     </Compile>
+    <Compile Include="TermsOfUsecs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TermsOfUsecs.Designer.cs">
+      <DependentUpon>TermsOfUsecs.cs</DependentUpon>
+    </Compile>
     <Compile Include="CompanyUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -300,6 +306,9 @@
     <EmbeddedResource Include="SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TermsOfUsecs.resx">
+      <DependentUpon>TermsOfUsecs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserTabForm.resx">
       <DependentUpon>UserTabForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -331,6 +340,25 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

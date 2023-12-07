@@ -43,10 +43,9 @@ namespace Citisoft
 
         private void termsOfUseLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //--We dont have TermsOfUseForm so it doesnt work--//
-            //TermsOfUseForm termsOfUseForm = new TermsOfUseForm();
-            //termsOfUseForm.Show();
-            //this.Hide();
+            
+            TermsOfUsecs termsOfUse = new TermsOfUsecs();
+            termsOfUse.Show();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
