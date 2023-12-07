@@ -25,6 +25,7 @@ namespace Citisoft
         private int company_id = 0;
         public string searchText;
         private Search search;
+        private Panel panelContainer;
         public SearchVendors()
         {
             InitializeComponent();
@@ -37,36 +38,7 @@ namespace Citisoft
         private void FetchVendorDataFromDatabase()
         {
             string connectionString = Properties.Settings.Default.DBConnectionString;
-            //string query = "SELECT [company_name], [company_website]  FROM [Companies] ";
-            //DataTable vendorData = GetDataFromDatabase(query, connectionString);
-
-            /*if (vendorData != null && vendorData.Rows.Count > 0)
-            {
-                int panelIndex = 0;
-
-                foreach (DataRow row in vendorData.Rows)
-                {
-                    Panel panel = allPanels[panelIndex];
-                    LinkLabel linkLabel = panel.Controls.OfType<LinkLabel>().FirstOrDefault();
-
-                    if (linkLabel != null)
-                    {
-                        linkLabel.Text = row["company_name"].ToString();
-
-                    }
-
-                    panelIndex++;
-
-                    if (panelIndex >= allPanels.Count)
-                    {
-                        break; // Stop if we have populated all panels
-                    }
-                }
-            }
-            else
-            {
-                noResultsLabel.Visible = true;
-            }*/
+           
         }
 
         private Panel panelTemplate()
@@ -103,29 +75,31 @@ namespace Citisoft
         {
             // Display panels for the search results
             ClearPanels();
+            int panelIndex = 0;
+            int x = 33;
             
             
             //Kevin Implemented this
             using (reader)
             {
                 if (reader == null) Console.WriteLine("It's empty.");
-                int panelIndex = 0;
+                //int panelIndex = 0;
                 while (reader.Read())
                 {
-                    /*if (company_id == reader.GetInt32(reader.GetOrdinal("company_id")))
+                    if (company_id == reader.GetInt32(reader.GetOrdinal("company_id")))
                     {
                         continue;
-                    }*/
+                    }
                     Panel panel = panelTemplate();
                     allPanels.Add(panel);
 
                     LinkLabel linkLabel = panel.Controls.OfType<LinkLabel>().FirstOrDefault();
-                    //this.Controls.Add(allPanels[panelIndex]);
-                    //allPanels[panelIndex].Controls.Add(linkLabel);
+                    this.Controls.Add(allPanels[panelIndex]);
+                    allPanels[panelIndex].Controls.Add(linkLabel);
                     Label label = panel.Controls.OfType<Label>().FirstOrDefault();
-                    //allPanels[panelIndex].Controls.Add(label);
-                    //allPanels[panelIndex].Size = new Size(178, 245);
-                    //panel.Location = new Point(33, 100);
+                    allPanels[panelIndex].Controls.Add(label);
+                    allPanels[panelIndex].Size = new Size(178, 245);
+                    panel.Location = new Point(33, 100);
                     if (linkLabel != null)
                     {
                         company_id = reader.GetInt32(reader.GetOrdinal("company_id"));
@@ -134,13 +108,14 @@ namespace Citisoft
                     }
                     this.Controls.Add(panel);
 
-                    panel.Size = new Size(178, 245);
-                    panel.Location = new Point(33, 100);
+
+
+                    this.Controls.Add(panel);
 
                     panelIndex++;
                 }
             }
-            int x = 33;
+            //int x = 33;
             foreach (var panels in allPanels)
             {
                 panels.Size = new Size(178, 245);
@@ -163,6 +138,10 @@ namespace Citisoft
         {
             allPanels = new List<Panel>{};
             currentPageIndex = 0;
+            panelContainer = new Panel();
+            panelContainer.Size = new Size(178, 245);
+            panelContainer.Location = new Point(0, 0);
+            this.Controls.Add(panelContainer);
         }
         public void ShowCurrentPage()
         {
