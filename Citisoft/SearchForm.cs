@@ -18,9 +18,11 @@ namespace Citisoft
     {
         bool found = false;
         private SearchVendors searchVendor;
+        private Search search;
         public SearchForm()
         {
             InitializeComponent();
+            search = new Search();
             searchVendor = new SearchVendors();
         }
 
@@ -44,10 +46,9 @@ namespace Citisoft
 
         private void termsOfUseLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //--We dont have TermsOfUseForm so it doesnt work--//
-            //TermsOfUseForm termsOfUseForm = new TermsOfUseForm();
-            //termsOfUseForm.Show();
-            //this.Hide();
+            
+            TermsOfUsecs termsOfUse = new TermsOfUsecs();
+            termsOfUse.Show();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -57,26 +58,16 @@ namespace Citisoft
 
             if (!string.IsNullOrEmpty(searchText))
             {
-                Search search = new Search();
-                DataTable results = new DataTable();//search.ComprehensiveSearch(searchText);
-
-                // Check if any results were found
-                /*if (results != null && results.Rows.Count > 0)
-                {
-                    // Results found, you can use 'results' DataTable as needed
-                    SearchVendors searchVendorsForm = new SearchVendors();
-                    searchVendorsForm.DisplaySearchResults(results);
-                    searchVendorsForm.Show();
-                    this.Hide();
-                }*/
-                SearchVendors searchVendorsForm = new SearchVendors();
-                SqlDataReader reader = searchVendorsForm.GetVendorData(searchText);
+                
+               // DataTable results = new DataTable();
+                //SearchVendors searchVendorsForm = new SearchVendors();
+                SqlDataReader reader = search.SearchVendors(searchText);
                 if (reader != null)
                 {
-                    searchVendorsForm.searchText = searchText;
+                   // searchVendors.searchText = searchText;
                     //searchVendorsForm.ShowCurrentPage();
-                    searchVendorsForm.DisplaySearchResults(searchVendorsForm.GetVendorData(searchText));
-                    searchVendorsForm.Show();
+                    searchVendor.DisplaySearchResults(reader);
+                    searchVendor.Show();
                     this.Hide();
                 }
                 else
@@ -89,8 +80,3 @@ namespace Citisoft
     }
 
 }
-
-        //-Connect to db-->search by strings from db-->by clicking on the box in SearchForm, we need to search using the words from the attribute(If box was clicked, search from for example: lacation attribute) 
-        //-->If there are no match make an error message--//
-        //--In general we need to iterate through all attributes and their contents--//
-

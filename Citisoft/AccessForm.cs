@@ -122,7 +122,7 @@ namespace Citisoft
         {
             if (originalValues.ContainsKey(selectedRow.Index))
             {
-                foreach(DataGridViewColumn column in dataAccess.Columns)
+                foreach(DataGridViewColumn cell in selectedRow.Cells)
                 {
 
                 }

@@ -31,8 +31,6 @@
             this.usernameButton = new System.Windows.Forms.Button();
             this.helpButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
-            this.previousPageButton = new System.Windows.Forms.Button();
-            this.nextPageButton = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
             this.resultsLabel = new System.Windows.Forms.Label();
             this.termsOfUseLinkLabel = new System.Windows.Forms.LinkLabel();
@@ -41,17 +39,17 @@
             this.linkLabel8 = new System.Windows.Forms.LinkLabel();
             this.label7 = new System.Windows.Forms.Label();
             this.noResultsLabel = new System.Windows.Forms.Label();
-            this.hScrollBar = new System.Windows.Forms.HScrollBar();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.panel1.SuspendLayout();
             this.vendorPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // usernameButton
             // 
-            this.usernameButton.Location = new System.Drawing.Point(14, 15);
-            this.usernameButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.usernameButton.Location = new System.Drawing.Point(9, 10);
+            this.usernameButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.usernameButton.Name = "usernameButton";
-            this.usernameButton.Size = new System.Drawing.Size(143, 69);
+            this.usernameButton.Size = new System.Drawing.Size(95, 45);
             this.usernameButton.TabIndex = 0;
             this.usernameButton.Text = "Username";
             this.usernameButton.UseVisualStyleBackColor = true;
@@ -59,10 +57,10 @@
             // 
             // helpButton
             // 
-            this.helpButton.Location = new System.Drawing.Point(744, 22);
-            this.helpButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.helpButton.Location = new System.Drawing.Point(496, 14);
+            this.helpButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(129, 61);
+            this.helpButton.Size = new System.Drawing.Size(86, 40);
             this.helpButton.TabIndex = 1;
             this.helpButton.Text = "Help";
             this.helpButton.UseVisualStyleBackColor = true;
@@ -70,41 +68,21 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(14, 418);
-            this.backButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.backButton.Location = new System.Drawing.Point(9, 272);
+            this.backButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(128, 51);
+            this.backButton.Size = new System.Drawing.Size(85, 33);
             this.backButton.TabIndex = 2;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // previousPageButton
-            // 
-            this.previousPageButton.Location = new System.Drawing.Point(586, 438);
-            this.previousPageButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.previousPageButton.Name = "previousPageButton";
-            this.previousPageButton.Size = new System.Drawing.Size(120, 51);
-            this.previousPageButton.TabIndex = 3;
-            this.previousPageButton.Text = "previous page";
-            this.previousPageButton.UseVisualStyleBackColor = true;
-            // 
-            // nextPageButton
-            // 
-            this.nextPageButton.Location = new System.Drawing.Point(713, 438);
-            this.nextPageButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nextPageButton.Name = "nextPageButton";
-            this.nextPageButton.Size = new System.Drawing.Size(122, 51);
-            this.nextPageButton.TabIndex = 4;
-            this.nextPageButton.Text = "next page";
-            this.nextPageButton.UseVisualStyleBackColor = true;
-            this.nextPageButton.Click += new System.EventHandler(this.nextPageButton_Click);
-            // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
             this.nameLabel.Font = new System.Drawing.Font("Modern No. 20", 26F, System.Drawing.FontStyle.Bold);
-            this.nameLabel.Location = new System.Drawing.Point(335, 14);
+            this.nameLabel.Location = new System.Drawing.Point(223, 9);
+            this.nameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(126, 36);
             this.nameLabel.TabIndex = 5;
@@ -114,9 +92,10 @@
             // 
             this.resultsLabel.AutoSize = true;
             this.resultsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.resultsLabel.Location = new System.Drawing.Point(366, 70);
+            this.resultsLabel.Location = new System.Drawing.Point(244, 46);
+            this.resultsLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.resultsLabel.Name = "resultsLabel";
-            this.resultsLabel.Size = new System.Drawing.Size(85, 26);
+            this.resultsLabel.Size = new System.Drawing.Size(115, 36);
             this.resultsLabel.TabIndex = 6;
             this.resultsLabel.Text = "Results";
             // 
@@ -124,9 +103,10 @@
             // 
             this.termsOfUseLinkLabel.AutoSize = true;
             this.termsOfUseLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.termsOfUseLinkLabel.Location = new System.Drawing.Point(269, 19);
+            this.termsOfUseLinkLabel.Location = new System.Drawing.Point(179, 12);
+            this.termsOfUseLinkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.termsOfUseLinkLabel.Name = "termsOfUseLinkLabel";
-            this.termsOfUseLinkLabel.Size = new System.Drawing.Size(250, 24);
+            this.termsOfUseLinkLabel.Size = new System.Drawing.Size(321, 29);
             this.termsOfUseLinkLabel.TabIndex = 7;
             this.termsOfUseLinkLabel.TabStop = true;
             this.termsOfUseLinkLabel.Text = "Terms Of Use  Privacy policy";
@@ -136,10 +116,10 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.Controls.Add(this.termsOfUseLinkLabel);
-            this.panel1.Location = new System.Drawing.Point(-2, 496);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(-1, 322);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(912, 72);
+            this.panel1.Size = new System.Drawing.Size(608, 47);
             this.panel1.TabIndex = 10;
             // 
             // vendorPanel8
@@ -147,10 +127,10 @@
             this.vendorPanel8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.vendorPanel8.Controls.Add(this.linkLabel8);
             this.vendorPanel8.Controls.Add(this.label7);
-            this.vendorPanel8.Location = new System.Drawing.Point(1725, 165);
-            this.vendorPanel8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.vendorPanel8.Location = new System.Drawing.Point(1150, 107);
+            this.vendorPanel8.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.vendorPanel8.Name = "vendorPanel8";
-            this.vendorPanel8.Size = new System.Drawing.Size(170, 245);
+            this.vendorPanel8.Size = new System.Drawing.Size(113, 159);
             this.vendorPanel8.TabIndex = 19;
             this.vendorPanel8.Visible = false;
             // 
@@ -158,9 +138,10 @@
             // 
             this.linkLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.linkLabel8.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel8.Location = new System.Drawing.Point(3, 5);
+            this.linkLabel8.Location = new System.Drawing.Point(2, 3);
+            this.linkLabel8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkLabel8.Name = "linkLabel8";
-            this.linkLabel8.Size = new System.Drawing.Size(163, 62);
+            this.linkLabel8.Size = new System.Drawing.Size(109, 41);
             this.linkLabel8.TabIndex = 20;
             this.linkLabel8.TabStop = true;
             this.linkLabel8.Text = "Ezops";
@@ -169,9 +150,10 @@
             // label7
             // 
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Location = new System.Drawing.Point(3, 64);
+            this.label7.Location = new System.Drawing.Point(2, 42);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(163, 177);
+            this.label7.Size = new System.Drawing.Size(109, 116);
             this.label7.TabIndex = 20;
             this.label7.Text = "label7";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -181,36 +163,36 @@
             // 
             this.noResultsLabel.AutoSize = true;
             this.noResultsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.noResultsLabel.Location = new System.Drawing.Point(356, 134);
+            this.noResultsLabel.Location = new System.Drawing.Point(226, 82);
+            this.noResultsLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.noResultsLabel.Name = "noResultsLabel";
-            this.noResultsLabel.Size = new System.Drawing.Size(117, 18);
+            this.noResultsLabel.Size = new System.Drawing.Size(141, 22);
             this.noResultsLabel.TabIndex = 2;
             this.noResultsLabel.Text = "No results found";
             // 
-            // hScrollBar
+            // vScrollBar1
             // 
-            this.hScrollBar.Location = new System.Drawing.Point(-2, 485);
-            this.hScrollBar.Name = "hScrollBar";
-            this.hScrollBar.Size = new System.Drawing.Size(891, 16);
-            this.hScrollBar.TabIndex = 20;
+            this.vScrollBar1.Location = new System.Drawing.Point(554, 96);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(28, 209);
+            this.vScrollBar1.TabIndex = 20;
+            this.vScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar1_Scroll);
             // 
             // SearchVendors
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(887, 568);
-            this.Controls.Add(this.hScrollBar);
+            this.ClientSize = new System.Drawing.Size(591, 369);
+            this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.noResultsLabel);
             this.Controls.Add(this.vendorPanel8);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.resultsLabel);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.nextPageButton);
-            this.Controls.Add(this.previousPageButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.usernameButton);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "SearchVendors";
             this.Text = "SearchVendors";
             this.Load += new System.EventHandler(this.SearchVendors_Load);
@@ -227,8 +209,6 @@
         private System.Windows.Forms.Button usernameButton;
         private System.Windows.Forms.Button helpButton;
         private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.Button previousPageButton;
-        private System.Windows.Forms.Button nextPageButton;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label resultsLabel;
         private System.Windows.Forms.LinkLabel termsOfUseLinkLabel;
@@ -237,6 +217,6 @@
         private System.Windows.Forms.LinkLabel linkLabel8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label noResultsLabel;
-        private System.Windows.Forms.HScrollBar hScrollBar;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }
