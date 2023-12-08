@@ -22,8 +22,6 @@ namespace Citisoft
         private List<Panel> allPanels;
         bool found = false;
         private int currentPageIndex;
-        private int currentLocation = 29;
-        private int company_id = 0;
         public string searchText;
         private Search search;
 
@@ -47,49 +45,18 @@ namespace Citisoft
            
         }
 
-        /*private Panel panelTemplate()
-        {
-            Panel panel = new Panel();
-            panel.Size = new Size(178, 245);
-            panel.Dock = DockStyle.Fill;
-            panel.Margin = new Padding(3, 4, 3, 4);
-            panel.BackColor = Color.White;
-            panel.TabIndex = 11;
-            LinkLabel titleLinkLabel = new LinkLabel();
-            panel.Controls.Add(titleLinkLabel);
-            titleLinkLabel.Size = new Size(171, 71);
-            titleLinkLabel.Location = new Point(3, 2);
-            titleLinkLabel.TextAlign = ContentAlignment.MiddleCenter;
-            titleLinkLabel.BorderStyle = BorderStyle.FixedSingle;
-            titleLinkLabel.LinkColor = Color.Black;
-            titleLinkLabel.TabIndex = 14;
-            titleLinkLabel.TabStop = true;
-            Label descLabel = new Label();
-            panel.Controls.Add(descLabel);
-            descLabel.BorderStyle = BorderStyle.FixedSingle;
-            descLabel.TextAlign= ContentAlignment.TopCenter;
-            descLabel.TabIndex = 14;
-            descLabel.Location = new Point(3, 72);
-            descLabel.Size = new Size(171, 173);
-            return panel;
-        }*/
-
        
-
+       
 
         public void DisplaySearchResults(SqlDataReader reader)
         {
             // Display panels for the search results
             ClearControls();
-            //int panelIndex = 0;
-            //int x = 33;
             
-            
-            //Kevin Implemented this
             using (reader)
             {
                 if (reader == null) Console.WriteLine("It's empty.");
-                //int panelIndex = 0;
+
                 while (reader.Read())
                 {
 
@@ -100,44 +67,9 @@ namespace Citisoft
                     allCompanyControls.Add(companyUserControl);
                     flowLayoutPanel.Controls.Add(companyUserControl);
 
-                    /*if (company_id == reader.GetInt32(reader.GetOrdinal("company_id")))
-                    {
-                        continue;
-                    }
-                    Panel panel = panelTemplate();
-                    allPanels.Add(panel);
-
-                    LinkLabel linkLabel = panel.Controls.OfType<LinkLabel>().FirstOrDefault();
-                    this.Controls.Add(allPanels[panelIndex]);
-                    allPanels[panelIndex].Controls.Add(linkLabel);
-                    Label label = panel.Controls.OfType<Label>().FirstOrDefault();
-                    allPanels[panelIndex].Controls.Add(label);
-                    allPanels[panelIndex].Size = new Size(178, 245);
-                    panel.Location = new Point(33, 100);
-                    if (linkLabel != null)
-                    {
-                        company_id = reader.GetInt32(reader.GetOrdinal("company_id"));
-                        linkLabel.Text = reader.GetString(reader.GetOrdinal("company_name"));
-                        label.Text = reader.GetString(reader.GetOrdinal("company_website"));
-                    }
-                    this.Controls.Add(panel);
-
-
-
-                    this.Controls.Add(panel);
-
-                    panelIndex++;*/
+                   
                 }
             }
-            //int x = 33;
-            /*foreach (var panels in allPanels)
-            {
-                panels.Size = new Size(178, 245);
-                panels.Location = new Point(x, 100);
-                panels.Show();
-                x += 33;
-                x += 178;
-            }*/
         }
         private void ClearControls()
         {

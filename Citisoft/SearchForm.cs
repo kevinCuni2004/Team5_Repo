@@ -55,17 +55,18 @@ namespace Citisoft
         {
             string enteredText = searchTextBox.Text;
             string searchText = searchTextBox.Text.Trim();
+            string cityFilter = (cityComboBox.SelectedItem as string)?.Trim();
+            string countryFilter = (countryComboBox.SelectedItem as string)?.Trim();
 
             if (!string.IsNullOrEmpty(searchText))
             {
                 
-               // DataTable results = new DataTable();
-                //SearchVendors searchVendorsForm = new SearchVendors();
-                SqlDataReader reader = search.SearchVendors(searchText);
+              
+                SqlDataReader reader = search.SearchVendors(searchText, cityFilter,  countryFilter);
+
                 if (reader != null)
                 {
-                   // searchVendors.searchText = searchText;
-                    //searchVendorsForm.ShowCurrentPage();
+           
                     searchVendor.DisplaySearchResults(reader);
                     searchVendor.Show();
                     this.Hide();
@@ -77,6 +78,35 @@ namespace Citisoft
             }
         }
 
+        private void SearchForm_Load(object sender, EventArgs e)
+        {
+            // Populate the ComboBoxes with distinct cities and countries
+            PopulateCityComboBox();
+            PopulateCountryComboBox();
+        }
+
+        private void PopulateCityComboBox()
+        {
+            List<string> cities = search.GetDistinctCities(); // Implement this method in your Search class
+
+            cityComboBox.Items.Clear();
+            cityComboBox.Items.Add(""); // Add an empty option for no filtering
+            cityComboBox.Items.AddRange(cities.ToArray());
+        }
+
+        private void PopulateCountryComboBox()
+        {
+            List<string> countries = search.GetDistinctCountries(); // Implement this method in your Search class
+
+            countryComboBox.Items.Clear();
+            countryComboBox.Items.Add(""); // Add an empty option for no filtering
+            countryComboBox.Items.AddRange(countries.ToArray());
+        }
+
+        private void countryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
