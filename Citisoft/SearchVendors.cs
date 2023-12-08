@@ -178,7 +178,8 @@ namespace Citisoft
 
         private void usernameButton_Click(object sender, EventArgs e)
         {
-
+            UserTabForm userTab = new UserTabForm();
+            userTab.Show();
         }
 
         private void helpButton_Click(object sender, EventArgs e)
