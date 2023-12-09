@@ -28,13 +28,13 @@ namespace Citisoft
                     throw new InvalidOperationException("User does not exist");
                 }
 
-                // checking if password and email are matching and written correctly
+                //checking if password and email are matching and written correctly
                 if(!IsValidCredentials(email, password))
                 {
                     throw new InvalidOperationException("Invalid email or password");
                 }
 
-                // successful case
+                //successful case
                 //entering profile 
                 Profile user = LoadUserProfile(email);
 
@@ -72,8 +72,8 @@ namespace Citisoft
 
             return hashedPassword != null;
             
-            //int count = Convert.ToInt32(dBConnection.ExecuteScalar(query));
-            //return count > 0;
+            int count = Convert.ToInt32(dBConnection.ExecuteScalar(query));
+            return count > 0;
 
         }
 

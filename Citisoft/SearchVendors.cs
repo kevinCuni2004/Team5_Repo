@@ -118,7 +118,7 @@ namespace Citisoft
             };
 
             this.Controls.Add(flowLayoutPanel);
-
+            
             vScrollBar1 = new VScrollBar
             {
                 Dock = DockStyle.Right,
@@ -136,10 +136,25 @@ namespace Citisoft
         
         public void ShowCurrentPage()
         {
-
+            int panelsWidth = 148;
+            int panelsHeight = 149;
+            int panelsHGap = 20;
+            int panelsVGap = 40;
+            int panelsRow = flowLayoutPanel.Width / (panelsWidth + panelsHGap);
+            int totalWidth = panelsRow * (panelsWidth + panelsHGap) - panelsHGap;
+            int countX = (flowLayoutPanel.Width - totalWidth / 2);
+            int countY = (flowLayoutPanel.Width - panelsHeight - panelsVGap) / 2;
             ClearControls();
-            for (int i = currentPageIndex * 4; i < (currentPageIndex+1) *4 && i< allCompanyControls.Count; i++)
+            for (int i = currentPageIndex * 4, row = 0, col = 0; i < (currentPageIndex + 1) * 4 && i < allCompanyControls.Count; i++, col++)
             {
+                if (col >= panelsRow)
+                {
+                    col = 0;
+                    row++;
+                }
+                int x = countX + col * (panelsWidth + panelsHGap);
+                int y = countY + row * (panelsHeight + panelsVGap);
+                allCompanyControls[i].Location = new Point(x, y);
                 allCompanyControls[i].Visible = true;
                 flowLayoutPanel.Controls.Add(allCompanyControls[i]);
             }

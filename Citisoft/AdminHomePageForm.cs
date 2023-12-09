@@ -26,7 +26,7 @@ namespace Citisoft
 
         private void backButton_Click_1(object sender, EventArgs e)
         {
-
+            this.Hide();
         }
 
         private void helpreQuestButton_Click(object sender, EventArgs e)
@@ -39,15 +39,26 @@ namespace Citisoft
 
         private void viewRecordsButton_Click(object sender, EventArgs e)
         {
-
+            RecordsForm recordsForm = new RecordsForm();
+            recordsForm.Show();
+            this.Hide();
         }
 
         private void viewAccessButton_Click(object sender, EventArgs e)
         {
-
+            AccessForm accessForm = new AccessForm();
+            accessForm.Show();
+            this.Hide();
         }
 
         private void searchButton_Click(object sender, EventArgs e)
+        {
+            SearchForm searchForm = new SearchForm();
+            searchForm.Show();
+            this.Hide();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

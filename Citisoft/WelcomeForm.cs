@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,19 @@ namespace Citisoft
         private void HelpButton_Click(object sender, EventArgs e)
         {
             //i will add some code after creation of Help
+        }
+
+        private void tutorialsLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string pdfFile = @"Citisoft\kevinCuni2004\Team5_Repo\Tutorials.pdf";
+            try
+            {
+                Process.Start(pdfFile);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Can not open PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

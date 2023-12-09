@@ -63,7 +63,6 @@ namespace Citisoft
         private void usernameButton_Click(object sender, EventArgs e)
         {
             //--go to usertab form--//
-
             UserTabForm usertabForm = new UserTabForm();
             usertabForm.Show();
             this.Hide();
@@ -73,7 +72,6 @@ namespace Citisoft
         {
             //--go to admin home page form--//
             //--we don't have now so it won't work--//
-
             AdminHomePageForm adminhomepage = new AdminHomePageForm();
             adminhomepage.Show();
             this.Close();
@@ -93,7 +91,6 @@ namespace Citisoft
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-
             dataAccess.ReadOnly = true;
             dataAccess.EditMode = DataGridViewEditMode.EditProgrammatically;
             cancelButton.Visible = false;

@@ -10,7 +10,7 @@ namespace Citisoft
 {
     public class Access
     {
-        private Profile User;
+        //private Profile User;
         private DBConnection dbConnection;
         public Access()
         {
