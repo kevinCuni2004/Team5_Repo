@@ -26,18 +26,21 @@ namespace Citisoft
         {
             string[] keywords = searchText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            StringBuilder sqlQuery = new StringBuilder("SELECT * FROM [Companies] WHERE");
+            StringBuilder sqlQuery = new StringBuilder("SELECT DISTINCT [Companies].* FROM [Companies]");
+            sqlQuery.Append(" INNER JOIN [Locations] ON [Companies].[company_id] = [Locations].[company_id]");
+
+            sqlQuery.Append(" WHERE");
 
             AppendKeywordConditions(sqlQuery, keywords);
 
             if (!string.IsNullOrEmpty(cityFilter))
             {
-                sqlQuery.Append(" AND [city] = @CityFilter");
+                sqlQuery.Append(" AND [Locations].[city] = @CityFilter");
             }
 
             if (!string.IsNullOrEmpty(countryFilter))
             {
-                sqlQuery.Append(" AND [country] = @CountryFilter");
+                sqlQuery.Append(" AND [Locations].[country] = @CountryFilter");
             }
             
 
@@ -100,27 +103,7 @@ namespace Citisoft
                 $"([city] LIKE @SearchText{index} OR [country] LIKE @SearchText{index}))");
         }
 
-        private DataTable GetDataFromDatabase(string query, string connectionString)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
-                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                {
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-                    return dataTable;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error fetching data: " + ex.Message);
-                return null;
-            }
-
-
-        }
+  
 
         public List<string> GetDistinctCities()
         {

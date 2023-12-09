@@ -19,8 +19,7 @@ namespace Citisoft
         private DBConnection dbConnection;
         public SqlDataReader dataReader;
         //
-        private List<Panel> allPanels;
-        bool found = false;
+
         private int currentPageIndex;
         public string searchText;
         private Search search;
@@ -50,7 +49,7 @@ namespace Citisoft
            
         }
 
-       
+
        
 
         public void DisplaySearchResults(SqlDataReader reader)

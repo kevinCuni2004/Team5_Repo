@@ -21,7 +21,7 @@ namespace Citisoft
             //Application.Run(new RecordsForm());
             //UserTabForm userTabForm = new UserTabForm();
             //Application.Run(userTabForm);
-            AccessForm searchForm = new AccessForm();
+            SearchForm searchForm = new SearchForm();
             Application.Run(searchForm);
         }
     }
