@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TermsOfUseForm));
-            this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
+            //this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
             this.PDFButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // axAcroPDF1
             // 
-            this.axAcroPDF1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            /*this.axAcroPDF1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.axAcroPDF1.Enabled = true;
             this.axAcroPDF1.Location = new System.Drawing.Point(270, 90);
             this.axAcroPDF1.Name = "axAcroPDF1";
             this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
             this.axAcroPDF1.Size = new System.Drawing.Size(357, 275);
             this.axAcroPDF1.TabIndex = 0;
-            this.axAcroPDF1.Enter += new System.EventHandler(this.axAcroPDF1_Enter);
+            this.axAcroPDF1.Enter += new System.EventHandler(this.axAcroPDF1_Enter);*/
             // 
             // PDFButton
             // 
@@ -101,11 +101,11 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.PDFButton);
-            this.Controls.Add(this.axAcroPDF1);
+            //this.Controls.Add(this.axAcroPDF1);
             this.Name = "TermsOfUseForm";
             this.Text = "TermsOfUsecs";
             this.Load += new System.EventHandler(this.TermsOfUseForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -113,7 +113,7 @@
 
         #endregion
 
-        private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
+        //private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
         private System.Windows.Forms.Button PDFButton;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.PictureBox pictureBox1;

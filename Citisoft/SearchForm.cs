@@ -25,6 +25,8 @@ namespace Citisoft
             search = new Search();
             searchVendor = new SearchVendors();
             StartPosition = FormStartPosition.CenterScreen;
+
+            this.Load += new System.EventHandler(this.SearchForm_Load);
         }
 
         private void usernameButton_Click(object sender, EventArgs e)
@@ -36,10 +38,7 @@ namespace Citisoft
 
         private void helpButton_Click(object sender, EventArgs e)
         {
-            //--We dont have HelpForm so it doesnt work--//
-            //HelpForm helpForm = new HelpTabForm();
-            //helpForm.Show();
-            //this.Hide();
+
             Form1 form = new Form1();
 
             form.Show();
@@ -80,7 +79,7 @@ namespace Citisoft
 
         private void SearchForm_Load(object sender, EventArgs e)
         {
-            // Populate the ComboBoxes with distinct cities and countries
+            //Populate the ComboBoxes with distinct cities and countries
             PopulateCityComboBox();
             PopulateCountryComboBox();
         }
@@ -101,12 +100,14 @@ namespace Citisoft
             countryComboBox.Items.Clear();
             countryComboBox.Items.Add(""); // Add an empty option for no filtering
             countryComboBox.Items.AddRange(countries.ToArray());
+            Console.WriteLine("Countries:" + string.Join(", ", countries));
         }
 
         private void countryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
     }
 
 }

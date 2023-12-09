@@ -27,22 +27,8 @@ namespace Citisoft
             string[] keywords = searchText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             StringBuilder sqlQuery = new StringBuilder("SELECT * FROM [Companies] WHERE");
-            for(int i = 0; i < keywords.Length; i++)
-            {
-                sqlQuery.Append($"[company_name] LIKE @SearchText{i} OR " +
-                    $"[company_website] LIKE @SearchText{i} OR " +
-                    $"EXISTS (SELECT 1 FROM [Products] WHERE [Companies].[company_id] = [Products].[company_id] AND " +
-                    $"([description] LIKE @SearchText{i} OR [cloud] LIKE @SearchText{i} OR [software_name] LIKE @SearchText{i})) OR" +
-                    $"EXISTS (SELECT 1 FROM [Location] WHERE [Companies].[company_id] = [Location].[company_id] AND " +
-                    $"([city] LIKE @SearchText{i} OR [country] LIKE @SearchText{i}))");//check the name from database
 
-
-                if (i < keywords.Length - 1)
-                {
-                    sqlQuery.Append(" AND ");
-                }
-
-            }
+            AppendKeywordConditions(sqlQuery, keywords);
 
             if (!string.IsNullOrEmpty(cityFilter))
             {
@@ -53,22 +39,68 @@ namespace Citisoft
             {
                 sqlQuery.Append(" AND [country] = @CountryFilter");
             }
+            
 
             SqlCommand command = new SqlCommand(sqlQuery.ToString());
 
-            for (int i =0; i <keywords.Length; i++)
+            for (int i = 0; i < keywords.Length; i++)
             {
                 command.Parameters.AddWithValue($"@SearchText{i}", $"%{keywords[i]}%");
             }
 
-            command.Parameters.AddWithValue("@CityFilter", cityFilter);
-            command.Parameters.AddWithValue("@CountryFilter", countryFilter);
+            if (!string.IsNullOrEmpty(cityFilter))
+            {
+                command.Parameters.AddWithValue("@CityFilter", cityFilter);
+            }
+
+            if (!string.IsNullOrEmpty(countryFilter))
+            {
+                command.Parameters.AddWithValue("@CountryFilter", countryFilter);
+            }
 
 
             return dbConnection.ExcecuteReader(command);
         }
 
-         private DataTable GetDataFromDatabase(string query, string connectionString)
+        private void AppendKeywordConditions(StringBuilder sqlQuery, string[] keywords)
+        {
+            for(int i = 0; i < keywords.Length; i++)
+            {
+                sqlQuery.Append($"(");
+                AppendCompanyConditions(sqlQuery, i);
+                sqlQuery.Append($" OR ");
+                AppendProductConditions(sqlQuery, i);
+                sqlQuery.Append($" OR ");
+                AppendLocationConditions(sqlQuery, i);
+                sqlQuery.Append($")");
+
+                if (i< keywords.Length - 1)
+                {
+                    sqlQuery.Append(" AND ");
+                }
+            }
+        }
+
+
+        private void AppendCompanyConditions(StringBuilder sqlQuery, int index)
+        {
+            sqlQuery.Append($"[company_name] LIKE @SearchText{index} OR " +
+                    $"[company_website] LIKE @SearchText{index}");
+        }
+
+        private void AppendProductConditions(StringBuilder sqlQuery, int index)
+        {
+            sqlQuery.Append($"EXISTS (SELECT 1 FROM [Products] WHERE [Companies].[company_id] = [Products].[company_id] AND " +
+                $"([description] LIKE @SearchText{index} OR [cloud] LIKE @SearchText{index} OR [software_name] LIKE @SearchText{index}))");
+        }
+
+        private void AppendLocationConditions(StringBuilder sqlQuery, int index)
+        {
+            sqlQuery.Append($"EXISTS (SELECT 1 FROM [Locations] WHERE [Companies].[company_id] = [Locations].[company_id] AND " +
+                $"([city] LIKE @SearchText{index} OR [country] LIKE @SearchText{index}))");
+        }
+
+        private DataTable GetDataFromDatabase(string query, string connectionString)
         {
             try
             {
@@ -92,13 +124,23 @@ namespace Citisoft
 
         public List<string> GetDistinctCities()
         {
-            string query = "SELECT DISTINCT [city] FROM [Location]";
-            return GetDistinctValues(query, dbConnection.GetConnectionString());
+            try
+            {
+                string query = "SELECT DISTINCT [city] FROM [Locations]";
+                return GetDistinctValues(query, dbConnection.GetConnectionString());
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error fetching cities" + ex.Message);
+                return new List<string>();
+            }
+           
         }
 
         public List<string> GetDistinctCountries()
         {
-            string query = "SELECT DISTINCT [country] FROM [Location]";
+            string query = "SELECT DISTINCT [country] FROM [Locations]";
             return GetDistinctValues(query, dbConnection.GetConnectionString());
         }
 
