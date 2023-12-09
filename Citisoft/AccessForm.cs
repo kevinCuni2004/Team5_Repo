@@ -14,15 +14,12 @@ namespace Citisoft
 {
     public partial class AccessForm : Form
     {
-        private DBConnection dBConnection;
-        private int profileColumnIndex;
-        private int accessColumnIndex;
-        private string nameColumnIndex;
-        private string surnameColumnIndex;
-        private Dictionary<int, object> originalValues = new Dictionary<int, object>();
+        private DBConnection dbConnection;
+        private DataTable originalData;
 
         public AccessForm()
         {
+            dbConnection = DBConnection.getInstance();
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
@@ -30,42 +27,38 @@ namespace Citisoft
         {
             dataAccess.Columns.Add("profile_id", "Id");
             dataAccess.Columns.Add("access", "Status");
-            dataAccess.Columns.Add("name", "FirstName");
-            dataAccess.Columns.Add("surname", "LastName");
+            dataAccess.Columns.Add("name", "First Name");
+            dataAccess.Columns.Add("surname", "Last Name");
         }
-        private void ReadSingleRow(DataGridView dgw, IDataRecord access)
+        private void ReadSingleRow(DataGridView dataAccess, DataRow row)
         {
-            dgw.Rows.Add(access.GetInt32(0), access.GetInt32(1), access.GetString(2), access.GetString(3), RowState.ModidiedNew);
+            dataAccess.Rows.Add(
+                row.Field<int>(0),
+                row.Field<int>(1),
+                row.Field<string>(2),
+                row.Field<string>(3)
+                );
         }
-        private void DisplayAccess(Profile userProfile)
+        private void CancelChanges(DataGridView dataAccess, DataTable originalData)
         {
-            //--We don't have objects in attributes so it wont work--//
-            //DBConnection dbConnection = DBConnection.getInstance();
-            //string query = "SELECT * FROM PROFILE";
-            //SqlCommand command = new SqlCommand(query, dbConnection.getDBConnection());
-            //try
-            //{
-
-                //dbConnection.openDBConnection();
-
-
-                //using (SqlDataReader reader = dbConnection.ExcecuteReader(command))
-                //{
-                    //while (reader.Read())
-                    //{
-                        //ReadSingleRow(dgw, reader);
-                    //}
-                //}
-            //}
-            //catch (Exception ex)
-            //{
-
-                //Console.WriteLine($"Ошибка при выполнении запроса: {ex.Message}");
-            //}
             dataAccess.Rows.Clear();
-            if (userProfile != null) {
-                dataAccess.Rows.Add(userProfile.Id, userProfile.Access, userProfile.FirstName, userProfile.LastName);
+            foreach(DataRow row in originalData.Rows)
+            {
+                dataAccess.Rows.Add(row[0], row[1], row[2], row[3]);
             }
+        }
+        private void UpdateAccess(DataGridView dataAccess)
+        {
+            foreach(DataGridViewRow row in dataAccess.Rows)
+            {
+                int profileId = Convert.ToInt32(row.Cells["profile_id"].Value);
+                int access = Convert.ToInt32(row.Cells["access"].Value);
+                string firstName = Convert.ToString(row.Cells["name"].Value);
+                string lastName = Convert.ToString(row.Cells["surname"].Value);
+                Access accessManager = new Access();
+                accessManager.UpdateAccess(profileId, access, firstName, lastName);
+            }
+            MessageBox.Show("Data successfully saved to the database!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void usernameButton_Click(object sender, EventArgs e)
         {
@@ -95,7 +88,6 @@ namespace Citisoft
 
             dataAccess.ReadOnly = false;
             dataAccess.EditMode = DataGridViewEditMode.EditOnEnter;
-            dataAccess.CellBeginEdit += dataAccess_CellBeginEdit;
         }
 
 
@@ -107,51 +99,11 @@ namespace Citisoft
             cancelButton.Visible = false;
             confirmButton.Visible = false;
             editButton.Visible = true;
-            foreach(DataGridViewRow row in dataAccess.Rows)
-            {
-                RowState rowState = (RowState)(row.Tag ?? RowState.Existed);
-                switch(rowState)
-                {
-                    case RowState.Edit:
-                        CancelEdit(row);
-                        break;
-                }
-            }
-            originalValues.Clear();
+            CancelChanges(dataAccess, originalData);
         }
-        private void CancelEdit(DataGridViewRow selectedRow)
-        {
-            if (originalValues.ContainsKey(selectedRow.Index))
-            {
-                foreach(DataGridViewColumn cell in selectedRow.Cells)
-                {
-                    if (originalValues.TryGetValue(selectedRow.Index, out object originalValue))
-                    {
-                        if(originalValue == typeof(int) && originalValue is int intValue)
-                        {
-                            //cell.ValueType = intValue;
-                        }
-                    }
-                }
-                originalValues.Remove(selectedRow.Index);
-            }
-        }
-        private void dataAccess_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            if (e.ColumnIndex == dataAccess.Columns["profile_id"].Index)
-            {
-                e.Cancel = true;
-            }
-        }
-        private void EditAccess(DataGridViewRow selectedRow)
-        {
-            if (!originalValues.ContainsKey(selectedRow.Index))
-            {
-                profileColumnIndex = dataAccess.Columns["Id"].Index;
-                originalValues[selectedRow.Index] = selectedRow.Cells[profileColumnIndex].Value;
-                //descriptionColumnIndex = dataRecords.Columns["Description"].Index;
-            }
-        }
+        
+       
+        
         private void confirmButton_Click(object sender, EventArgs e)
         {
             editButton.Visible = true;
@@ -159,128 +111,31 @@ namespace Citisoft
             confirmButton.Visible = false;
             dataAccess.ReadOnly = true;
             dataAccess.EditMode = DataGridViewEditMode.EditProgrammatically;
-            foreach (DataGridViewRow row in dataAccess.Rows)
+            try
             {
-                RowState rowState = (RowState)(row.Tag ?? RowState.Existed);
-
-                switch (rowState)
-                {
-                    case RowState.New:
-                        //make a realization for setting new element
-                        InsertAccessRow(row);
-                        break;
-
-                    case RowState.Modified:
-                    case RowState.Edit:
-                        //make a realization for updating in db
-                        UpdateAccessRow(row);
-                        break;
-
-                    case RowState.Deleted:
-                        //make a realization for deleting in rows
-                        //DeleteAccess(row);
-                        break;
-
-
-                    default:
-                        break;
-                }
+                UpdateAccess(dataAccess);
+                MessageBox.Show("Data successfully saved o the database!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error saving data:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void UpdateAccessRow(DataGridViewRow row)
-        {
-            Profile userProfile = new Profile
-            {
-                Email = Convert.ToString(row.Cells["email"].Value),
-                Access = Convert.ToInt32(row.Cells["access"].Value),
-                FirstName = Convert.ToString(row.Cells["name"].Value),
-                LastName = Convert.ToString(row.Cells["surname"].Value)
-            };
-            UpdateAccess(userProfile);
-            UpdateAccessRow(row);
-        }
-        private void UpdateAccess(Profile userProfile)
-        {
-
-            if (userProfile != null)
-            {
-                string query = "UPDATE [Profile] SET [e-mail] = @e-mail, Access = @access, FirstName = @name, LastName = @surname WHERE Id = @id;)";
-                using (SqlCommand command = new SqlCommand(query, dBConnection.getDBConnection()))
-                {
-                    try
-                    {
-                        command.Parameters.AddWithValue("@email", userProfile.Email);
-                        command.Parameters.AddWithValue("@access", userProfile.Access);
-                        command.Parameters.AddWithValue("@name", userProfile.FirstName);
-                        command.Parameters.AddWithValue("@surname", userProfile.LastName);
-                        int rowAffected = command.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error during insertion: {ex.Message}");
-                    }
-                }
-            }
-        }
-        private void DeleteAccessRow(DataGridViewRow row)
-        {
-
-        }
-        private void InsertAccessRow(DataGridViewRow row)
-        {
-            Profile userProfile = new Profile
-            {
-                Email = Convert.ToString(row.Cells["email"].Value),
-                Access = Convert.ToInt32(row.Cells["access"].Value),
-                FirstName = Convert.ToString(row.Cells["name"].Value),
-                LastName = Convert.ToString(row.Cells["surname"].Value)
-            };
-            InserAccess(userProfile);
-            row.Cells["email"].Value = userProfile.Email;
-            row.Cells["access"].Value = userProfile.Access;
-            row.Cells["name"].Value = userProfile.FirstName;
-            row.Cells["surname"].Value = userProfile.LastName;
-        }
-        private void InserAccess(Profile userProfile)
-        {
-            
-           if (userProfile != null)
-            {
-                string query = "INSERT INTO [Profile] ([e-mail], Access, FirstName, LastName) VALUES (@email, @access, @name, @surname);";
-                using (SqlCommand command = new SqlCommand(query, dBConnection.getDBConnection()))
-                {
-                    try
-                    {
-                        command.Parameters.AddWithValue("@email", userProfile.Email);
-                        command.Parameters.AddWithValue("@access", userProfile.Access);
-                        command.Parameters.AddWithValue("@name", userProfile.FirstName);
-                        command.Parameters.AddWithValue("@surname", userProfile.LastName);
-                        int rowAffected = command.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error during insertion: {ex.Message}");
-                    }
-                }
-            }
-        }
-        
+       
         private void dataAccess_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataAccess.ReadOnly = true;
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                DataGridViewRow selectedRow = dataAccess.Rows[e.RowIndex];
-                EditAccess(selectedRow);
-            }
+
         }
 
         private void AccessForm_Load(object sender, EventArgs e)
         {
             CreateColumns();
-            Access access = new Access();
-            Profile userProfile = access.loadThreeValues("saldfaslf;");
-            DisplayAccess(userProfile);
+            DataTable data = new Access().LoadData();
+            foreach(DataRow row in data.Rows)
+            {
+                ReadSingleRow(dataAccess, row);
+            }
+            originalData = data.Copy();
         }
     }
 }
