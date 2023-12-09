@@ -26,7 +26,7 @@ namespace Citisoft
             {
                 if (!email.EndsWith("@citisoft.co.uk"))
                 {
-                    throw new ArgumentException("Email must end with company's requirements");
+                    //throw new ArgumentException("Email must end with company's requirements");
                 }
 
                 if (!IsPasswordValid(password))
@@ -53,7 +53,7 @@ namespace Citisoft
             }
             catch (Exception ex)
             {
-                return (ex.Message, null);
+               return (ex.Message, null);
             }
         }
 
