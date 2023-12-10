@@ -54,10 +54,9 @@ namespace Citisoft
             this.usernameButton.FlatAppearance.BorderSize = 2;
             this.usernameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.usernameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.usernameButton.Location = new System.Drawing.Point(14, 11);
-            this.usernameButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.usernameButton.Location = new System.Drawing.Point(21, 17);
             this.usernameButton.Name = "usernameButton";
-            this.usernameButton.Size = new System.Drawing.Size(101, 40);
+            this.usernameButton.Size = new System.Drawing.Size(152, 62);
             this.usernameButton.TabIndex = 0;
             this.usernameButton.Text = "Username";
             this.usernameButton.UseVisualStyleBackColor = false;
@@ -71,10 +70,9 @@ namespace Citisoft
             this.backButton.FlatAppearance.BorderSize = 2;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backButton.Location = new System.Drawing.Point(14, 332);
-            this.backButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.backButton.Location = new System.Drawing.Point(21, 511);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(90, 34);
+            this.backButton.Size = new System.Drawing.Size(135, 52);
             this.backButton.TabIndex = 1;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = false;
@@ -88,10 +86,9 @@ namespace Citisoft
             this.editButton.FlatAppearance.BorderSize = 2;
             this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editButton.Location = new System.Drawing.Point(517, 60);
-            this.editButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.editButton.Location = new System.Drawing.Point(776, 92);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(76, 41);
+            this.editButton.Size = new System.Drawing.Size(114, 63);
             this.editButton.TabIndex = 2;
             this.editButton.Text = "Edit";
             this.editButton.UseVisualStyleBackColor = false;
@@ -105,10 +102,9 @@ namespace Citisoft
             this.cancelButton.FlatAppearance.BorderSize = 2;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cancelButton.Location = new System.Drawing.Point(437, 61);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelButton.Location = new System.Drawing.Point(617, 94);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(70, 39);
+            this.cancelButton.Size = new System.Drawing.Size(127, 60);
             this.cancelButton.TabIndex = 7;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
@@ -123,10 +119,9 @@ namespace Citisoft
             this.confirmButton.FlatAppearance.BorderSize = 2;
             this.confirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.confirmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.confirmButton.Location = new System.Drawing.Point(520, 60);
-            this.confirmButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.confirmButton.Location = new System.Drawing.Point(761, 92);
             this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(74, 39);
+            this.confirmButton.Size = new System.Drawing.Size(130, 60);
             this.confirmButton.TabIndex = 8;
             this.confirmButton.Text = "Confirm";
             this.confirmButton.UseVisualStyleBackColor = false;
@@ -143,13 +138,12 @@ namespace Citisoft
             this.dataAccess.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataAccess.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataAccess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataAccess.Location = new System.Drawing.Point(143, 103);
-            this.dataAccess.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataAccess.Location = new System.Drawing.Point(214, 158);
             this.dataAccess.Name = "dataAccess";
             this.dataAccess.ReadOnly = true;
             this.dataAccess.RowHeadersWidth = 51;
             this.dataAccess.RowTemplate.Height = 24;
-            this.dataAccess.Size = new System.Drawing.Size(450, 209);
+            this.dataAccess.Size = new System.Drawing.Size(675, 322);
             this.dataAccess.TabIndex = 12;
             this.dataAccess.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataAccess_CellClick);
             // 
@@ -160,10 +154,9 @@ namespace Citisoft
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(143, 69);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(214, 106);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 32);
+            this.label1.Size = new System.Drawing.Size(206, 48);
             this.label1.TabIndex = 16;
             this.label1.Text = "Access page";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -172,20 +165,19 @@ namespace Citisoft
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(272, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(408, 17);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(172, 46);
+            this.pictureBox1.Size = new System.Drawing.Size(258, 71);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
             // 
             // AccessForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(728, 379);
+            this.ClientSize = new System.Drawing.Size(1092, 583);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.usernameButton);
             this.Controls.Add(this.backButton);
@@ -194,9 +186,8 @@ namespace Citisoft
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.editButton);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AccessForm";
-            this.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
             this.Text = "AccessForm";
             this.Load += new System.EventHandler(this.AccessForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.profileBindingSource)).EndInit();

@@ -50,7 +50,7 @@ namespace Citisoft
 
         //will return the dataset based on the query it has as a parameter
         public DataSet getDataSet(string sqlQuery)
-            //Useless
+            //for ivan need
         {
             //creaing an empty dataset
             DataSet dataSet = new DataSet();
@@ -71,7 +71,7 @@ namespace Citisoft
 
             return dataSet;
         }
-        //does not work ^
+        //does not work ^ //it works well^-^
 
         public SqlDataReader ExcecuteReader(SqlCommand command)
         {

@@ -1,18 +1,17 @@
-﻿using System;
+﻿//libraries
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Citisoft
 {
     public partial class AccessForm : Form
-    {
+    {   
+        //Variables the code use
         private DBConnection dbConnection;
         private DataTable originalData;
         private Dictionary<int, Tuple<int, string, string>> originalValues = new Dictionary<int, Tuple<int, string, string>>();
@@ -22,6 +21,7 @@ namespace Citisoft
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
+        //method of creating columns
         private void ColumnsCreate()
         {
             dataAccess.Columns.Add("profile_id", "Id");
@@ -29,6 +29,7 @@ namespace Citisoft
             dataAccess.Columns.Add("name", "First Name");
             dataAccess.Columns.Add("surname", "Last Name");
         }
+        //add rows
         private void ReadSingleRow(DataGridView dataAccess, DataRow row)
         {
             dataAccess.Rows.Add(
@@ -38,6 +39,7 @@ namespace Citisoft
             row.Field<string>(3)
             );
         }
+        //Set the old values from the db
         private void CancelChanges(DataGridView dataAccess, DataTable originalData)
         {
             dataAccess.Rows.Clear();
@@ -46,6 +48,7 @@ namespace Citisoft
                 dataAccess.Rows.Add(row[0], row[1], row[2], row[3]);
             }
         }
+        //Update data from db/call a messagebox
         private void UpdateAccess(DataGridView dataAccess)
         {
             foreach(DataGridViewRow row in dataAccess.Rows)
@@ -59,29 +62,30 @@ namespace Citisoft
             }
             MessageBox.Show("Data successfully saved to the database!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        //By click go to usertab form
         private void usernameButton_Click(object sender, EventArgs e)
         {
-            //--go to usertab form--//
             UserTabForm usertabForm = new UserTabForm();
             usertabForm.Show();
             this.Hide();
         }
+        //go back to admin home page form
         private void backButton_Click(object sender, EventArgs e)
         {
-            //--go to admin home page form--//
             AdminHomePageForm adminhomepage = new AdminHomePageForm();
             adminhomepage.Show();
             this.Close();
         }
         private void editButton_Click(object sender, EventArgs e)
         {
-            //--Edit button disapppears. Cancel/Confirm buttons appears--//
+            //Edit button disapppears. Cancel/Confirm buttons appears
             editButton.Visible = false;
             cancelButton.Visible = true;
             confirmButton.Visible = true;
             dataAccess.ReadOnly = false;
             dataAccess.EditMode = DataGridViewEditMode.EditOnEnter;
         }
+        //Edit button appears. Cancel/Confirm buttons disapper
         private void cancelButton_Click(object sender, EventArgs e)
         {
             dataAccess.ReadOnly = true;
@@ -91,13 +95,16 @@ namespace Citisoft
             editButton.Visible = true;
             CancelChanges(dataAccess, originalData);
         }
+        //The UpdateAccess() method from form is called and data in the table is updated, as is the data in the databas. 
         private void confirmButton_Click(object sender, EventArgs e)
         {
+            //edit button appears. Cancle and Confirm buttons disappears 
             editButton.Visible = true;
             cancelButton.Visible = false;
             confirmButton.Visible = false;
             dataAccess.ReadOnly = true;
             dataAccess.EditMode = DataGridViewEditMode.EditProgrammatically;
+            //Also call MessageBox in case of success or error.
             try
             {
                 UpdateAccess(dataAccess);
@@ -108,11 +115,12 @@ namespace Citisoft
                 MessageBox.Show("Error saving data:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //empty methdot that does not do anything(Just an accident click)
         private void dataAccess_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
+        //load columns and the data, fill datagridview and save data into variable
         private void AccessForm_Load(object sender, EventArgs e)
         {
             ColumnsCreate();

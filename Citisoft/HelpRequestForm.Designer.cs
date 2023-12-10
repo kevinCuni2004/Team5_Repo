@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Citisoft
 {
-    partial class Form2
+    partial class HelpRequestForm
     {
         private IContainer components = null;
         private ListView listViewMessages;

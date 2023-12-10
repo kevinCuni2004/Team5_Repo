@@ -1,28 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//libraries
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Citisoft
 {
-    //Ivan
+    //ivan
     public class Access
     {
+        //variables
         private DBConnection dbConnection;
         public Access()
         {
+            //exemplar for db connection from DBConnection class
             dbConnection = DBConnection.getInstance();
         }
+        //method for do Select Query for getting data from Profile table
         public DataTable LoadData()
         {
             string query = "SELECT [profile_id], [access], [first_name], [last_name] FROM Profile";
             DataSet dataSet = dbConnection.getDataSet(query);
             return dataSet.Tables[0];
         }
-
+        //method that update data from Profile Table(using Update Query)
         public void UpdateAccess(int profileId, int access, string firstName, string lastName)
         {
             string query = "UPDATE Profile SET [access] = @access, [first_name] = @name, [last_name] = @surname WHERE [profile_id] = @id";
