@@ -71,31 +71,30 @@ namespace Citisoft
 
             return dataSet;
         }
-        //does not work ^ //it works well^-^
 
-        public SqlDataReader ExcecuteReader(SqlCommand command)
+        public SqlDataReader ExcecuteReader(SqlCommand command) //Data reader method with a command as a parameter
         {
-            SqlDataReader reader = null;
-            command.Connection = new SqlConnection(connStr);
+            SqlDataReader reader = null;//initialize reader
+            command.Connection = new SqlConnection(connStr);//initialize connection using connection string
 
             try
             {
-                command.Connection.Open();
+                command.Connection.Open();//open connection
 
-                reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                reader = command.ExecuteReader(CommandBehavior.CloseConnection);//get reader and close connection
             } catch
             {
-                command.Connection.Close();
+                command.Connection.Close();//if error occurred close connection
                 throw;
             }
-            return reader;
+            return reader;//return the reader
         }
 
         public void ExecutenNonQuery(string table, string field, string value, string email)
         {
             string query = "UPDATE [" + table + "] SET [" + field + "]=@value WHERE [e-mail]=@email;";
             
-            SqlCommand command = new SqlCommand(query);
+            SqlCommand command = new SqlCommand(query);//create command using query
 
             if (field == "date_of_birth")
             {
@@ -105,23 +104,25 @@ namespace Citisoft
             else { command.Parameters.AddWithValue("@value", value); }
 
             command.Parameters.AddWithValue("@email", email);
+            //add parameters
 
-            command.Connection = new SqlConnection(connStr);
+            command.Connection = new SqlConnection(connStr);//create conection
 
             try
             {
-                command.Connection.Open();
+                command.Connection.Open();//open connection
 
-                command.ExecuteNonQuery();
+                command.ExecuteNonQuery();//execute statement
             }
             catch
             {
-                command.Connection.Close();
+                command.Connection.Close();//catch error and close
                 throw;
             }
             finally
             {
                 if (command.Connection.State != ConnectionState.Closed) command.Connection.Close();
+                //finally if connection remains open, close
             }
         }
 
@@ -131,46 +132,27 @@ namespace Citisoft
             //complete once you have data in the database
 
             // taya's testing 
-            using (connToDB = new SqlConnection(connStr))
+            using (connToDB = new SqlConnection(connStr))//using the connection created using the connection string
             {
-                connToDB.Open();
-                using (SqlCommand command = new SqlCommand(sqlQuery, connToDB))
+                connToDB.Open();//open connection
+                using (SqlCommand command = new SqlCommand(sqlQuery, connToDB))//using the command
                 {
-                    command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();//execute statement
                 }
             }
-            connToDB.Close();
+            connToDB.Close();//close connection 
 
         }
 
-        public void searchDB(string sqlQuery, string email)
-        {
-            //complete once you have data in the database
 
-            // taya's testing 
-            using (connToDB = new SqlConnection(connStr))
+        public object ExecuteScalar(string sqlQuery)//get scalar value from query
+        {
+            using(connToDB = new SqlConnection(connStr))//using connection using connection string
             {
-                connToDB.Open();
+                connToDB.Open();//open connection
                 using (SqlCommand command = new SqlCommand(sqlQuery, connToDB))
                 {
-                    command.Parameters.Add(new SqlParameter("email", email));
-                    command.ExecuteNonQuery();
-                }
-            }
-            connToDB.Close();
-
-        }
-
-        //taya's testing 
-
-        public object ExecuteScalar(string sqlQuery)
-        {
-            using(connToDB = new SqlConnection(connStr))
-            {
-                connToDB.Open();
-                using (SqlCommand command = new SqlCommand(sqlQuery, connToDB))
-                {
-                    return command.ExecuteScalar();
+                    return command.ExecuteScalar();//execute scalar returning statement
                 }
             }
         }
@@ -178,17 +160,18 @@ namespace Citisoft
         {
             if (connToDB.State == System.Data.ConnectionState.Open)
             {
-                connToDB.Open();
+                connToDB.Open();//method to open connToDB
             }
         }
         public SqlConnection getDBConnection()
         {
-            return connToDB;
+            return connToDB;//method to return connToDB
         }
 
         internal string GetConnectionString()
         {
             return Properties.Settings.Default.DBConnectionString;
+            //method to return connection string
         }
     }
 }

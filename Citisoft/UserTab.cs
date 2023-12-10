@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.PeerToPeer;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -15,18 +16,13 @@ namespace Citisoft
 {
     public class UserTab
     {
-        private Profile user;
-        private DBConnection dBConnection;
-        private UserTabForm userTabForm;
-        private static UserTab _instance;
+        private Profile user;//Profile object to store user
+        private DBConnection dBConnection; //DBConnection object to connect to database
+        private static UserTab _instance; //instance of the class
 
 
-        public UserTab() { }
+        public UserTab() { }//empty constructor
 
-        public UserTab(Profile User)
-        {
-            this.user = User;
-        }
 
         public static UserTab getInstance()
         {
@@ -35,19 +31,20 @@ namespace Citisoft
                 return _instance = new UserTab();
             }
             return _instance;
-        }
+        }//checks if the instance already exists, if not creates it
 
         public Profile loadProfile(string email)
+            //load the Profile info
         {
-            user = new Profile();
-            string query = "SELECT * FROM [Profile] WHERE [e-mail]=@email;";
-            user.Email = email;
-            dBConnection = DBConnection.getInstance();
-            SqlCommand command = new SqlCommand(query);
-            command.Parameters.AddWithValue("@email", email);
-            using (SqlDataReader reader = dBConnection.ExcecuteReader(command))
+            user = new Profile();//initialize object
+            string query = "SELECT * FROM [Profile] WHERE [e-mail]=@email;";//create query
+            user.Email = email;//assign value
+            dBConnection = DBConnection.getInstance();//get instance of DBConnection
+            SqlCommand command = new SqlCommand(query);//create command for the reader
+            command.Parameters.AddWithValue("@email", email);//add parameter
+            using (SqlDataReader reader = dBConnection.ExcecuteReader(command))//using a reader, from DBConnection
             {
-                if (reader.HasRows)
+                if (reader.HasRows) //check if it's null
                 {
                     while (reader.Read())
                     {
@@ -70,6 +67,7 @@ namespace Citisoft
                         }
                         else user.Details = "No Details Available";
                     }
+                    //assign all values into their respective variables
                 }
                 else
                 {
@@ -82,6 +80,7 @@ namespace Citisoft
         public bool checkPassword(string password)
         {
             if (!Regex.IsMatch(password, @"^(?=.*\d)(?=.*[A-Z])(?=.*[a^zA-Z\d]).{8,25}$")) return false;
+            //check format of password
             return true;
         }
 
@@ -91,27 +90,33 @@ namespace Citisoft
             try
             {
                 hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+                //hash password
             }
             catch
             {
                 return "Failed Encrypition";
+                //if an error occurs, return this string
             }
 
             try
             {
                 dBConnection = DBConnection.getInstance();
                 dBConnection.ExecutenNonQuery("Profile", "password", hashedPassword, email);
+                //execute update statement from DBConnection
             }
             catch
             {
                 return "Failed database connection";
+                //if an error occurs, return this string
             }
             return hashedPassword;
+            //return the hashed password
         }
 
         public bool checkName(string name)
         {
             return Regex.IsMatch(name, "^[A-Z][a-zA-Z]*$");
+            //check name format
         }
 
         public string updateName(string name, int Name, string email)
@@ -120,30 +125,35 @@ namespace Citisoft
             {
                 dBConnection = DBConnection.getInstance();
                 if (Name == 1)
-                    dBConnection.ExecutenNonQuery("Profile", "first_name", name, email);
+                    dBConnection.ExecutenNonQuery("Profile", "first_name", name, email);//update 1st name
                 else if (Name == 2)
-                    dBConnection.ExecutenNonQuery("Profile", "last_name", name, email);
+                    dBConnection.ExecutenNonQuery("Profile", "last_name", name, email);//update last(2nd) name
                 else
                     return "Failed executing query";
+                //return this string if error occurred
             }
             catch
             {
                 return "Failed database connection";
+                //return this string if error occurred
             }
             return name;
+            //return name if all goes well
         }
 
         public string updateDetails(string details, string email) {
             try
             {
                 dBConnection = DBConnection.getInstance();
-                dBConnection.ExecutenNonQuery("Profile", "details", details, email);
+                dBConnection.ExecutenNonQuery("Profile", "details", details, email);//update details in database
             }
             catch
             {
                 return "Failed database connection";
+                //return this if error occurred
             }
             return details;
+            //return details if it all goes well
         }
 
         public string updateUsername(string username, string email)
@@ -152,10 +162,12 @@ namespace Citisoft
             {
                 dBConnection = DBConnection.getInstance();
                 dBConnection.ExecutenNonQuery("Profile", "username", username, email);
+                //update username in database
             }
             catch
             {
                 return "Failed database connection";
+                //return this if error occurred
             }
             return username;
         }
@@ -166,12 +178,14 @@ namespace Citisoft
             {
                 dBConnection = DBConnection.getInstance();
                 dBConnection.ExecutenNonQuery("Profile", "date_of_birth", dt.ToShortDateString(), email);
+                //update date of birth in database
             }
             catch
             {
-                return new DateTime(1800, 1, 1);
+                return new DateTime(1800, 1, 1);//return this date if error occurred
             }
             return dt;
+            //return the updated date if all went well
         }
     }
 }

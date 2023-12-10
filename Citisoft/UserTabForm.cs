@@ -78,7 +78,7 @@ namespace Citisoft
         }
 
         private void emailLabel_Click(object sender, EventArgs e)
-        {
+        {//email address cannot be changed once set
             MessageBox.Show("You cannot change your e-mail address!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
@@ -87,12 +87,14 @@ namespace Citisoft
             changeFNamePanel.Visible = true;
             changeDetailsTabControl.SelectedTab = changeFNameTab;
             changeDetailsTabControl.Visible = true;
+            //show the tab control to change the name
         }
 
         private void cancelFNameChange_Click(object sender, EventArgs e)
         {
             changeFNamePanel.Visible = false;
             changeDetailsTabControl.Visible = false;
+            //cancel the change and hide the tab control
         }
 
         
@@ -101,6 +103,7 @@ namespace Citisoft
             changeLNamePanel.Visible = true;
             changeDetailsTabControl.SelectedTab = changeLNameTab;
             changeDetailsTabControl.Visible = true;
+            //show the tab control to change the surname
         }
 
         private void descTitleLabel_Click(object sender, EventArgs e)
@@ -108,6 +111,7 @@ namespace Citisoft
             changeDescPanel.Visible = true;
             changeDetailsTabControl.SelectedTab = changeDescTab;
             changeDetailsTabControl.Visible = true;
+            //show the tab control to change the description
         }
 
         private void descriptionLabel_Click(object sender, EventArgs e)
@@ -115,6 +119,7 @@ namespace Citisoft
             changeDescPanel.Visible = true;
             changeDetailsTabControl.SelectedTab = changeDescTab;
             changeDetailsTabControl.Visible = true;
+            //show the tab controls to change the description
         }
 
         private void changePasswordLabel_Click(object sender, EventArgs e)
@@ -122,37 +127,41 @@ namespace Citisoft
             changePasswordPanel.Visible = true;
             changeDetailsTabControl.SelectedTab = changePasswordTab;
             changeDetailsTabControl.Visible = true;
+            //show the tab control to change the password
         }
 
         private void cancelPassChangeButton_Click(object sender, EventArgs e)
         {
             changePasswordPanel.Visible = false;
             changeDetailsTabControl.Visible = false;
+            //cancel the change and hide the tab control
         }
 
         private void changePassButton_Click(object sender, EventArgs e)
         {
             userTab = UserTab.getInstance();
-            if (BCrypt.Net.BCrypt.Verify(oldPassTextBox.Text, User.Password))
+            if (BCrypt.Net.BCrypt.Verify(oldPassTextBox.Text, User.Password)) //verify hashed password
             {
-                if (userTab.checkPassword(newPassTextBox.Text))
+                if (userTab.checkPassword(newPassTextBox.Text))//check the format
                 {
                     if (newPassTextBox.Text == confirmNewPassTextBox.Text)
                     {
                         if (userTab.updatePassword(newPassTextBox.Text, User.Email) == "Failed Encrypition" ||
-                            userTab.updatePassword(newPassTextBox.Text, User.Email) == "Failed database connection")
+                            userTab.updatePassword(newPassTextBox.Text, User.Email) == "Failed database connection") //check for any errors
                         {
                             MessageBox.Show("Error changing password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             oldPassTextBox.Text = "";
                             newPassTextBox.Text = "";
                             confirmNewPassTextBox.Text = "";
+                            //display error message and reset the textboxes
                         } else
                         {
-                            User.Password = userTab.updatePassword(newPassTextBox.Text, User.Email);
+                            User.Password = userTab.updatePassword(newPassTextBox.Text, User.Email);//update password
+                            MessageBox.Show("Password changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            changePasswordPanel.Visible = false;
+                            changeDetailsTabControl.Visible = false;
+                            //display success message and hide tab control
                         }
-                        MessageBox.Show("Password changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        changePasswordPanel.Visible = false;
-                        changeDetailsTabControl.Visible = false;
                     }
                     else
                     {
@@ -160,6 +169,7 @@ namespace Citisoft
                         oldPassTextBox.Text = "";
                         newPassTextBox.Text = "";
                         confirmNewPassTextBox.Text = "";
+                        //display error message and reset the textboxes
                     }
                 } else
                 {
@@ -167,6 +177,7 @@ namespace Citisoft
                     oldPassTextBox.Text = "";
                     newPassTextBox.Text = "";
                     confirmNewPassTextBox.Text = "";
+                    //display error message and reset the textboxes
                 }
             } else
             {
@@ -174,37 +185,39 @@ namespace Citisoft
                 oldPassTextBox.Text = "";
                 newPassTextBox.Text = "";
                 confirmNewPassTextBox.Text = "";
+                //display error message and reset the textboxes
             }
         }
 
         private void changeFNameButton_Click(object sender, EventArgs e)
         {
             userTab = UserTab.getInstance();
-            if (!String.IsNullOrWhiteSpace(changeFNameTextBox.Text))
+            if (!String.IsNullOrWhiteSpace(changeFNameTextBox.Text)) //check if the textbox is null
             {
-                if (!userTab.checkName(changeFNameTextBox.Text))
+                if (!userTab.checkName(changeFNameTextBox.Text))//verify name format
                 {
                     MessageBox.Show("Name is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     changeFNameTextBox.Text = "";
+                    //display error message and reset textbox
                 }
                 else
                 {
-                    userTab.updateName(changeFNameTextBox.Text, 1, User.Email);
-                    if (userTab.updateName(changeFNameTextBox.Text, 1, User.Email) == "Failed executing query")
+                    if (userTab.updateName(changeFNameTextBox.Text, 1, User.Email) == "Failed executing query")//check for error
                     {
                         MessageBox.Show("Error in updating data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (userTab.updateName(changeFNameTextBox.Text, 1, User.Email) == "Failed database connection")
+                    else if (userTab.updateName(changeFNameTextBox.Text, 1, User.Email) == "Failed database connection")//check for error
                     {
                         MessageBox.Show("Error connecting to the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        User.FirstName = userTab.updateName(changeFNameTextBox.Text, 1, User.Email);
+                        User.FirstName = userTab.updateName(changeFNameTextBox.Text, 1, User.Email);//assign and update name
                         MessageBox.Show("First Name changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changeFNamePanel.Visible = false;
                         changeDetailsTabControl.Visible = false;
                         updateFields(User);
+                        //show success message and hide tab control
                     }
                 }
             }
@@ -212,37 +225,39 @@ namespace Citisoft
             {
                 MessageBox.Show("Name is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 changeFNameTextBox.Text = "";
+                //display error message and reset textbox
             }
         }
 
         private void changeLNameButton_Click(object sender, EventArgs e)
         {
             userTab = UserTab.getInstance();
-            if (!String.IsNullOrWhiteSpace(changeLNameTextBox.Text))
+            if (!String.IsNullOrWhiteSpace(changeLNameTextBox.Text))//check if textbox is empty
             {
-                if (!userTab.checkName(changeLNameTextBox.Text))
+                if (!userTab.checkName(changeLNameTextBox.Text)) //verify format
                 {
                     MessageBox.Show("Name is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     changeLNameTextBox.Text = "";
+                    //display error message and reset textbox
                 }
                 else
                 {
-                    userTab.updateName(changeLNameTextBox.Text, 2, User.Email);
-                    if (userTab.updateName( changeLNameTextBox.Text, 2, User.Email) == "Failed executing query")
+                    if (userTab.updateName( changeLNameTextBox.Text, 2, User.Email) == "Failed executing query")//check for error
                     {
                         MessageBox.Show("Error in updating data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (userTab.updateName(changeLNameTextBox.Text, 2, User.Email) == "Failed database connection")
+                    else if (userTab.updateName(changeLNameTextBox.Text, 2, User.Email) == "Failed database connection")//check for error
                     {
                         MessageBox.Show("Error connecting to the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        User.FirstName = userTab.updateName(changeLNameTextBox.Text, 2, User.Email);
+                        User.FirstName = userTab.updateName(changeLNameTextBox.Text, 2, User.Email);//assign and update field
                         MessageBox.Show("Last Name changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changeFNamePanel.Visible = false;
                         changeDetailsTabControl.Visible = false;
                         updateFields(User);
+                        //display the success message and hide the tab control
                     }
                 }
             }
@@ -250,6 +265,7 @@ namespace Citisoft
             {
                 MessageBox.Show("Name is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 changeLNameTextBox.Text = "";
+                //display error message and reset textbox
             }
         }
 
@@ -257,37 +273,42 @@ namespace Citisoft
         {
             changeDescPanel.Visible = false;
             changeDetailsTabControl.Visible = false;
+            //cancel change, hide tab control
         }
 
         private void cancelLNameButton_Click(object sender, EventArgs e)
         {
             changeLNamePanel.Visible = false;
             changeDetailsTabControl.Visible = false;
+            //cancel change, hide tab control
         }
 
         private void changeDescButton_Click(object sender, EventArgs e)
         {
             userTab = UserTab.getInstance();
-            if ((changeDescTextBox.Text).Length < 500)
+            if ((changeDescTextBox.Text).Length < 500) //check length
             {
-                if (userTab.updateDetails(changeDescTextBox.Text, User.Email) == "Failed database connection")
+                if (userTab.updateDetails(changeDescTextBox.Text, User.Email) == "Failed database connection")//check for error
                 {
                     MessageBox.Show("Failed connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     changeDescTextBox.Text = "";
+                    //display error message and reset textbox
                 }
                 else
                 {
-                    User.Details = userTab.updateDetails(changeDescTextBox.Text, User.Email);
+                    User.Details = userTab.updateDetails(changeDescTextBox.Text, User.Email);//assign and update details
                     MessageBox.Show("Description changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     changeDescPanel.Visible = false;
                     changeDetailsTabControl.Visible = false;
                     updateFields(User);
+                    //display success message and hide tab control
                 }
             }
             else
             {
                 MessageBox.Show("Please keep your description under 500 letters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 changeDescTextBox.Text = "";
+                //display error message and reset textbox
             }
         }
 
@@ -296,47 +317,54 @@ namespace Citisoft
             welcomeForm = new WelcomeForm();
             this.Close();
             welcomeForm.ShowDialog();
+            //close this form, run welcome form
         }
 
         private void updateInfoButton_Click(object sender, EventArgs e)
         {
             bool flag = true;
+            //bool used to flag down any errors
             userTab = UserTab.getInstance();
             //Username
-            if (userTab.updateUsername(setUsernameTextBox.Text, User.Email) == "Failed database connection")
+            if (userTab.updateUsername(setUsernameTextBox.Text, User.Email) == "Failed database connection") //check for error
             {
                 MessageBox.Show("Failed connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 changeDescTextBox.Text = "";
                 flag = false;
+                //display error message, flag error and reset textbox
             }
             else
             {
-                User.Username = userTab.updateUsername(setUsernameTextBox.Text, User.Email);
+                User.Username = userTab.updateUsername(setUsernameTextBox.Text, User.Email);//assign and update username
             }
             //First Name
-            if (!String.IsNullOrWhiteSpace(setFNameTextBox.Text))
+            if (!String.IsNullOrWhiteSpace(setFNameTextBox.Text))//check if the textbox is null
             {
-                if (!userTab.checkName(setFNameTextBox.Text))
+                if (!userTab.checkName(setFNameTextBox.Text))//check format
                 {
                     MessageBox.Show("Name is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     setFNameTextBox.Text = "";
+                    flag = false;
+                    //display error message and reset textbox, flag error
                 }
                 else
                 {
-                    userTab.updateName(setFNameTextBox.Text, 1, User.Email);
-                    if (userTab.updateName(setFNameTextBox.Text, 1, User.Email) == "Failed executing query")
+                    if (userTab.updateName(setFNameTextBox.Text, 1, User.Email) == "Failed executing query")//check for error
                     {
                         MessageBox.Show("Error in updating data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         flag = false;
+                        //display error message, flag error
                     }
                     else if (userTab.updateName(setFNameTextBox.Text, 1, User.Email) == "Failed database connection")
                     {
                         MessageBox.Show("Error connecting to the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         flag = false;
+                        //display error message, flag error
                     }
                     else
                     {
                         User.FirstName = userTab.updateName(setFNameTextBox.Text, 1, User.Email);
+                        //update and assign name
                     }
                 }
             }
@@ -344,31 +372,37 @@ namespace Citisoft
             {
                 MessageBox.Show("Name is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 setFNameTextBox.Text = "";
+                flag = false;
+                //display error message, reset textbox, and flag error
             }
             //Last Name
-            if (!String.IsNullOrWhiteSpace(setLNameTextBox.Text))
+            if (!String.IsNullOrWhiteSpace(setLNameTextBox.Text)) //check if the textbox is null
             {
-                if (!userTab.checkName(setLNameTextBox.Text))
+                if (!userTab.checkName(setLNameTextBox.Text))//check format
                 {
                     MessageBox.Show("Name is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     setLNameTextBox.Text = "";
+                    flag = false;
+                    //display error message and reset textbox, flag error
                 }
                 else
                 {
-                    userTab.updateName(setLNameTextBox.Text, 2, User.Email);
-                    if (userTab.updateName(setLNameTextBox.Text, 2, User.Email) == "Failed executing query")
+                    if (userTab.updateName(setLNameTextBox.Text, 2, User.Email) == "Failed executing query")//check for error
                     {
                         MessageBox.Show("Error in updating data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         flag = false;
+                        //display error message and flag error
                     }
-                    else if (userTab.updateName(setLNameTextBox.Text, 2, User.Email) == "Failed database connection")
+                    else if (userTab.updateName(setLNameTextBox.Text, 2, User.Email) == "Failed database connection")//check error
                     {
                         MessageBox.Show("Error connecting to the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         flag = false;
+                        //display error message and flag error
                     }
                     else
                     {
                         User.LastName = userTab.updateName(setLNameTextBox.Text, 2, User.Email);
+                        //assign and update surname
                     }
                 }
             }
@@ -376,45 +410,52 @@ namespace Citisoft
             {
                 MessageBox.Show("Name is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 setLNameTextBox.Text = "";
+                flag = false;
+                //display error message and flag down error, reset textbox
             }
             //DOB
             User.DateofBirth = new DateTime(Convert.ToInt32(setDOBYear.Value), Convert.ToInt32(setDOBMonth.Value), Convert.ToInt32(setDOBDay.Value));
-            User.DateofBirth = userTab.updateDOB(User.DateofBirth, User.Email);
-            DateTime temp = new DateTime(1800, 1, 1);
+            User.DateofBirth = userTab.updateDOB(User.DateofBirth, User.Email);//assign and update value
+            DateTime temp = new DateTime(1800, 1, 1);//temporary DateTime to check for erro
             if (User.DateofBirth.CompareTo(temp) == 0) {
                 MessageBox.Show("Error connecting to the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 setDOBDay.Value = 1;
                 setDOBMonth.Value = 1;
                 setDOBYear.Value = 2000;
                 flag = false;
+                //display error message, flag error, reset values
             }
             //Description
-            if ((setDetailsTextBox.Text).Length < 500)
+            if ((setDetailsTextBox.Text).Length < 500) //check length
             {
-                if (userTab.updateDetails(setDetailsTextBox.Text, User.Email) == "Failed database connection")
+                if (userTab.updateDetails(setDetailsTextBox.Text, User.Email) == "Failed database connection")//check for error
                 {
                     MessageBox.Show("Failed connection to database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     setDetailsTextBox.Text = "";
                     flag = false;
+                    //display error message, flag error, reset textbox
                 }
                 else
                 {
-                    User.Details = userTab.updateDetails(setDetailsTextBox.Text, User.Email);
+                    User.Details = userTab.updateDetails(setDetailsTextBox.Text, User.Email); //assign and update details
                 }
             }
             else
             {
                 MessageBox.Show("Please keep your description under 500 letters.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 setDetailsTextBox.Text = "";
+                //display error message, reset textbox
             }
 
             if (flag == true)
-            {
+            {//if the flag was not triggered
                 updateFields(User);
                 changeDetailsTabControl.Visible = false;
                 MessageBox.Show("Information updated.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //update fields, hide tab control, show success message
             } else
             {
+                //if the flag was triggered, reset all values
                 setFNameTextBox.Text = "";
                 setLNameTextBox.Text = "";
                 setUsernameTextBox.Text = "";
