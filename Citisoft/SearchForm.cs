@@ -19,6 +19,7 @@ namespace Citisoft
         bool found = false;
         private SearchVendors searchVendor;
         private Search search;
+        private string email;
 
         public SearchForm()
         {
@@ -30,10 +31,21 @@ namespace Citisoft
             this.Load += new System.EventHandler(this.SearchForm_Load);
         }
 
+        public SearchForm(string email)
+        {
+            this.email = email;
+            InitializeComponent();
+            search = new Search();
+            searchVendor = new SearchVendors();
+            StartPosition = FormStartPosition.CenterScreen;
+
+            this.Load += new System.EventHandler(this.SearchForm_Load);
+        }
+
         //sending user to usertab
         private void usernameButton_Click(object sender, EventArgs e)
         {
-            UserTabForm usertabForm = new UserTabForm();
+            UserTabForm usertabForm = new UserTabForm(email);
             usertabForm.Show();
             this.Hide();
         }

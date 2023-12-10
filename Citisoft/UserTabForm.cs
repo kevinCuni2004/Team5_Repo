@@ -31,10 +31,12 @@ namespace Citisoft
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        public UserTabForm(Profile user)//constructor to pass the user info to the form
+        public UserTabForm(string email)//constructor to pass the user info to the form
         {
-            this.User = user;
             InitializeComponent();
+            userTab = UserTab.getInstance();
+            User = userTab.loadProfile(email);
+            updateFields(User);
             changeDetailsTabControl.Visible = false;
             changeDetailsTabControl.ItemSize = new Size(0, 1);
             userTab = new UserTab();
@@ -61,14 +63,6 @@ namespace Citisoft
             {
                 changeDetailsTabControl.Visible = false;
             }
-        }
-
-
-        private void Help_Button_Click(object sender, EventArgs e)
-        {
-            HelpForm form = new HelpForm();
-            //show help form
-            form.Show();
         }
 
         private void Back_Button_Click(object sender, EventArgs e)
@@ -315,8 +309,9 @@ namespace Citisoft
         private void logOutButton_Click(object sender, EventArgs e)
         {
             welcomeForm = new WelcomeForm();
-            this.Close();
+            this.Hide();
             welcomeForm.ShowDialog();
+            this.Close();
             //close this form, run welcome form
         }
 

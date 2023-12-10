@@ -73,15 +73,15 @@ namespace Citisoft
             return hashedPassword != null;
             
             //check if it will work without it
-            //int count = Convert.ToInt32(dBConnection.ExecuteScalar(query));
-            //return count > 0;
-
+          
         }
 
         // entering the profile 
         private Profile LoadUserProfile (string email)
         {
-            return new Profile();
+            UserTab userTab = new UserTab();
+
+            return userTab.loadProfile(email);
         }
     }
 }

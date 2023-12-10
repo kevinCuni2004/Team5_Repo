@@ -34,9 +34,19 @@ namespace Citisoft
                 MessageBox.Show("Log in successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 user = userProfile;
-                SearchForm searchForm = new SearchForm();
-                searchForm.Show();
-                this.Close();
+                if(user.AdminID == 0)
+                {
+                    SearchForm searchForm = new SearchForm(email);
+                    this.Hide();
+                    searchForm.ShowDialog();
+                    this.Show();
+                } else
+                {
+                    AdminHomePageForm adminHomePageForm = new AdminHomePageForm(email);
+                    this.Hide();
+                    adminHomePageForm.ShowDialog();
+                    this.Show();
+                }
             }
             else
             {

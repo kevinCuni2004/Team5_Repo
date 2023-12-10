@@ -77,6 +77,16 @@ namespace Citisoft
             }
         }
 
+        private void passwordTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Move focus to the password textbox
+                SignUpButton.Focus();
+                e.Handled = true; // Suppress the Enter key
+            }
+        }
+
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUpForm));
@@ -116,6 +126,7 @@ namespace Citisoft
             this.passwordTextBox.Size = new System.Drawing.Size(421, 68);
             this.passwordTextBox.TabIndex = 1;
             this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
+            this.passwordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordTextBox_KeyDown);
             // 
             // SignUpButton
             // 

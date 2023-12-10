@@ -6,6 +6,7 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -25,7 +26,6 @@ namespace Citisoft
         private Search search;
 
         //taya
-        private FlowLayoutPanel flowLayoutPanel;
         private List<CompanyUserControl> allCompanyControls;
         private VScrollBar vScrollBar;
 
@@ -85,12 +85,7 @@ namespace Citisoft
 
         private void InitializeVendorPanels()
         {
-            flowLayoutPanel = new FlowLayoutPanel
-            {
-                Dock = DockStyle.Fill
-            };
-
-            this.Controls.Add(flowLayoutPanel);
+           
             
             vScrollBar = new VScrollBar
             {
@@ -144,25 +139,8 @@ namespace Citisoft
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
+       
+       
 
         // sends to usertab
         private void usernameButton_Click(object sender, EventArgs e)
@@ -195,15 +173,7 @@ namespace Citisoft
             terms.Show();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
-        private void SearchVendors_Load(object sender, EventArgs e)
-        {
-            
-        }
+       
 
        
         // with the scrolling next 4 panels displaying 
@@ -226,9 +196,7 @@ namespace Citisoft
 
         }
 
-        private void noResultsLabel_Click(object sender, EventArgs e)
-        {
-            
-        }
+
+       
     }
 }

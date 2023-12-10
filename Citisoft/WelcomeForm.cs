@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,29 +32,35 @@ namespace Citisoft
         private void SignUpButton_Click(object sender, EventArgs e)
         {
             SignUpForm signUpForm = new SignUpForm(signUp);
-            signUpForm.Show();
+            this.Hide();
+            signUpForm.ShowDialog();
+            this.Close();
         }
 
         // if user clicks logIn, user changes the form to proceed logIn
         private void LogInButton_Click(object sender, EventArgs e)
         {
             LogInForm logInForm = new LogInForm(logIn);
-            logInForm.Show();
+            this.Hide();
+            logInForm.ShowDialog();
+            this.Show();
         }
-
-        //there is no HelpForm yet, so i cannot connect it
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            //i will add some code after creation of Help
+            HelpForm helpForm = new HelpForm();
+            this.Hide();
+            helpForm.ShowDialog();
         }
         //Ivan
         private void tutorialsLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            string pdfFile = @"C:\Users\User PC\Desktop\gjvgvg\Team5_Repo\Tutorials.pdf";
+            string pdfFolder = Path.Combine(Application.StartupPath, "PDFs");
+            string pdfFileName = "Tutorilas.pdf";
+            string pdfPath = Path.Combine(pdfFolder, pdfFileName);
             try
             {
-                Process.Start(pdfFile);
+                Process.Start(pdfPath);
             }
             catch (Exception ex)
             {

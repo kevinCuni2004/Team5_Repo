@@ -34,13 +34,9 @@
             this.backButton = new System.Windows.Forms.Button();
             this.resultsLabel = new System.Windows.Forms.Label();
             this.termsOfUseLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.vendorPanel8 = new System.Windows.Forms.Panel();
-            this.linkLabel8 = new System.Windows.Forms.LinkLabel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.noResultsLabel = new System.Windows.Forms.Label();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.vendorPanel8.SuspendLayout();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,7 +81,7 @@
             this.backButton.FlatAppearance.BorderSize = 2;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backButton.Location = new System.Drawing.Point(25, 702);
+            this.backButton.Location = new System.Drawing.Point(25, 553);
             this.backButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(144, 76);
@@ -100,7 +96,7 @@
             this.resultsLabel.AutoSize = true;
             this.resultsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.resultsLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.resultsLabel.Location = new System.Drawing.Point(554, 191);
+            this.resultsLabel.Location = new System.Drawing.Point(554, 117);
             this.resultsLabel.Name = "resultsLabel";
             this.resultsLabel.Size = new System.Drawing.Size(127, 38);
             this.resultsLabel.TabIndex = 6;
@@ -111,7 +107,7 @@
             this.termsOfUseLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.termsOfUseLinkLabel.AutoSize = true;
             this.termsOfUseLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.termsOfUseLinkLabel.Location = new System.Drawing.Point(442, 742);
+            this.termsOfUseLinkLabel.Location = new System.Drawing.Point(442, 593);
             this.termsOfUseLinkLabel.Name = "termsOfUseLinkLabel";
             this.termsOfUseLinkLabel.Size = new System.Drawing.Size(375, 32);
             this.termsOfUseLinkLabel.TabIndex = 7;
@@ -119,59 +115,10 @@
             this.termsOfUseLinkLabel.Text = "Terms Of Use  Privacy policy";
             this.termsOfUseLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.termsOfUseLinkLabel_LinkClicked);
             // 
-            // vendorPanel8
-            // 
-            this.vendorPanel8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.vendorPanel8.Controls.Add(this.linkLabel8);
-            this.vendorPanel8.Controls.Add(this.label7);
-            this.vendorPanel8.Location = new System.Drawing.Point(1725, 165);
-            this.vendorPanel8.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.vendorPanel8.Name = "vendorPanel8";
-            this.vendorPanel8.Size = new System.Drawing.Size(170, 245);
-            this.vendorPanel8.TabIndex = 19;
-            this.vendorPanel8.Visible = false;
-            // 
-            // linkLabel8
-            // 
-            this.linkLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.linkLabel8.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel8.Location = new System.Drawing.Point(3, 5);
-            this.linkLabel8.Name = "linkLabel8";
-            this.linkLabel8.Size = new System.Drawing.Size(163, 62);
-            this.linkLabel8.TabIndex = 20;
-            this.linkLabel8.TabStop = true;
-            this.linkLabel8.Text = "Ezops";
-            this.linkLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Location = new System.Drawing.Point(3, 65);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(163, 177);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "label7";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // noResultsLabel
-            // 
-            this.noResultsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.noResultsLabel.AutoSize = true;
-            this.noResultsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.noResultsLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.noResultsLabel.Location = new System.Drawing.Point(537, 380);
-            this.noResultsLabel.Name = "noResultsLabel";
-            this.noResultsLabel.Size = new System.Drawing.Size(170, 26);
-            this.noResultsLabel.TabIndex = 2;
-            this.noResultsLabel.Text = "No results found";
-            this.noResultsLabel.Visible = false;
-            this.noResultsLabel.Click += new System.EventHandler(this.noResultsLabel_Click);
-            // 
             // vScrollBar1
             // 
             this.vScrollBar1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.vScrollBar1.Location = new System.Drawing.Point(1026, 230);
+            this.vScrollBar1.Location = new System.Drawing.Point(1159, 170);
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(28, 381);
             this.vScrollBar1.TabIndex = 20;
@@ -189,17 +136,23 @@
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.Location = new System.Drawing.Point(137, 196);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(980, 302);
+            this.flowLayoutPanel.TabIndex = 22;
+            // 
             // SearchVendors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1280, 799);
+            this.ClientSize = new System.Drawing.Size(1280, 650);
+            this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.termsOfUseLinkLabel);
             this.Controls.Add(this.vScrollBar1);
-            this.Controls.Add(this.noResultsLabel);
-            this.Controls.Add(this.vendorPanel8);
             this.Controls.Add(this.resultsLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.helpButton);
@@ -207,8 +160,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "SearchVendors";
             this.Text = "SearchVendors";
-            this.Load += new System.EventHandler(this.SearchVendors_Load);
-            this.vendorPanel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -222,11 +173,8 @@
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Label resultsLabel;
         private System.Windows.Forms.LinkLabel termsOfUseLinkLabel;
-        private System.Windows.Forms.Panel vendorPanel8;
-        private System.Windows.Forms.LinkLabel linkLabel8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label noResultsLabel;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
     }
 }

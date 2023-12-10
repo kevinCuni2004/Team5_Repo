@@ -32,6 +32,15 @@ namespace Citisoft
                 e.Handled = true; // Suppress the Enter key
             }
         }
+        private void passwordTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Move focus to the password textbox
+                logInButton.Focus();
+                e.Handled = true; // Suppress the Enter key
+            }
+        }
 
         #region Windows Form Designer generated code
 
@@ -66,7 +75,7 @@ namespace Citisoft
             this.logInButton.FlatAppearance.BorderSize = 2;
             this.logInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.logInButton.Location = new System.Drawing.Point(583, 548);
+            this.logInButton.Location = new System.Drawing.Point(441, 506);
             this.logInButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logInButton.Name = "logInButton";
             this.logInButton.Size = new System.Drawing.Size(218, 81);
@@ -78,7 +87,7 @@ namespace Citisoft
             // emailTextBox
             // 
             this.emailTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.emailTextBox.Location = new System.Drawing.Point(441, 281);
+            this.emailTextBox.Location = new System.Drawing.Point(299, 239);
             this.emailTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.emailTextBox.Multiline = true;
             this.emailTextBox.Name = "emailTextBox";
@@ -90,13 +99,14 @@ namespace Citisoft
             // passwordTextBox
             // 
             this.passwordTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.passwordTextBox.Location = new System.Drawing.Point(441, 407);
+            this.passwordTextBox.Location = new System.Drawing.Point(299, 365);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.passwordTextBox.Multiline = true;
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(436, 62);
             this.passwordTextBox.TabIndex = 2;
             this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
+            this.passwordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordTextBox_KeyDown);
             // 
             // label1
             // 
@@ -104,7 +114,7 @@ namespace Citisoft
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(437, 226);
+            this.label1.Location = new System.Drawing.Point(295, 184);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(160, 32);
             this.label1.TabIndex = 3;
@@ -117,7 +127,7 @@ namespace Citisoft
             this.label2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label2.Location = new System.Drawing.Point(437, 366);
+            this.label2.Location = new System.Drawing.Point(295, 324);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(215, 32);
             this.label2.TabIndex = 4;
@@ -127,7 +137,7 @@ namespace Citisoft
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(583, 15);
+            this.pictureBox1.Location = new System.Drawing.Point(441, 15);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(218, 82);
@@ -139,7 +149,7 @@ namespace Citisoft
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(884, 407);
+            this.pictureBox2.Location = new System.Drawing.Point(742, 365);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(72, 62);
@@ -151,7 +161,7 @@ namespace Citisoft
             // 
             this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(884, 281);
+            this.pictureBox3.Location = new System.Drawing.Point(742, 239);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(72, 62);
@@ -167,7 +177,7 @@ namespace Citisoft
             this.backButton.FlatAppearance.BorderSize = 2;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backButton.Location = new System.Drawing.Point(48, 660);
+            this.backButton.Location = new System.Drawing.Point(48, 577);
             this.backButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(120, 66);
@@ -184,7 +194,7 @@ namespace Citisoft
             this.helpButton.FlatAppearance.BorderSize = 2;
             this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.helpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.helpButton.Location = new System.Drawing.Point(1300, 15);
+            this.helpButton.Location = new System.Drawing.Point(1016, 15);
             this.helpButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(119, 60);
@@ -198,7 +208,7 @@ namespace Citisoft
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label3.Location = new System.Drawing.Point(635, 173);
+            this.label3.Location = new System.Drawing.Point(493, 131);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 38);
             this.label3.TabIndex = 10;
@@ -209,7 +219,7 @@ namespace Citisoft
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1432, 764);
+            this.ClientSize = new System.Drawing.Size(1148, 681);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.backButton);
