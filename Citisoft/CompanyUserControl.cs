@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +17,16 @@ namespace Citisoft
 
     {
         public int CompanyID { get; set; }
+
         public event EventHandler<EventArgs> CompanyClicked;
-        public CompanyUserControl(string companyName, string companyWebsite)
+        public CompanyUserControl(int companyId,string companyName, string companyWebsite)
         {
             InitializeComponent();
+            CompanyID = companyId;
             InitializeControl(companyName, companyWebsite);
-            this.Click += CompanyUserControl_Click;
+            this.Click += websiteLabel_Click;
+
+            Debug.WriteLine($"CompanyUserControl created for {companyName} wih ID {CompanyID}");
         }
 
         private void InitializeControl(string companyName, string companyWebsite)
@@ -30,12 +37,34 @@ namespace Citisoft
 
         private void websiteLabel_Click(object sender, EventArgs e)
         {
+            OpenCompanyPDF();
+        }
+
+
+ 
+        private void titleLabel_Click(object sender, EventArgs e)
+        {
+            OpenCompanyPDF();
 
         }
-        private void CompanyUserControl_Click(object sender, EventArgs e)
+
+        private void OpenCompanyPDF()
         {
-            // Trigger the event when the control is clicked
-            CompanyClicked?.Invoke(this, EventArgs.Empty);
+            string pdfFolder = Path.Combine(Application.StartupPath, "PDFs");
+            string pdfFileName = $"{CompanyID}.pdf";
+            string pdfPath = Path.Combine(pdfFolder, pdfFileName);
+
+            try
+            {
+                Process.Start(pdfPath);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("PDF not found for the selected company.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
     }
+
 }

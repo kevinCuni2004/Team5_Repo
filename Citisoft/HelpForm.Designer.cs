@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Citisoft
 {
-    partial class Form1
+    partial class HelpForm
     {
         /// <summary>
         ///  Required designer variable.

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -18,7 +19,6 @@ namespace Citisoft
         //Kevin
         private DBConnection dbConnection;
         public SqlDataReader dataReader;
-        //
 
         private int currentPageIndex;
         public string searchText;
@@ -28,87 +28,60 @@ namespace Citisoft
         private FlowLayoutPanel flowLayoutPanel;
         private List<CompanyUserControl> allCompanyControls;
         private VScrollBar vScrollBar;
+
+
         public SearchVendors()
         {
             InitializeComponent();
             InitializeVendorPanels();
-            FetchVendorDataFromDatabase(); // Fetch vendor data when the form is initialized
             ShowCurrentPage();
             search = new Search();
             StartPosition = FormStartPosition.CenterScreen;
 
-            foreach (var control in allCompanyControls)
-            {
-                control.CompanyClicked += CompanyUserControl_Clicked;
-            }
-        }
-
-        private void FetchVendorDataFromDatabase()
-        {
-            string connectionString = Properties.Settings.Default.DBConnectionString;
-           
         }
 
 
-       
-
+        // Display panels for the search results
         public void DisplaySearchResults(SqlDataReader reader)
         {
-            // Display panels for the search results
+
             ClearControls();
-            
+
+            // using reader to find info from the database
             using (reader)
             {
+                //error handling
                 if (reader == null) Console.WriteLine("It's empty.");
 
                 while (reader.Read())
                 {
-
+                    // displaying info on panels
+                    int companyId = reader.GetInt32(reader.GetOrdinal("company_id"));
                     string companyName = reader.GetString(reader.GetOrdinal("company_name"));
                     string companyWebsite = reader.GetString(reader.GetOrdinal("company_website"));
+                    
 
-                    CompanyUserControl companyUserControl = new CompanyUserControl(companyName, companyWebsite);
+                    // creating panel for the company
+                    CompanyUserControl companyUserControl = new CompanyUserControl(companyId, companyName, companyWebsite);
+
+        
+
                     allCompanyControls.Add(companyUserControl);
                     flowLayoutPanel.Controls.Add(companyUserControl);
 
-                   
+
                 }
             }
         }
+        
 
-        private void CompanyUserControl_Clicked(object sender, EventArgs e)
-        {
-            if (sender is CompanyUserControl clickedControl)
-            {
-                // Get the company ID from the clicked control
-                int companyId = clickedControl.CompanyID;
-
-                // PDFs are stored in a folder named "PDFs" within  program directory
-                string pdfFolder = Path.Combine(Application.StartupPath, "PDFs");
-
-                // Construct the PDF file path based on the company ID
-                string pdfFileName = $"{companyId}.pdf";
-                string pdfPath = Path.Combine(pdfFolder, pdfFileName);
-
-                // Open the PDF file using the default PDF viewer
-                if (File.Exists(pdfPath))
-                {
-                    System.Diagnostics.Process.Start(pdfPath);
-                }
-                else
-                {
-                    MessageBox.Show("PDF not found for the selected company.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-
-
+        // clearing panels for information
         private void ClearControls()
         {
             flowLayoutPanel.Controls.Clear();
             allCompanyControls.Clear();
         }
+
 
         private void InitializeVendorPanels()
         {
@@ -119,7 +92,7 @@ namespace Citisoft
 
             this.Controls.Add(flowLayoutPanel);
             
-            vScrollBar1 = new VScrollBar
+            vScrollBar = new VScrollBar
             {
                 Dock = DockStyle.Right,
                 SmallChange = 1,
@@ -127,13 +100,14 @@ namespace Citisoft
 
             };
 
-            vScrollBar1.Scroll += vScrollBar1_Scroll;
+            vScrollBar.Scroll += vScrollBar1_Scroll;
             this.Controls.Add(vScrollBar);
 
             allCompanyControls = new List<CompanyUserControl>();
         }
            
         
+        // show the page with the results
         public void ShowCurrentPage()
         {
             int panelsWidth = 148;
@@ -190,19 +164,22 @@ namespace Citisoft
 
         }
 
+        // sends to usertab
         private void usernameButton_Click(object sender, EventArgs e)
         {
             UserTabForm userTab = new UserTabForm();
             userTab.Show();
         }
 
+        // sends to help centre
         private void helpButton_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
+            HelpForm form = new HelpForm();
 
             form.Show();
         }
 
+        // go back to search again
         private void backButton_Click(object sender, EventArgs e)
         {
             HidePanels();
@@ -211,6 +188,7 @@ namespace Citisoft
             this.Hide();
         }
 
+        // shows terms of use and privacy policy
         private void termsOfUseLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             TermsOfUseForm terms = new TermsOfUseForm();
@@ -228,17 +206,23 @@ namespace Citisoft
         }
 
        
-
+        // with the scrolling next 4 panels displaying 
         private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
         {
             int scrollValue = vScrollBar1.Value;
             int startIndex = scrollValue * 4;
-            int endIndex = Math.Min(startIndex + 4, allCompanyControls.Count);
-            ClearControls();
-            for (int i = startIndex; i < endIndex; i++)
+            
+            HidePanels();
+
+            for (int i = startIndex; i < Math.Min(allCompanyControls.Count, startIndex + 4); i++)
             {
-                allCompanyControls[i].Visible = true;
+                if(i >= 0 && i < allCompanyControls.Count)
+                {
+                    allCompanyControls[i].Visible = true;
+                }
+                
             }
+            currentPageIndex++;
 
         }
 

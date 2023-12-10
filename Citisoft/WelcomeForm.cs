@@ -46,10 +46,10 @@ namespace Citisoft
         {
             //i will add some code after creation of Help
         }
-
+        //Ivan
         private void tutorialsLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            string pdfFile = @"Citisoft\kevinCuni2004\Team5_Repo\Tutorials.pdf";
+            string pdfFile = @"C:\Users\User PC\Desktop\gjvgvg\Team5_Repo\Tutorials.pdf";
             try
             {
                 Process.Start(pdfFile);

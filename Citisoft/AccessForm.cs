@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Citisoft
 {
@@ -16,14 +15,14 @@ namespace Citisoft
     {
         private DBConnection dbConnection;
         private DataTable originalData;
-
+        private Dictionary<int, Tuple<int, string, string>> originalValues = new Dictionary<int, Tuple<int, string, string>>();
         public AccessForm()
         {
             dbConnection = DBConnection.getInstance();
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
-        private void CreateColumns()
+        private void ColumnsCreate()
         {
             dataAccess.Columns.Add("profile_id", "Id");
             dataAccess.Columns.Add("access", "Status");
@@ -33,11 +32,11 @@ namespace Citisoft
         private void ReadSingleRow(DataGridView dataAccess, DataRow row)
         {
             dataAccess.Rows.Add(
-                row.Field<int>(0),
-                row.Field<int>(1),
-                row.Field<string>(2),
-                row.Field<string>(3)
-                );
+            row.Field<int>(0),
+            row.Field<int>(1),
+            row.Field<string>(2),
+            row.Field<string>(3)
+            );
         }
         private void CancelChanges(DataGridView dataAccess, DataTable originalData)
         {
@@ -67,28 +66,22 @@ namespace Citisoft
             usertabForm.Show();
             this.Hide();
         }
-
         private void backButton_Click(object sender, EventArgs e)
         {
             //--go to admin home page form--//
-            //--we don't have now so it won't work--//
             AdminHomePageForm adminhomepage = new AdminHomePageForm();
             adminhomepage.Show();
             this.Close();
         }
-
         private void editButton_Click(object sender, EventArgs e)
         {
             //--Edit button disapppears. Cancel/Confirm buttons appears--//
             editButton.Visible = false;
             cancelButton.Visible = true;
             confirmButton.Visible = true;
-
             dataAccess.ReadOnly = false;
             dataAccess.EditMode = DataGridViewEditMode.EditOnEnter;
         }
-
-
         private void cancelButton_Click(object sender, EventArgs e)
         {
             dataAccess.ReadOnly = true;
@@ -98,9 +91,6 @@ namespace Citisoft
             editButton.Visible = true;
             CancelChanges(dataAccess, originalData);
         }
-        
-       
-        
         private void confirmButton_Click(object sender, EventArgs e)
         {
             editButton.Visible = true;
@@ -118,7 +108,6 @@ namespace Citisoft
                 MessageBox.Show("Error saving data:" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-       
         private void dataAccess_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -126,7 +115,7 @@ namespace Citisoft
 
         private void AccessForm_Load(object sender, EventArgs e)
         {
-            CreateColumns();
+            ColumnsCreate();
             DataTable data = new Access().LoadData();
             foreach(DataRow row in data.Rows)
             {

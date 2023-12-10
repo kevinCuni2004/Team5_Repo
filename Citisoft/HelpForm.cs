@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Citisoft
 {
-    public partial class Form1 : Form
+    public partial class HelpForm : Form
     {
         //private DatabaseHelper _dbHelper;
 
-        public Form1()
+        public HelpForm()
         {
             InitializeComponent();
             //_dbHelper = new DatabaseHelper("path_to_your_Messages.db"); // Adjust the path to your database file

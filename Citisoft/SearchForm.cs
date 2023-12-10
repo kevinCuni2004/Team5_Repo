@@ -19,6 +19,7 @@ namespace Citisoft
         bool found = false;
         private SearchVendors searchVendor;
         private Search search;
+
         public SearchForm()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace Citisoft
             this.Load += new System.EventHandler(this.SearchForm_Load);
         }
 
+        //sending user to usertab
         private void usernameButton_Click(object sender, EventArgs e)
         {
             UserTabForm usertabForm = new UserTabForm();
@@ -36,20 +38,24 @@ namespace Citisoft
             this.Hide();
         }
 
+
+        // sending user to help center
         private void helpButton_Click(object sender, EventArgs e)
         {
 
-            Form1 form = new Form1();
+            HelpForm form = new HelpForm();
 
             form.Show();
         }
 
+        // displaying user terms of use and privacy policy
         private void termsOfUseLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             TermsOfUseForm termsOfUse = new TermsOfUseForm();
             termsOfUse.Show();
         }
 
+        // generating a search 
         private void searchButton_Click(object sender, EventArgs e)
         {
             string enteredText = searchTextBox.Text;
@@ -60,12 +66,14 @@ namespace Citisoft
             if (!string.IsNullOrEmpty(searchText))
             {
                 
-              
+              // geting the data
                 SqlDataReader reader = search.SearchVendors(searchText, cityFilter,  countryFilter);
 
+
+                // displaying results
                 if (reader != null)
                 {
-           
+         
                     searchVendor.DisplaySearchResults(reader);
                     searchVendor.Show();
                     this.Hide();
@@ -79,23 +87,27 @@ namespace Citisoft
 
         private void SearchForm_Load(object sender, EventArgs e)
         {
-            //Populate the ComboBoxes with distinct cities and countries
+           
             PopulateCityComboBox();
             PopulateCountryComboBox();
         }
 
+
+        //Populate the ComboBox with distinct cities 
         private void PopulateCityComboBox()
         {
-            List<string> cities = search.GetDistinctCities(); // Implement this method in your Search class
+            List<string> cities = search.GetDistinctCities(); 
 
             cityComboBox.Items.Clear();
             cityComboBox.Items.Add(""); // Add an empty option for no filtering
             cityComboBox.Items.AddRange(cities.ToArray());
         }
 
+
+        //Populate the ComboBox with distinct countries
         private void PopulateCountryComboBox()
         {
-            List<string> countries = search.GetDistinctCountries(); // Implement this method in your Search class
+            List<string> countries = search.GetDistinctCountries(); 
 
             countryComboBox.Items.Clear();
             countryComboBox.Items.Add(""); // Add an empty option for no filtering
