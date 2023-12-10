@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
@@ -15,13 +16,23 @@ namespace Citisoft
         private Profile user;
         private DBConnection dBConnection;
         private UserTabForm userTabForm;
-       
+        private static UserTab _instance;
 
-        public UserTab () { }
 
-        public UserTab(UserTabForm userTabForm)
+        public UserTab() { }
+
+        public UserTab(Profile User)
         {
-            
+            this.user = User;
+        }
+
+        public static UserTab getInstance()
+        {
+            if (_instance == null)
+            {
+                return _instance = new UserTab();
+            }
+            return _instance;
         }
 
         public Profile loadProfile(string email)
@@ -64,6 +75,36 @@ namespace Citisoft
                 }
             }
             return user;
+        }
+
+        public bool checkPassword(string password)
+        {
+            if (!Regex.IsMatch(password, @"^(?=.*\d)(?=.*[A-Z])(?=.*[a^zA-Z\d]).{8,25}$")) return false;
+            return true;
+        }
+
+        public string updatePassword(string password, string email)
+        {
+            string hashedPassword;
+            try
+            {
+                hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            }
+            catch
+            {
+                return "Failed Encrypition";
+            }
+
+            try
+            {
+                dBConnection = DBConnection.getInstance();
+                dBConnection.ExecutenNonQuery("Profile", "password", hashedPassword, email);
+            }
+            catch
+            {
+                return "Failed database connection";
+            }
+            return hashedPassword;
         }
     }
 }

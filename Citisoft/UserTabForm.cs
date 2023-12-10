@@ -30,6 +30,16 @@ namespace Citisoft
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        public UserTabForm(Profile user)
+        {
+            this.User = user;
+            InitializeComponent();
+            changeDetailsTabControl.Visible = false;
+            changeDetailsTabControl.ItemSize = new Size(0, 1);
+            userTab = new UserTab();
+            StartPosition = FormStartPosition.CenterScreen;
+        }
+
         public void updateFields(Profile user) {
             User = user;
             emailLabel.Text = User.Email;
@@ -114,15 +124,24 @@ namespace Citisoft
 
         private void changePassButton_Click(object sender, EventArgs e)
         {
-            if (User.Password == oldPassTextBox.Text)
+            userTab = UserTab.getInstance();
+            if (User.Password == BCrypt.Net.BCrypt.HashPassword(oldPassTextBox.Text))
             {
-                if (Regex.IsMatch(newPassTextBox.Text, @"^(?=.*\d)(?=.*[A-Z])(?=.*[a^zA-Z\d]).{8,25}$"))
+                if (userTab.checkPassword(newPassTextBox.Text))
                 {
                     if (newPassTextBox.Text == confirmNewPassTextBox.Text)
                     {
-                        User.Password = newPassTextBox.Text;
-                        dBConnection = DBConnection.getInstance();
-                        dBConnection.ExecutenNonQuery("Profile", "password", User.Password, User.Email);
+                        if (userTab.updatePassword(newPassTextBox.Text, User.Email) == "Failed Encrypition" ||
+                            userTab.updatePassword(newPassTextBox.Text, User.Email) == "Failed database connection")
+                        {
+                            MessageBox.Show("Error changing password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            oldPassTextBox.Text = "";
+                            newPassTextBox.Text = "";
+                            confirmNewPassTextBox.Text = "";
+                        } else
+                        {
+                            User.Password = userTab.updatePassword(newPassTextBox.Text, User.Email);
+                        }
                         MessageBox.Show("Password changed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         changePasswordPanel.Visible = false;
                         changeDetailsTabControl.Visible = false;
