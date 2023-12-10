@@ -22,7 +22,7 @@ namespace Citisoft
             InitializeComponent();
             CompanyID = companyId;
             InitializeControl(companyName, companyWebsite);
-            this.Click += CompanyUserControl_Click;
+            this.Click += websiteLabel_Click;
 
             Debug.WriteLine($"CompanyUserControl created for {companyName} wih ID {CompanyID}");
         }
@@ -35,14 +35,20 @@ namespace Citisoft
 
         private void websiteLabel_Click(object sender, EventArgs e)
         {
-
+            CompanyClicked?.Invoke(this, EventArgs.Empty);
         }
 
 
-        private void CompanyUserControl_Click(object sender, EventArgs e)
+       /* private void CompanyUserControl_Click(object sender, EventArgs e)
         {
             // Trigger the event when the control is clicked
             CompanyClicked?.Invoke(this, EventArgs.Empty);
+        }*/
+
+        private void titleLabel_Click(object sender, EventArgs e)
+        {
+            CompanyClicked?.Invoke(this, EventArgs.Empty);
+
         }
     }
 }

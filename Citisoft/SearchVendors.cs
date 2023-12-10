@@ -40,7 +40,7 @@ namespace Citisoft
 
             foreach (var control in allCompanyControls)
             {
-                control.CompanyClicked += CompanyUserControl_Clicked;
+                control.CompanyClicked += CompanyUserControl_Click;
                 Debug.WriteLine($"Subscribed to CompanyClicked event for control with CompanyID: {control.CompanyID}");
             }
         }
@@ -81,7 +81,7 @@ namespace Citisoft
         
 
         // trigger to open PDF file of the vendor 
-        private void CompanyUserControl_Clicked(object sender, EventArgs e)
+        private void CompanyUserControl_Click(object sender, EventArgs e)
         {
             if (sender is CompanyUserControl clickedControl)
             {
@@ -89,7 +89,7 @@ namespace Citisoft
                 int companyId = clickedControl.CompanyID;
 
                 // PDFs are stored in a folder named "PDFs" within  program directory
-                string pdfFolder = @"C:/Users/DELL/source/repos/justtaaa/kevinCuni2004/PDFs";
+                string pdfFolder = @"C:Users/DELL/source/repos/justtaaa/kevinCuni2004/PDFs";
 
                 // Construct the PDF file path based on the company ID
                 string pdfFileName = $"{companyId}.pdf";

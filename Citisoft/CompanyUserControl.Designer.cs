@@ -38,18 +38,19 @@
             this.titleLabel.Location = new System.Drawing.Point(0, 0);
             this.titleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(199, 52);
+            this.titleLabel.Size = new System.Drawing.Size(224, 64);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "label1";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.titleLabel.Click += new System.EventHandler(this.titleLabel_Click);
             // 
             // websiteLabel
             // 
             this.websiteLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.websiteLabel.Location = new System.Drawing.Point(0, 53);
+            this.websiteLabel.Location = new System.Drawing.Point(0, 66);
             this.websiteLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.websiteLabel.Name = "websiteLabel";
-            this.websiteLabel.Size = new System.Drawing.Size(199, 131);
+            this.websiteLabel.Size = new System.Drawing.Size(224, 163);
             this.websiteLabel.TabIndex = 1;
             this.websiteLabel.Text = "label1";
             this.websiteLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -57,15 +58,15 @@
             // 
             // CompanyUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.websiteLabel);
             this.Controls.Add(this.titleLabel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CompanyUserControl";
-            this.Size = new System.Drawing.Size(198, 183);
+            this.Size = new System.Drawing.Size(223, 229);
             this.ResumeLayout(false);
 
         }
