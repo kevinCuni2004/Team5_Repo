@@ -64,6 +64,11 @@ namespace Citisoft
                 MessageBox.Show("PDF not found for the selected company.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void titleLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

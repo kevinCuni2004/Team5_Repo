@@ -174,7 +174,7 @@ namespace Citisoft
         // sends to help centre
         private void helpButton_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
+            HelpForm form = new HelpForm();
 
             form.Show();
         }
@@ -222,6 +222,7 @@ namespace Citisoft
                 }
                 
             }
+            currentPageIndex++;
 
         }
 

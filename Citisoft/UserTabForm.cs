@@ -296,7 +296,7 @@ namespace Citisoft
 
         private void helpButton_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
+            HelpForm form = new HelpForm();
 
             form.Show();
         }

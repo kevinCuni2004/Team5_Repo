@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Citisoft
 {
-    public partial class Form3 : Form
+    public partial class GelpRequestForm : Form
     {
-        public Form3()
+        public GelpRequestForm()
         {
             InitializeComponent();
         }

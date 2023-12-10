@@ -1,6 +1,6 @@
 ﻿namespace Citisoft
 {
-    partial class Form3
+    partial class GelpRequestForm
     {
         /// <summary>
         /// Required designer variable.

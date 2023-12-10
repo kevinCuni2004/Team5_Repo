@@ -66,7 +66,7 @@ namespace Citisoft
             this.logInButton.FlatAppearance.BorderSize = 2;
             this.logInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.logInButton.Location = new System.Drawing.Point(382, 476);
+            this.logInButton.Location = new System.Drawing.Point(583, 548);
             this.logInButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logInButton.Name = "logInButton";
             this.logInButton.Size = new System.Drawing.Size(218, 81);
@@ -78,7 +78,7 @@ namespace Citisoft
             // emailTextBox
             // 
             this.emailTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.emailTextBox.Location = new System.Drawing.Point(240, 209);
+            this.emailTextBox.Location = new System.Drawing.Point(441, 281);
             this.emailTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.emailTextBox.Multiline = true;
             this.emailTextBox.Name = "emailTextBox";
@@ -90,7 +90,7 @@ namespace Citisoft
             // passwordTextBox
             // 
             this.passwordTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.passwordTextBox.Location = new System.Drawing.Point(240, 335);
+            this.passwordTextBox.Location = new System.Drawing.Point(441, 407);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.passwordTextBox.Multiline = true;
             this.passwordTextBox.Name = "passwordTextBox";
@@ -104,7 +104,7 @@ namespace Citisoft
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(236, 154);
+            this.label1.Location = new System.Drawing.Point(437, 226);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(160, 32);
             this.label1.TabIndex = 3;
@@ -117,7 +117,7 @@ namespace Citisoft
             this.label2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label2.Location = new System.Drawing.Point(236, 294);
+            this.label2.Location = new System.Drawing.Point(437, 366);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(215, 32);
             this.label2.TabIndex = 4;
@@ -127,7 +127,7 @@ namespace Citisoft
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(382, 15);
+            this.pictureBox1.Location = new System.Drawing.Point(583, 15);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(218, 82);
@@ -139,7 +139,7 @@ namespace Citisoft
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(683, 335);
+            this.pictureBox2.Location = new System.Drawing.Point(884, 407);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(72, 62);
@@ -151,7 +151,7 @@ namespace Citisoft
             // 
             this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(683, 209);
+            this.pictureBox3.Location = new System.Drawing.Point(884, 281);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(72, 62);
@@ -161,13 +161,13 @@ namespace Citisoft
             // 
             // backButton
             // 
-            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.backButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.backButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(30)))), ((int)(((byte)(66)))));
             this.backButton.FlatAppearance.BorderSize = 2;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backButton.Location = new System.Drawing.Point(29, 540);
+            this.backButton.Location = new System.Drawing.Point(48, 660);
             this.backButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(120, 66);
@@ -184,7 +184,7 @@ namespace Citisoft
             this.helpButton.FlatAppearance.BorderSize = 2;
             this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.helpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.helpButton.Location = new System.Drawing.Point(898, 15);
+            this.helpButton.Location = new System.Drawing.Point(1300, 15);
             this.helpButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(119, 60);
@@ -198,7 +198,7 @@ namespace Citisoft
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label3.Location = new System.Drawing.Point(434, 101);
+            this.label3.Location = new System.Drawing.Point(635, 173);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 38);
             this.label3.TabIndex = 10;
@@ -209,7 +209,7 @@ namespace Citisoft
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1030, 621);
+            this.ClientSize = new System.Drawing.Size(1432, 764);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.backButton);
