@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.PeerToPeer;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Citisoft
@@ -105,6 +107,71 @@ namespace Citisoft
                 return "Failed database connection";
             }
             return hashedPassword;
+        }
+
+        public bool checkName(string name)
+        {
+            return Regex.IsMatch(name, "^[A-Z][a-zA-Z]*$");
+        }
+
+        public string updateName(string name, int Name, string email)
+        {
+            try
+            {
+                dBConnection = DBConnection.getInstance();
+                if (Name == 1)
+                    dBConnection.ExecutenNonQuery("Profile", "first_name", name, email);
+                else if (Name == 2)
+                    dBConnection.ExecutenNonQuery("Profile", "last_name", name, email);
+                else
+                    return "Failed executing query";
+            }
+            catch
+            {
+                return "Failed database connection";
+            }
+            return name;
+        }
+
+        public string updateDetails(string details, string email) {
+            try
+            {
+                dBConnection = DBConnection.getInstance();
+                dBConnection.ExecutenNonQuery("Profile", "details", details, email);
+            }
+            catch
+            {
+                return "Failed database connection";
+            }
+            return details;
+        }
+
+        public string updateUsername(string username, string email)
+        {
+            try
+            {
+                dBConnection = DBConnection.getInstance();
+                dBConnection.ExecutenNonQuery("Profile", "username", username, email);
+            }
+            catch
+            {
+                return "Failed database connection";
+            }
+            return username;
+        }
+
+        public DateTime updateDOB(DateTime dt, string email)
+        {
+            try
+            {
+                dBConnection = DBConnection.getInstance();
+                dBConnection.ExecutenNonQuery("Profile", "date_of_birth", dt.ToShortDateString(), email);
+            }
+            catch
+            {
+                return new DateTime(1800, 1, 1);
+            }
+            return dt;
         }
     }
 }
