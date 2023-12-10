@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,20 +37,33 @@ namespace Citisoft
 
         private void websiteLabel_Click(object sender, EventArgs e)
         {
-            CompanyClicked?.Invoke(this, EventArgs.Empty);
+            OpenCompanyPDF();
         }
 
 
-       /* private void CompanyUserControl_Click(object sender, EventArgs e)
-        {
-            // Trigger the event when the control is clicked
-            CompanyClicked?.Invoke(this, EventArgs.Empty);
-        }*/
-
+ 
         private void titleLabel_Click(object sender, EventArgs e)
         {
-            CompanyClicked?.Invoke(this, EventArgs.Empty);
+            OpenCompanyPDF();
 
         }
+
+        private void OpenCompanyPDF()
+        {
+            string pdfFolder = Path.Combine(Application.StartupPath, "PDFs");
+            string pdfFileName = $"{CompanyID}.pdf";
+            string pdfPath = Path.Combine(pdfFolder, pdfFileName);
+
+            try
+            {
+                Process.Start(pdfPath);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("PDF not found for the selected company.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
+
 }
