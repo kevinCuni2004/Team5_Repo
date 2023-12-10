@@ -61,7 +61,7 @@ namespace Citisoft
         {
             string query = $"SELECT [password] FROM Profile WHERE [e-mail] = '{email}'";
            
-
+            // decryption of the password
             string hashedPassword = dBConnection.ExecuteScalar(query)?.ToString();
             if (hashedPassword != null && !BCrypt.Net.BCrypt.Verify(password, hashedPassword))
             {
@@ -72,11 +72,13 @@ namespace Citisoft
 
             return hashedPassword != null;
             
-            int count = Convert.ToInt32(dBConnection.ExecuteScalar(query));
-            return count > 0;
+            //check if it will work without it
+            //int count = Convert.ToInt32(dBConnection.ExecuteScalar(query));
+            //return count > 0;
 
         }
 
+        // entering the profile 
         private Profile LoadUserProfile (string email)
         {
             return new Profile();

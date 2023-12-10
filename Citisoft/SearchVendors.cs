@@ -18,7 +18,6 @@ namespace Citisoft
         //Kevin
         private DBConnection dbConnection;
         public SqlDataReader dataReader;
-        //
 
         private int currentPageIndex;
         public string searchText;
@@ -28,6 +27,8 @@ namespace Citisoft
         private FlowLayoutPanel flowLayoutPanel;
         private List<CompanyUserControl> allCompanyControls;
         private VScrollBar vScrollBar;
+
+
         public SearchVendors()
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace Citisoft
             }
         }
 
+        //try without this line?
         private void FetchVendorDataFromDatabase()
         {
             string connectionString = Properties.Settings.Default.DBConnectionString;
@@ -50,23 +52,26 @@ namespace Citisoft
         }
 
 
-       
 
+        // Display panels for the search results
         public void DisplaySearchResults(SqlDataReader reader)
         {
-            // Display panels for the search results
+           
             ClearControls();
-            
+
+            // using reader to find info from the database
             using (reader)
             {
+                //error handling
                 if (reader == null) Console.WriteLine("It's empty.");
 
                 while (reader.Read())
                 {
-
+                    // displaying info on panels
                     string companyName = reader.GetString(reader.GetOrdinal("company_name"));
                     string companyWebsite = reader.GetString(reader.GetOrdinal("company_website"));
 
+                    // creating panel for the company
                     CompanyUserControl companyUserControl = new CompanyUserControl(companyName, companyWebsite);
                     allCompanyControls.Add(companyUserControl);
                     flowLayoutPanel.Controls.Add(companyUserControl);
@@ -76,6 +81,8 @@ namespace Citisoft
             }
         }
 
+
+        // trigger to open PDF file of the vendor 
         private void CompanyUserControl_Clicked(object sender, EventArgs e)
         {
             if (sender is CompanyUserControl clickedControl)
@@ -103,12 +110,13 @@ namespace Citisoft
         }
 
 
-
+        // clearing panels for information
         private void ClearControls()
         {
             flowLayoutPanel.Controls.Clear();
             allCompanyControls.Clear();
         }
+
 
         private void InitializeVendorPanels()
         {
@@ -134,6 +142,7 @@ namespace Citisoft
         }
            
         
+        // show the page with the results
         public void ShowCurrentPage()
         {
             int panelsWidth = 148;
@@ -190,12 +199,14 @@ namespace Citisoft
 
         }
 
+        // sends to usertab
         private void usernameButton_Click(object sender, EventArgs e)
         {
             UserTabForm userTab = new UserTabForm();
             userTab.Show();
         }
 
+        // sends to help centre
         private void helpButton_Click(object sender, EventArgs e)
         {
             Form1 form = new Form1();
@@ -203,6 +214,7 @@ namespace Citisoft
             form.Show();
         }
 
+        // go back to search again
         private void backButton_Click(object sender, EventArgs e)
         {
             HidePanels();
@@ -211,6 +223,7 @@ namespace Citisoft
             this.Hide();
         }
 
+        // shows terms of use and privacy policy
         private void termsOfUseLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             TermsOfUseForm terms = new TermsOfUseForm();
@@ -228,7 +241,7 @@ namespace Citisoft
         }
 
        
-
+        // does not work now think about it 
         private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
         {
             int scrollValue = vScrollBar1.Value;

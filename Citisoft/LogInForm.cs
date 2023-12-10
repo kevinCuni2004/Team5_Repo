@@ -27,6 +27,7 @@ namespace Citisoft
             string email = emailTextBox.Text;
             string password = passwordTextBox.Text;
 
+            // creating messages to notify the user
             (string authenticationMessage, Profile userProfile) = logIn.AuthenticateUser(email, password);
             if (authenticationMessage == "Success")
             {

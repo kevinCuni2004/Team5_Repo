@@ -218,7 +218,7 @@
     <Compile Include="AdminHomePageForm.Designer.cs">
       <DependentUpon>AdminHomePageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Main.cs" />
     <Compile Include="Adminhome.cs" />
     <Compile Include="CompanyAndProducts.cs" />
     <Compile Include="Form1.cs">

@@ -1,4 +1,6 @@
-﻿namespace Citisoft
+﻿using System.Windows.Forms;
+
+namespace Citisoft
 {
     partial class LogInForm
     {
@@ -18,6 +20,17 @@
                 components.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        //user friendly action
+        private void emailTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Move focus to the password textbox
+                passwordTextBox.Focus();
+                e.Handled = true; // Suppress the Enter key
+            }
         }
 
         #region Windows Form Designer generated code
@@ -72,6 +85,7 @@
             this.emailTextBox.Size = new System.Drawing.Size(388, 50);
             this.emailTextBox.TabIndex = 1;
             this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
+            this.emailTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.emailTextBox_KeyDown);
             // 
             // passwordTextBox
             // 

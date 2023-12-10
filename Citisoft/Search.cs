@@ -22,10 +22,12 @@ namespace Citisoft
 
         }
 
+        // searching suitable vendors in database 
         public SqlDataReader SearchVendors(string searchText, string cityFilter, string countryFilter)
         {
             string[] keywords = searchText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
+            //building the query based on keywords
             StringBuilder sqlQuery = new StringBuilder("SELECT DISTINCT [Companies].* FROM [Companies]");
             sqlQuery.Append(" INNER JOIN [Locations] ON [Companies].[company_id] = [Locations].[company_id]");
 
@@ -33,11 +35,13 @@ namespace Citisoft
 
             AppendKeywordConditions(sqlQuery, keywords);
 
+            // filtering option city
             if (!string.IsNullOrEmpty(cityFilter))
             {
                 sqlQuery.Append(" AND [Locations].[city] = @CityFilter");
             }
 
+            // filtering option country
             if (!string.IsNullOrEmpty(countryFilter))
             {
                 sqlQuery.Append(" AND [Locations].[country] = @CountryFilter");
@@ -46,16 +50,19 @@ namespace Citisoft
 
             SqlCommand command = new SqlCommand(sqlQuery.ToString());
 
-            for (int i = 0; i < keywords.Length; i++)
+            // adding value to the parameter of keywords
+            for (int i = 0; i < keywords.Length; i++) // ables to make multy words search
             {
                 command.Parameters.AddWithValue($"@SearchText{i}", $"%{keywords[i]}%");
             }
 
+            // adding value to the parameter of cities
             if (!string.IsNullOrEmpty(cityFilter))
             {
                 command.Parameters.AddWithValue("@CityFilter", cityFilter);
             }
 
+            // adding value to the parameter of countries
             if (!string.IsNullOrEmpty(countryFilter))
             {
                 command.Parameters.AddWithValue("@CountryFilter", countryFilter);
@@ -65,6 +72,8 @@ namespace Citisoft
             return dbConnection.ExcecuteReader(command);
         }
 
+
+        // slpiting big query into smaller pieces
         private void AppendKeywordConditions(StringBuilder sqlQuery, string[] keywords)
         {
             for(int i = 0; i < keywords.Length; i++)
@@ -85,18 +94,21 @@ namespace Citisoft
         }
 
 
+        // adding queries to search info about company and website
         private void AppendCompanyConditions(StringBuilder sqlQuery, int index)
         {
             sqlQuery.Append($"[company_name] LIKE @SearchText{index} OR " +
                     $"[company_website] LIKE @SearchText{index}");
         }
 
+        // adding queries to search info about products
         private void AppendProductConditions(StringBuilder sqlQuery, int index)
         {
             sqlQuery.Append($"EXISTS (SELECT 1 FROM [Products] WHERE [Companies].[company_id] = [Products].[company_id] AND " +
                 $"([description] LIKE @SearchText{index} OR [cloud] LIKE @SearchText{index} OR [software_name] LIKE @SearchText{index}))");
         }
 
+        // adding queries to search info about locations
         private void AppendLocationConditions(StringBuilder sqlQuery, int index)
         {
             sqlQuery.Append($"EXISTS (SELECT 1 FROM [Locations] WHERE [Companies].[company_id] = [Locations].[company_id] AND " +
@@ -104,7 +116,7 @@ namespace Citisoft
         }
 
   
-
+        // fetching the cities into combobox to display 
         public List<string> GetDistinctCities()
         {
             try
@@ -121,12 +133,15 @@ namespace Citisoft
            
         }
 
+        // fetching the countries into combobox to display 
         public List<string> GetDistinctCountries()
         {
             string query = "SELECT DISTINCT [country] FROM [Locations]";
             return GetDistinctValues(query, dbConnection.GetConnectionString());
         }
 
+
+        // reading the database to get information from coloums
         private List<string> GetDistinctValues(string query, string connectionString)
         {
             List<string> values = new List<string>();
