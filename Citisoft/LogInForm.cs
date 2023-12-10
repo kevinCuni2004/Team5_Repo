@@ -49,12 +49,17 @@ namespace Citisoft
         }
         private void emailTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            emailTextBox.Text = emailTextBox.Text.Trim();
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void passwordMaskedTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }

@@ -261,7 +261,7 @@ namespace Citisoft
 
         private void emailTextBox_TextChanged(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
+            emailTextBox.Text = emailTextBox.Text.Trim();
         }
 
         private void SignUpForm_Load(object sender, EventArgs e)

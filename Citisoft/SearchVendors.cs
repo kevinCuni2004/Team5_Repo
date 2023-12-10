@@ -33,7 +33,6 @@ namespace Citisoft
         {
             InitializeComponent();
             InitializeVendorPanels();
-            FetchVendorDataFromDatabase(); // Fetch vendor data when the form is initialized
             ShowCurrentPage();
             search = new Search();
             StartPosition = FormStartPosition.CenterScreen;
@@ -43,14 +42,6 @@ namespace Citisoft
                 control.CompanyClicked += CompanyUserControl_Clicked;
             }
         }
-
-        //try without this line?
-        private void FetchVendorDataFromDatabase()
-        {
-            string connectionString = Properties.Settings.Default.DBConnectionString;
-           
-        }
-
 
 
         // Display panels for the search results
@@ -127,7 +118,7 @@ namespace Citisoft
 
             this.Controls.Add(flowLayoutPanel);
             
-            vScrollBar1 = new VScrollBar
+            vScrollBar = new VScrollBar
             {
                 Dock = DockStyle.Right,
                 SmallChange = 1,
@@ -135,7 +126,7 @@ namespace Citisoft
 
             };
 
-            vScrollBar1.Scroll += vScrollBar1_Scroll;
+            vScrollBar.Scroll += vScrollBar1_Scroll;
             this.Controls.Add(vScrollBar);
 
             allCompanyControls = new List<CompanyUserControl>();
@@ -241,16 +232,21 @@ namespace Citisoft
         }
 
        
-        // does not work now think about it 
+        // with the scrolling next 4 panels displaying 
         private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
         {
             int scrollValue = vScrollBar1.Value;
             int startIndex = scrollValue * 4;
-            int endIndex = Math.Min(startIndex + 4, allCompanyControls.Count);
-            ClearControls();
-            for (int i = startIndex; i < endIndex; i++)
+            
+            HidePanels();
+
+            for (int i = startIndex; i < Math.Min(allCompanyControls.Count, startIndex + 4); i++)
             {
-                allCompanyControls[i].Visible = true;
+                if(i >= 0 && i < allCompanyControls.Count)
+                {
+                    allCompanyControls[i].Visible = true;
+                }
+                
             }
 
         }
