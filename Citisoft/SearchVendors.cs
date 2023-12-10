@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -40,6 +41,7 @@ namespace Citisoft
             foreach (var control in allCompanyControls)
             {
                 control.CompanyClicked += CompanyUserControl_Clicked;
+                Debug.WriteLine($"Subscribed to CompanyClicked event for control with CompanyID: {control.CompanyID}");
             }
         }
 
@@ -47,7 +49,7 @@ namespace Citisoft
         // Display panels for the search results
         public void DisplaySearchResults(SqlDataReader reader)
         {
-           
+
             ClearControls();
 
             // using reader to find info from the database
@@ -59,19 +61,24 @@ namespace Citisoft
                 while (reader.Read())
                 {
                     // displaying info on panels
+                    int companyId = reader.GetInt32(reader.GetOrdinal("company_id"));
                     string companyName = reader.GetString(reader.GetOrdinal("company_name"));
                     string companyWebsite = reader.GetString(reader.GetOrdinal("company_website"));
+                    
 
                     // creating panel for the company
-                    CompanyUserControl companyUserControl = new CompanyUserControl(companyName, companyWebsite);
+                    CompanyUserControl companyUserControl = new CompanyUserControl(companyId, companyName, companyWebsite);
+
+        
+
                     allCompanyControls.Add(companyUserControl);
                     flowLayoutPanel.Controls.Add(companyUserControl);
 
-                   
+
                 }
             }
         }
-
+        
 
         // trigger to open PDF file of the vendor 
         private void CompanyUserControl_Clicked(object sender, EventArgs e)
@@ -82,21 +89,29 @@ namespace Citisoft
                 int companyId = clickedControl.CompanyID;
 
                 // PDFs are stored in a folder named "PDFs" within  program directory
-                string pdfFolder = Path.Combine(Application.StartupPath, "PDFs");
+                string pdfFolder = @"C:/Users/DELL/source/repos/justtaaa/kevinCuni2004/PDFs";
 
                 // Construct the PDF file path based on the company ID
                 string pdfFileName = $"{companyId}.pdf";
                 string pdfPath = Path.Combine(pdfFolder, pdfFileName);
 
+
+                Debug.WriteLine($"Attempting to open PDF at folder: {pdfFolder}");
+                Debug.WriteLine($"Attempting to open PDF at name: {pdfFileName}");
+                Debug.WriteLine($"Attempting to open PDF at path: {pdfPath}");
+
                 // Open the PDF file using the default PDF viewer
-                if (File.Exists(pdfPath))
+
+                try
                 {
-                    System.Diagnostics.Process.Start(pdfPath);
+                    Process.Start(pdfPath);
                 }
-                else
+
+                catch(Exception ex)
                 {
                     MessageBox.Show("PDF not found for the selected company.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+               
             }
         }
 

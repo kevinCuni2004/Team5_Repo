@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,12 +15,16 @@ namespace Citisoft
 
     {
         public int CompanyID { get; set; }
+
         public event EventHandler<EventArgs> CompanyClicked;
-        public CompanyUserControl(string companyName, string companyWebsite)
+        public CompanyUserControl(int companyId,string companyName, string companyWebsite)
         {
             InitializeComponent();
+            CompanyID = companyId;
             InitializeControl(companyName, companyWebsite);
             this.Click += CompanyUserControl_Click;
+
+            Debug.WriteLine($"CompanyUserControl created for {companyName} wih ID {CompanyID}");
         }
 
         private void InitializeControl(string companyName, string companyWebsite)
@@ -32,6 +37,8 @@ namespace Citisoft
         {
 
         }
+
+
         private void CompanyUserControl_Click(object sender, EventArgs e)
         {
             // Trigger the event when the control is clicked
