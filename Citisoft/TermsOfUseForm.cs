@@ -21,7 +21,15 @@ namespace Citisoft
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private void PDFButton_Click(object sender, EventArgs e)
+        public WelcomeForm WelcomeForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public void PDFButton_Click(object sender, EventArgs e)
         {
 
             string pdfFolder = Path.Combine(Application.StartupPath, "PDFs");

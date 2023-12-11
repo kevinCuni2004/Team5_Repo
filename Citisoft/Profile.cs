@@ -48,5 +48,29 @@ namespace Citisoft
             this._email = email;
             this._password = password;
         }
+
+        public UserTab UserTab
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public LogIn LogIn
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public SignUp SignUp
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

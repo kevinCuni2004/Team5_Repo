@@ -20,6 +20,23 @@ namespace Citisoft
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
+
+        internal Adminhome Adminhome
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public AccessForm AccessForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private void usernameButton_Click(object sender, EventArgs e)
         {
             UserTabForm usertabForm = new UserTabForm(email);
@@ -63,7 +80,7 @@ namespace Citisoft
         {
             SearchForm searchForm = new SearchForm();
             this.Hide();
-            searchForm.Show();
+            searchForm.ShowDialog();
             this.Show();
 
         }

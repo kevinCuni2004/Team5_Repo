@@ -16,6 +16,14 @@ namespace Citisoft
             dBConnection = DBConnection.getInstance();
         }
 
+        internal DBConnection DBConnection
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         // user authentication
         public (string message, Profile userProfile) AuthenticateUser(string email, string password)
         {

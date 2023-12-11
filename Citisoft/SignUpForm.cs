@@ -34,6 +34,30 @@ namespace Citisoft
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        public SignUp SignUp
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public UserTabForm UserTabForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public SearchForm SearchForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private void SignUpButton_Click(object sender, EventArgs e)
         {
             string email = emailTextBox.Text;
@@ -54,9 +78,10 @@ namespace Citisoft
                 user = userTab.loadProfile(email);
                 userTabForm = new UserTabForm();
                 userTabForm.updateFields(user);
-                this.Close();
+                this.Hide();
                 //this I added ~Kevin
                 userTabForm.ShowDialog();
+                this.Show();
                 //
             }
             else

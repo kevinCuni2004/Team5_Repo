@@ -37,5 +37,12 @@ namespace Citisoft
             this._companyName = name;
         }
 
+        public SearchVendors SearchVendors
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

@@ -21,6 +21,15 @@ namespace Citisoft
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
+
+        public Access Access
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         //method of creating columns
         private void ColumnsCreate()
         {
@@ -66,15 +75,17 @@ namespace Citisoft
         private void usernameButton_Click(object sender, EventArgs e)
         {
             UserTabForm usertabForm = new UserTabForm();
-            usertabForm.Show();
             this.Hide();
+            usertabForm.ShowDialog();
+            this.Show();
         }
         //go back to admin home page form
         private void backButton_Click(object sender, EventArgs e)
         {
             AdminHomePageForm adminhomepage = new AdminHomePageForm();
-            adminhomepage.Show();
-            this.Close();
+            this.Hide();
+            adminhomepage.ShowDialog();
+            this.Show();
         }
         private void editButton_Click(object sender, EventArgs e)
         {

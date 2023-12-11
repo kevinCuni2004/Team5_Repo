@@ -22,6 +22,14 @@ namespace Citisoft
 
         }
 
+        internal DBConnection DBConnection
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         // searching suitable vendors in database 
         public SqlDataReader SearchVendors(string searchText, string cityFilter, string countryFilter)
         {

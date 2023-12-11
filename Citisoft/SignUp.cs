@@ -20,6 +20,14 @@ namespace Citisoft
             dbConnection = DBConnection.getInstance();
         }
 
+        internal DBConnection DBConnection
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         // user's registration proccess
         public (string message, Profile profile) RegisterUser(string email, string password)
         {

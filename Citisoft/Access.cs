@@ -15,6 +15,15 @@ namespace Citisoft
             //exemplar for db connection from DBConnection class
             dbConnection = DBConnection.getInstance();
         }
+
+        internal DBConnection DBConnection
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         //method for do Select Query for getting data from Profile table
         public DataTable LoadData()
         {

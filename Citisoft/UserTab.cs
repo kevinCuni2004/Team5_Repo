@@ -23,6 +23,13 @@ namespace Citisoft
 
         public UserTab() { }//empty constructor
 
+        internal DBConnection DBConnection
+        {
+            get => default;
+            set
+            {
+            }
+        }
 
         public static UserTab getInstance()
         {

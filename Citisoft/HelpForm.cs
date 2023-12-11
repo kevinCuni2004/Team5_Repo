@@ -20,6 +20,14 @@ namespace Citisoft
             //_dbHelper = new DatabaseHelper("path_to_your_Messages.db"); // Adjust the path to your database file
         }
 
+        internal DBConnection DBConnection
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private void Button2_Click(object sender, EventArgs e)
         {
             string message = textBox1.Text;
@@ -37,6 +45,9 @@ namespace Citisoft
             }
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

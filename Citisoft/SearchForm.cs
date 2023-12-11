@@ -36,18 +36,35 @@ namespace Citisoft
             this.email = email;
             InitializeComponent();
             search = new Search();
-            searchVendor = new SearchVendors();
+            searchVendor = new SearchVendors(this.email);
             StartPosition = FormStartPosition.CenterScreen;
 
             this.Load += new System.EventHandler(this.SearchForm_Load);
+        }
+
+        public Search Search
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public SearchVendors SearchVendors
+        {
+            get => default;
+            set
+            {
+            }
         }
 
         //sending user to usertab
         private void usernameButton_Click(object sender, EventArgs e)
         {
             UserTabForm usertabForm = new UserTabForm(email);
-            usertabForm.Show();
             this.Hide();
+            usertabForm.ShowDialog();
+            this.Show();
         }
 
 
@@ -56,15 +73,16 @@ namespace Citisoft
         {
 
             HelpForm form = new HelpForm();
-
-            form.Show();
+            this.Hide();
+            form.ShowDialog();
+            this.Show();
         }
 
         // displaying user terms of use and privacy policy
         private void termsOfUseLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             TermsOfUseForm termsOfUse = new TermsOfUseForm();
-            termsOfUse.Show();
+            termsOfUse.PDFButton_Click(new object(), new EventArgs());
         }
 
         // generating a search 
@@ -87,8 +105,9 @@ namespace Citisoft
                 {
          
                     searchVendor.DisplaySearchResults(reader);
-                    searchVendor.Show();
                     this.Hide();
+                    searchVendor.ShowDialog();
+                    this.Show();
                 }
                 else
                 {
@@ -130,6 +149,11 @@ namespace Citisoft
         private void countryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 

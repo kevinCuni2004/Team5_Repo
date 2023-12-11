@@ -21,6 +21,14 @@ namespace Citisoft
             LoadMessagesFromDatabase();
         }
 
+        public HelpForm HelpForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private void LoadMessagesFromDatabase()
         {
             listViewMessages.Items.Clear();
@@ -67,7 +75,7 @@ namespace Citisoft
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

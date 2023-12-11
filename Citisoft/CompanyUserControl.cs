@@ -18,6 +18,14 @@ namespace Citisoft
     {
         public int CompanyID { get; set; }
 
+        public SearchVendors SearchVendors
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public event EventHandler<EventArgs> CompanyClicked;
         public CompanyUserControl(int companyId,string companyName, string companyWebsite)
         {

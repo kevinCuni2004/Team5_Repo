@@ -21,6 +21,30 @@ namespace Citisoft
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        public LogIn LogIn
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public SearchForm SearchForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public AdminHomePageForm AdminHomePageForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         //built the same way as SignUpForm class
         private void logInButton_Click(object sender, EventArgs e)
         {

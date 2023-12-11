@@ -28,13 +28,29 @@ namespace Citisoft
 
         }
 
+        public UserTabForm UserTabForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public LogInForm LogInForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         //if user clicks signUp, user changes the form to proceed signUp 
         private void SignUpButton_Click(object sender, EventArgs e)
         {
             SignUpForm signUpForm = new SignUpForm(signUp);
             this.Hide();
             signUpForm.ShowDialog();
-            this.Close();
+            this.Show();
         }
 
         // if user clicks logIn, user changes the form to proceed logIn
@@ -56,7 +72,8 @@ namespace Citisoft
         private void tutorialsLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string pdfFolder = Path.Combine(Application.StartupPath, "PDFs");
-            string pdfFileName = "Tutorilas.pdf";
+            Console.WriteLine(pdfFolder);
+            string pdfFileName = $"Tutorials.pdf";
             string pdfPath = Path.Combine(pdfFolder, pdfFileName);
             try
             {

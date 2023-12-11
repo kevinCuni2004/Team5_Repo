@@ -43,6 +43,14 @@ namespace Citisoft
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        public UserTab UserTab
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public void updateFields(Profile user) { //method to update the labels in the form
             User = user;
             emailLabel.Text = User.Email;
@@ -459,6 +467,10 @@ namespace Citisoft
                 setDOBMonth.Value = 1;
                 setDOBYear.Value = 2000;
             }
+            SearchForm searchForm = new SearchForm(User.Email);
+            this.Hide();
+            searchForm.ShowDialog();
+            this.Show();
         }
     }
 }

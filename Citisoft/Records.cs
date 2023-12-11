@@ -19,6 +19,15 @@ namespace Citisoft
         {
             dbConnection = DBConnection.getInstance();
         }
+
+        internal DBConnection DBConnection
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public CompanyAndProducts loadValues(string name)
         {
             CompanyAndProducts RecordCandP = new CompanyAndProducts(name);

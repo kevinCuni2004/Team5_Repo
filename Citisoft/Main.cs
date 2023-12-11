@@ -9,6 +9,14 @@ namespace Citisoft
 {
     class program
     {
+        public WelcomeForm WelcomeForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         [STAThread]
 
         // start running an application 

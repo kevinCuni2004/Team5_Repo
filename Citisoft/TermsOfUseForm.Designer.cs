@@ -94,7 +94,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TermsOfUseForm";
             this.Text = "TermsOfUsecs";
-            this.Load += new System.EventHandler(this.TermsOfUseForm_Load);
+            this.Load += new System.EventHandler(this.PDFButton_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

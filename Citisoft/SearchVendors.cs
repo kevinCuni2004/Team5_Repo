@@ -24,6 +24,7 @@ namespace Citisoft
         private int currentPageIndex;
         public string searchText;
         private Search search;
+        private string email;
 
         //taya
         private List<CompanyUserControl> allCompanyControls;
@@ -38,6 +39,16 @@ namespace Citisoft
             search = new Search();
             StartPosition = FormStartPosition.CenterScreen;
 
+        }
+
+        public SearchVendors(string email)
+        {
+            this.email = email;
+            InitializeComponent();
+            InitializeVendorPanels();
+            ShowCurrentPage();
+            search = new Search();
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
 
@@ -145,32 +156,33 @@ namespace Citisoft
         // sends to usertab
         private void usernameButton_Click(object sender, EventArgs e)
         {
-            UserTabForm userTab = new UserTabForm();
-            userTab.Show();
+            UserTabForm userTab = new UserTabForm(email);
+            this.Hide();
+            userTab.ShowDialog();
+            this.Show();
         }
 
         // sends to help centre
         private void helpButton_Click(object sender, EventArgs e)
         {
             HelpForm form = new HelpForm();
-
-            form.Show();
+            this.Hide();
+            form.ShowDialog();
+            this.Show();
         }
 
         // go back to search again
         private void backButton_Click(object sender, EventArgs e)
         {
             HidePanels();
-            SearchForm searchForm = new SearchForm();
-            searchForm.Show();
-            this.Hide();
+            this.Close();
         }
 
         // shows terms of use and privacy policy
         private void termsOfUseLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             TermsOfUseForm terms = new TermsOfUseForm();
-            terms.Show();
+            terms.PDFButton_Click(new object(), new EventArgs());
         }
 
        

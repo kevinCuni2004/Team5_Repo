@@ -42,6 +42,13 @@ namespace Citisoft
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        public Records Records
+        {
+            get => default;
+            set
+            {
+            }
+        }
 
         private void CreateColumns()
         {
@@ -95,14 +102,15 @@ namespace Citisoft
         private void usernameButton_Click(object sender, EventArgs e)
         {
             UserTabForm usertabForm = new UserTabForm();
-            usertabForm.Show();
+            this.Hide();
+            usertabForm.ShowDialog();
             this.Hide();
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            AdminHomePageForm adminhomepage = new AdminHomePageForm();
-            adminhomepage.Show();
+            /*AdminHomePageForm adminhomepage = new AdminHomePageForm();
+            adminhomepage.Show();*/
             this.Close();
         }
 
