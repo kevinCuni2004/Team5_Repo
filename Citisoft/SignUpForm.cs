@@ -314,7 +314,10 @@ namespace Citisoft
 
         private void helpButton_Click(object sender, EventArgs e)
         {
-            //
+            HelpForm helpForm = new HelpForm();
+            this.Hide();
+            helpForm.ShowDialog();
+            this.Show();
         }
 
         private void backButton_Click(object sender, EventArgs e)
