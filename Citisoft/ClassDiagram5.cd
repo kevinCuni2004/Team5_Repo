@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Citisoft.Access" Collapsed="true">
-    <Position X="3.5" Y="6.75" Width="1.5" />
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Citisoft.Access">
+    <Position X="12" Y="12" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAAAQAAAAAAAAAAAAAAAABAAAIAAAAAAAAAA=</HashCode>
       <FileName>Access.cs</FileName>
@@ -10,8 +10,8 @@
       <Property Name="DBConnection" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.AccessForm" Collapsed="true">
-    <Position X="7" Y="8.5" Width="1.5" />
+  <Class Name="Citisoft.AccessForm">
+    <Position X="15.75" Y="18.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>oAEEAAIAACQAAlgAAACAAgACAQAABCCAIAAwAAFAAQg=</HashCode>
       <FileName>AccessForm.cs</FileName>
@@ -20,15 +20,15 @@
       <Property Name="Access" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.Adminhome" Collapsed="true">
-    <Position X="14.75" Y="1.5" Width="1.5" />
+  <Class Name="Citisoft.Adminhome">
+    <Position X="8.75" Y="24.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Adminhome.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Citisoft.AdminHomePageForm" Collapsed="true">
-    <Position X="15" Y="4.5" Width="2" />
+  <Class Name="Citisoft.AdminHomePageForm">
+    <Position X="12" Y="20.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAEAAAYBBCAAEBAgAACAAAASARAAgCIAABAgAABAAAA=</HashCode>
       <FileName>AdminHomePageForm.cs</FileName>
@@ -38,8 +38,8 @@
       <Property Name="AccessForm" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.CompanyAndProducts" Collapsed="true">
-    <Position X="8.25" Y="10.5" Width="1.75" />
+  <Class Name="Citisoft.CompanyAndProducts">
+    <Position X="0.5" Y="11" Width="1.75" />
     <TypeIdentifier>
       <HashCode>EAgCQABAEAIgAAYEAAAAAAAQoAQEAQCAIA0IAgAAAEA=</HashCode>
       <FileName>CompanyAndProducts.cs</FileName>
@@ -48,8 +48,8 @@
       <Property Name="SearchVendors" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.CompanyUserControl" Collapsed="true">
-    <Position X="11.25" Y="12.5" Width="1.75" />
+  <Class Name="Citisoft.CompanyUserControl">
+    <Position X="0.5" Y="18" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAASIAAAQAAQCEAAACAACAAAAFAAAAAAEAAAA=</HashCode>
       <FileName>CompanyUserControl.cs</FileName>
@@ -58,15 +58,15 @@
       <Property Name="SearchVendors" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.DBConnection" Collapsed="true">
-    <Position X="6.5" Y="4.75" Width="1.5" />
+  <Class Name="Citisoft.DBConnection">
+    <Position X="15" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACEEAIAACAAgAAAAAAACAEgAAAAAAIQBAAAAAAAAAAA=</HashCode>
       <FileName>DBConnection.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Citisoft.HelpForm" Collapsed="true">
-    <Position X="3.5" Y="2.5" Width="1.5" />
+  <Class Name="Citisoft.HelpForm">
+    <Position X="12" Y="15" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAABAAAACAAAACAAAYIAAAMEAAAAAAAAA=</HashCode>
       <FileName>HelpForm.cs</FileName>
@@ -75,8 +75,8 @@
       <Property Name="DBConnection" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.HelpRequestForm" Collapsed="true">
-    <Position X="3.5" Y="0.5" Width="1.5" />
+  <Class Name="Citisoft.HelpRequestForm">
+    <Position X="18" Y="22.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAUBBAAQACAAABAAAACCAAACAwAIAAAAAEBAgAAAAAA=</HashCode>
       <FileName>HelpRequestForm.cs</FileName>
@@ -85,8 +85,8 @@
       <Property Name="HelpForm" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.LogIn" Collapsed="true">
-    <Position X="9.5" Y="4.75" Width="1.5" />
+  <Class Name="Citisoft.LogIn">
+    <Position X="15" Y="15.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAAAAQAAAAAAAAAAABAgAAAAIAAAAgAAAAA=</HashCode>
       <FileName>LogIn.cs</FileName>
@@ -95,8 +95,8 @@
       <Property Name="DBConnection" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.LogInForm" Collapsed="true">
-    <Position X="12.25" Y="4.5" Width="1.5" />
+  <Class Name="Citisoft.LogInForm">
+    <Position X="9.25" Y="16.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAQQpAACCAAABEAACCAAAACAwAACBACAAgAAABCAQg=</HashCode>
       <FileName>LogInForm.cs</FileName>
@@ -107,8 +107,8 @@
       <Property Name="AdminHomePageForm" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.program" Collapsed="true">
-    <Position X="12.25" Y="6.5" Width="1.5" />
+  <Class Name="Citisoft.program">
+    <Position X="6.5" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Main.cs</FileName>
@@ -117,8 +117,8 @@
       <Property Name="WelcomeForm" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.Profile" Collapsed="true">
-    <Position X="7.5" Y="1.25" Width="1.5" />
+  <Class Name="Citisoft.Profile">
+    <Position X="24" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAUCAEAAACABCFAAAQFAAAAIAAAAABCSAAJAAAAQAgk=</HashCode>
       <FileName>Profile.cs</FileName>
@@ -129,8 +129,8 @@
       <Property Name="SignUp" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.Records" Collapsed="true">
-    <Position X="3.5" Y="4.75" Width="1.5" />
+  <Class Name="Citisoft.Records">
+    <Position X="15" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAAAAAgAAAAAAAAAAAAAAAACAIAAAAAAAAAA=</HashCode>
       <FileName>Records.cs</FileName>
@@ -139,8 +139,8 @@
       <Property Name="DBConnection" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.RecordsForm" Collapsed="true">
-    <Position X="0.5" Y="4.5" Width="1.5" />
+  <Class Name="Citisoft.RecordsForm">
+    <Position X="9" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>YBEEoAIAAC4AAhqAQBCAAAACAQAgASDBAAAQwCFoAAg=</HashCode>
       <FileName>RecordsForm.cs</FileName>
@@ -149,8 +149,8 @@
       <Property Name="Records" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.Search" Collapsed="true">
-    <Position X="6.5" Y="6.75" Width="1.5" />
+  <Class Name="Citisoft.Search">
+    <Position X="12" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAAAAAAgAQAAAAAAAAAAAAAEAAAIBAAEgAAgAQ=</HashCode>
       <FileName>Search.cs</FileName>
@@ -159,8 +159,8 @@
       <Property Name="DBConnection" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.SearchForm" Collapsed="true">
-    <Position X="11.5" Y="8.5" Width="1.5" />
+  <Class Name="Citisoft.SearchForm">
+    <Position X="6.75" Y="16.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAkAIAKAASBAIBQgQQCAAAACAQBAiCAAACAAQBBgBAg=</HashCode>
       <FileName>SearchForm.cs</FileName>
@@ -170,15 +170,15 @@
       <Property Name="SearchVendors" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.SearchVendors" Collapsed="true">
-    <Position X="11.5" Y="10.5" Width="1.5" />
+  <Class Name="Citisoft.SearchVendors">
+    <Position X="3.75" Y="16.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAkQCAAAACBAAAggIQCGAASCAQBACCACECAAAABQAAg=</HashCode>
       <FileName>SearchVendors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Citisoft.SignUp" Collapsed="true">
-    <Position X="6.5" Y="2.75" Width="1.5" />
+  <Class Name="Citisoft.SignUp">
+    <Position X="18" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>MAAACAAAAAAAAAAAAAAAAAAAAAAAAAACIAAAAAAAAAA=</HashCode>
       <FileName>SignUp.cs</FileName>
@@ -187,8 +187,8 @@
       <Property Name="DBConnection" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.SignUpForm" Collapsed="true">
-    <Position X="10" Y="0.5" Width="1.5" />
+  <Class Name="Citisoft.SignUpForm">
+    <Position X="18.25" Y="15.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CCAAApAIAAAACBAAAyCAAAICAwAACAACAAgAEABAQQo=</HashCode>
       <FileName>SignUpForm.cs</FileName>
@@ -199,8 +199,8 @@
       <Property Name="SearchForm" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.TermsOfUseForm" Collapsed="true">
-    <Position X="9.25" Y="8.25" Width="1.5" />
+  <Class Name="Citisoft.TermsOfUseForm">
+    <Position X="6.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>UABAAAAAACAAAAAAAACAAAACAwAAAAAAAEAAAABAAAA=</HashCode>
       <FileName>TermsOfUseForm.cs</FileName>
@@ -209,8 +209,8 @@
       <Property Name="WelcomeForm" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.UserTab" Collapsed="true">
-    <Position X="9.5" Y="2.75" Width="1.5" />
+  <Class Name="Citisoft.UserTab">
+    <Position X="18" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>oAAEAAAAIAACAAAEAAAAAAAAAAAgAAQAIAEAAAABAQA=</HashCode>
       <FileName>UserTab.cs</FileName>
@@ -219,8 +219,8 @@
       <Property Name="DBConnection" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.UserTabForm" Collapsed="true">
-    <Position X="12.25" Y="2.5" Width="1.5" />
+  <Class Name="Citisoft.UserTabForm">
+    <Position X="20.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>qFDLAVICMSAO4AgDFVCAAmBia4iAIBCg6WJiHERAYkA=</HashCode>
       <FileName>UserTabForm.cs</FileName>
@@ -229,8 +229,8 @@
       <Property Name="UserTab" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Citisoft.WelcomeForm" Collapsed="true">
-    <Position X="9.25" Y="6.25" Width="1.5" />
+  <Class Name="Citisoft.WelcomeForm">
+    <Position X="9.5" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CQAQAAAIACAAABAgAACAAAMCAAAAAAAAAAAACABAAQI=</HashCode>
       <FileName>WelcomeForm.cs</FileName>
