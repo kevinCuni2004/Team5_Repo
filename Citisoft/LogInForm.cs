@@ -91,9 +91,5 @@ namespace Citisoft
             this.Close();
         }
 
-        private void passwordMaskedTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
     }
 }
